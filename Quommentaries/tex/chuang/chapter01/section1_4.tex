@@ -1,4 +1,129 @@
 \subsection{Section 1.4}
 \subsubsection{Deutsch's Algorithm}
 
-Add notes from step \(\ket{\psi_1}\) to step \(\ket{\psi_2}\) of the circuit.
+While explaining Deutsch's algorithm, state \( \ket{\psi_1} \) is obtained.
+
+\[
+\ket{\psi_1} = \left[ \frac{\ket{0} + \ket{1}}{\sqrt{2}} \right]
+    \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]
+\]
+
+Then, the Unitary gate \(U_f\) is applied to state \(\ket{\psi}\) and how the result obtained in state \(\ket{\psi_2}\) may not be clear enough to the reader. First, recall that \(f(x) : \{0, 1\} \to \{0, 1\}\). That is, the function maps the qubits in state \(\ket{0}\) to either state \(\ket{0}\) or \(\ket{1}\). Analogously, qubits in state \(\ket{1}\) are mapped to state \(\ket{0}\) or \(\ket{1}\).
+
+Henceforth, there are for possible functions: two possibilities where \(f(0) = f(1)\) and two possibilities where \(f(0) \neq f(1)\).
+
+\begin{itemize}
+    \item \(f(0) = f(1)\)
+    \begin{itemize}
+        \item \(f(0) = f(1) = 0\)
+        \item \(f(0) = f(1) = 1\)
+    \end{itemize}
+    
+    \item \(f(0) \neq f(1)\)
+    \begin{itemize}
+        \item \(f(0) = 0, f(1) = 1\)
+        \item \(f(0) = 1, f(1) = 0\)
+    \end{itemize}
+\end{itemize}
+
+Note that \(U_f\) does not apply any operation to the first qubit (\(x\)), but applies \(y \oplus f(x)\) to the second qubit (\(y\)). Note that, using the distributive property, the state \(\ket{\psi_1}\) may be written as
+\[\ket{\psi_1} = \frac{\ket{00} - \ket{01} + \ket{10} - \ket{11}}{2}\]
+Then, analyzing what would happen if any of the four possibilities for \(U_f\) were applied:
+
+\begin{itemize}
+    \item Apply \(U_f\) to \(\ket{\psi_1}\) when \(f(0) = f(1) = 0\)
+    
+    \begin{align}
+        \ket{\psi_2} &= \frac{\ket{0\ (0 \oplus f(0)\ )} - \ket{0\ (1 \oplus f(0)\ )} +
+        \ket{1\ (0 \oplus f(1)\ )} - \ket{1\ (1 \oplus f(1)\ )}}{2}
+        \\
+        \ket{\psi_2} &=  \frac{\ket{0\ (0 \oplus 0\ )} - \ket{0\ (1 \oplus 0\ )} +
+        \ket{1\ (0 \oplus 0\ )} - \ket{1\ (1 \oplus 0\ )}}{2}
+        \\
+        \ket{\psi_2} &= \frac{\ket{00} - \ket{01} + \ket{10} - \ket{11}}{2}
+    \end{align}
+    
+    Then, inversely applying the distributive property:
+    \begin{equation}
+        \ket{\psi_2} =
+        \left[ \frac{\ket{0} + \ket{1}}{\sqrt{2}} \right]
+        \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]
+    \end{equation}
+        
+    \item Apply \(U_f\) to \(\ket{\psi_1}\) when \(f(0) = f(1) = 1\)
+    
+    \begin{align}
+        \ket{\psi_2} &= \frac{\ket{0\ (0 \oplus f(0)\ )} - \ket{0\ (1 \oplus f(0)\ )} +
+        \ket{1\ (0 \oplus f(1)\ )} - \ket{1\ (1 \oplus f(1)\ )}}{2}
+        \\
+        \ket{\psi_2} &=  \frac{\ket{0\ (0 \oplus 1\ )} - \ket{0\ (1 \oplus 1\ )} +
+        \ket{1\ (0 \oplus 1\ )} - \ket{1\ (1 \oplus 1\ )}}{2}
+        \\
+        \ket{\psi_2} &= \frac{\ket{01} - \ket{00} + \ket{11} - \ket{10}}{2}
+        \\
+        \ket{\psi_2} &= - \frac{\ket{00} - \ket{01} + \ket{10} - \ket{11}}{2}
+    \end{align}
+    
+    Then, inversely applying the distributive property:
+    \begin{equation}
+        \ket{\psi_2} = -
+        \left[ \frac{\ket{0} + \ket{1}}{\sqrt{2}} \right]
+        \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]
+    \end{equation}
+    
+    \textbf{Henceforth, the first part of Nielsen and Chuangs's \emph{equation 1.43} was obtained:}
+    
+    \[
+    \ket{\psi_2} = \pm \left[ \frac{\ket{0} + \ket{1}}{\sqrt{2}} \right]
+        \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]\ if \ f(0) = f(1)
+    \]
+    
+    \item Apply \(U_f\) to \(\ket{\psi_1}\) when \(f(0) = 0, f(1) = 1\)
+    
+        \begin{align}
+        \ket{\psi_2} &= \frac{\ket{0\ (0 \oplus f(0)\ )} - \ket{0\ (1 \oplus f(0)\ )} +
+        \ket{1\ (0 \oplus f(1)\ )} - \ket{1\ (1 \oplus f(1)\ )}}{2}
+        \\
+        \ket{\psi_2} &=  \frac{\ket{0\ (0 \oplus 0\ )} - \ket{0\ (1 \oplus 0\ )} +
+        \ket{1\ (0 \oplus 1\ )} - \ket{1\ (1 \oplus 1\ )}}{2}
+        \\
+        \ket{\psi_2} &= \frac{\ket{00} - \ket{01} + \ket{11} - \ket{10}}{2}
+    \end{align}
+    
+    Then, inversely applying the distributive property:
+    \begin{equation}
+        \ket{\psi_2} =
+        \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]
+        \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]
+    \end{equation}
+    
+    \item Apply \(U_f\) to \(\ket{\psi_1}\) when \(f(0) = 1, f(1) = 0\)
+    
+        \begin{align}
+        \ket{\psi_2} &= \frac{\ket{0\ (0 \oplus f(0)\ )} - \ket{0\ (1 \oplus f(0)\ )} +
+        \ket{1\ (0 \oplus f(1)\ )} - \ket{1\ (1 \oplus f(1)\ )}}{2}
+        \\
+        \ket{\psi_2} &=  \frac{\ket{0\ (0 \oplus 1\ )} - \ket{0\ (1 \oplus 1\ )} +
+        \ket{1\ (0 \oplus 0\ )} - \ket{1\ (1 \oplus 0\ )}}{2}
+        \\
+        \ket{\psi_2} &= \frac{\ket{01} - \ket{00} + \ket{10} - \ket{11}}{2}
+        \\
+        \ket{\psi_2} &= - \frac{\ket{00} - \ket{01} - \ket{10} + \ket{11}}{2}
+    \end{align}
+    
+    Then, inversely applying the distributive property:
+    \begin{equation}
+        \ket{\psi_2} = -
+        \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]
+        \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]
+    \end{equation}
+    
+    \textbf{Henceforth, the second part of Nielsen and Chuangs's \emph{equation 1.43} was obtained:}
+    
+    \[
+    \ket{\psi_2} = \pm \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]
+        \left[ \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right]\ if \ f(0) \neq f(1)
+    \]
+\end{itemize}
+
+Also, note that something interesting happened. Even though the \(U_f\) was not supposed to alter the state of the first qubit (\(\ket{x}\)); it is, in fact, changed. That is why \(\ket{x}\) is used to determine the property of \(f(x)\).
