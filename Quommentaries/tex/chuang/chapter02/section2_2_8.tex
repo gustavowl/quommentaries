@@ -1,0 +1,64 @@
+\subsection{Section 2.2.8}
+\subsubsection{Equation (2.123)}
+
+\emph{I would like to thank
+    \href{http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4774458A4}{Rex}
+    (\href{mailto:rexmedeiros@ect.ufrn.br}{rexmedeiros@ect.ufrn.br})
+    and
+    \href{http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4733964Y9&idiomaExibicao=2}{LIB} 
+    (\href{mailto:leandro@ect.ufrn.br}{leandro@ect.ufrn.br})
+    for helping me to understand this equation. The present subsection mixes some doubts I had alongside with their explanation.
+}
+
+The definition of equation (2.122) will be needed for this section. In order to understand equation (2.123), it is necessary to recall the definition of inner product \footnote{For more details, refer to Nielsen and Chuang's section 2.1.4} between two states $\ket{\psi}$ and $\ket{\varphi}$:
+
+\[
+(\ket{\varphi}, \ket{\psi}) = \ket{\varphi}^\dagger \ket{\psi} = \braket{\varphi | \psi}
+\]
+
+However, the inner product on equation (2.123) is a composite system inner product. Since composite systems are described using tensor products, it is necessary to apply the definition of equation (2.49). Hence, it is possible to calculate
+
+\begin{align}
+    \left( U \ket{\varphi} \ket{0}, U \ket{\psi} \ket{0} \right) &= 
+    \left( \sum_m M_m \ket{\varphi} \ket{m} , \sum_{m'.} M_{m'} \ket{\psi} \ket{m'} \right)
+    \\
+    &= \sum_{m, m'} (M_m\ket{\varphi})^\dagger M_{m'.}\ket{\psi} \braket{m | m'}
+\end{align}
+
+Then, from the definitions on section 2.1.6:
+\begin{align}
+    \sum_{m, m'} (M_m\ket{\varphi})^\dagger M_{m'.}\ket{\psi} \braket{m | m'} =
+    \sum_{m, m'} \bra{\varphi} M_m^\dagger M_{m'.}\ket{\psi} \braket{m | m'}
+\end{align}
+
+
+The left side of equation (2.123) may be rather confusing, however. Because according to the definitions on section 2.16 $(U \ket{\varphi 0})^\dagger = \bra{\varphi 0} U^\dagger$. Also, accordingly to the properties on equation (2.53)  $(U \ket{\varphi} \ket{0})^\dagger = \bra{\varphi} \bra{0} U^\dagger$. If this line of thought was followed, then equation
+
+\[
+\bra{\varphi} \bra{0} U^\dagger U \ket{\psi} \ket{0} =
+\sum_{m,m'} \bra{\varphi}\bra{m} M^\dagger_m M_{m'} \ket{\psi} \ket{m'}
+\]
+
+would be obtained. Which would not match equation (2.49)'s definition.
+
+It is a common practice in Physics, however, to write $(U\ket{\varphi} \ket{0})^\dagger = \bra{0} \bra{\varphi} U^\dagger$. In this case, the adjoint operators are read 'backwards'. So, for instance, $U$ operates on $\ket{\varphi}$ (i.e. $U\ket{\varphi}$); while $U^\dagger$ operates on $\bra{\varphi}$ (i.e. $\bra{\varphi} U^\dagger$). Following this line of thought, $(U\ket{\varphi} \ket{0})^\dagger = \bra{\varphi} \bra{0} U^\dagger$ would not make sense because $U^\dagger$ should operate on $\bra{\varphi}$, not on $\bra{0}$. Formally, imagine that an operator $M$ operates on vector space $V$, $\ket{v} \in V$ and $\ket{w} \in W$, then $\bra{v} \bra{w} M^\dagger$ would not be valid because $M$ only acts on vector space $V$, not $W$.
+
+Hence, it is possible to rewrite equation (2.123) as:
+
+\begin{align}
+    (U \ket{\varphi} \ket{0}, U \ket{\psi} \ket{0}) &= 
+    (U \ket{\varphi} \ket{0})^\dagger U \ket{\psi} \ket{0}
+    \\ 
+    &= (\sum_m M_m \ket{\varphi} \ket{m})^\dagger \sum_{m'} M_{m'} \ket{\psi} \ket{m'}
+    \\
+    &= \sum_{m, m'} \bra{m} \bra{\varphi} M_m^\dagger M_{m'} \ket{\psi} \ket{m'}
+\end{align}
+
+since $\bra{\varphi} M_m^\dagger M_{m'} \ket{\psi}$ is a scalar:
+
+\begin{align}
+    \sum_{m, m'} \bra{m} \bra{\varphi} M_m^\dagger M_{m'} \ket{\psi} \ket{m'} =
+    \sum_{m, m'} \bra{\varphi} M_m^\dagger M_{m'} \ket{\psi} \braket{m | m'}
+\end{align}
+
+Which is another way to obtain equation (2.123).
