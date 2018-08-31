@@ -27,6 +27,10 @@
 
 \renewcommand\labelitemii{\textasteriskcentered}
 
+\newcommand{\todo}[1][TODO]{ %adds flashy todo text
+    { \color{red} \MakeUppercase{\textbf{TODO: #1}} }
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Quommentaries}
 \author{
@@ -36,14 +40,14 @@
 %\date{}
 
 \begin{document}
-	\maketitle
+    \maketitle
 
-	\tableofcontents
-	\pagebreak
+    \tableofcontents
+    \pagebreak
 
-	\input{tex/leftoverture.tex}
-	\input{tex/introduction.tex}
-	\input{tex/chuang/chapter01/chapter01.tex}
-	\input{tex/chuang/chapter02/chapter02.tex}
+    \input{tex/leftoverture.tex}
+    \input{tex/introduction.tex}
+    \input{tex/chuang/chapter01/chapter01.tex}
+    \input{tex/chuang/chapter02/chapter02.tex}
     
 \end{document}
