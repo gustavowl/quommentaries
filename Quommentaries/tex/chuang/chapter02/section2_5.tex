@@ -44,7 +44,56 @@ it is possible to conclude that $\sum_i \sqrt{p_i} \ket{\psi_i}\ket{i}$ is a pur
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\item b
+\item \todo[Add intuitive solution/explanation]
+
+For this exercise it is necessary to review Postulate 3. For the system $\ket{AR}$, there is a set of measurement operators $\{M_m\}$. Only system $R$ is being measured, though. So, it is possible to define every measurement operator $M_m = I \otimes M_i$ where $I$ is the identity operator acting on system $A$ and $M_i$ is the measurement operator acting on system $R$ which corresponds to measuring the state $\ket{i}$.
+
+The probability of measuring $\ket{i}$ is requested, i.e. $p(i)$. Using $\ket{\varphi_i} = \sqrt{p_i}\ket{\psi_i} \ket{i}$ temporarily for simplicity and by Equation (2.92):
+\begin{align}
+    p(i) &= \bra{\varphi_i}M_m^\dagger M_m \ket{\varphi_i} \\
+    &= \bra{\varphi_i}(I \otimes M_i)^\dagger (I \otimes M_i) \ket{\varphi_i} \\
+    &= \sqrt{p_i} \bra{\psi_i}\bra{i}(I \otimes M_i)^\dagger
+        (I \otimes M_i) \sqrt{p_i}\ket{\psi_i}\ket{i} \\
+    &= p_i \bra{\psi_i}\bra{i}(I^\dagger \otimes M_i^\dagger)
+        (I \otimes M_i) \ket{\psi_i}\ket{i} \\
+    &= p_i \bra{\psi_i}\bra{i}(I \otimes M_i^\dagger)
+        (I \otimes M_i) \ket{\psi_i}\ket{i}
+\end{align}
+
+Using equation (2.48):
+\begin{align}
+    p(i) &= p_i (\bra{\psi_i}I \otimes \bra{i}M_i^\dagger)
+        \ (I\ket{\psi_i} \otimes M_i\ket{i}) \\
+    &= p_i (\bra{\psi_i} \otimes \bra{i}M_i^\dagger )
+        \ (\ket{\psi_i} \otimes M_i\ket{i})
+\end{align}
+
+Then, by the definition of inner product (equation (2.49)):
+\begin{align}
+    p(i) = p_i \braket{\psi_i|\psi_i} \bra{i}M_i^\dagger M_i\ket{i}
+\end{align}
+
+Recall that $\ket{\psi_i}$ and $\ket{i}$ are orthonormal. Also, since $M_i$ is the measurement operator that corresponds to obtaining state $\ket{i}$, it is possible to consider $\ket{i}$ as a "measurement basis" defining $M_i = \ket{i}\bra{i}$. A similar example can be seen in Nielsen and Chuang's book in a paragraph between Equations (2.95) and (2.96). Therefore,
+\begin{align}
+    p(i) &= p_i \cdot 1 \cdot \bra{i}(\ket{i}\bra{i})^\dagger (\ket{i}\bra{i}) \ket{i} \\
+    &= p_i \bra{i}(\ket{i}\bra{i}) (\ket{i}\bra{i}) \ket{i} \\
+    &= p_i \braket{i|i} \braket{i|i} \braket{i|i} \\
+    &= p_i \cdot 1 \cdot 1 \cdot 1 \\
+    &= p_i
+\end{align}
+
+Hence, the probability of measuring state $\ket{i}$ is $p_i$. Now, it requested to obtain the state in system A, which is described by Postulate 3 as:
+\begin{align}
+    \frac{M_m \ket{\varphi_i}}{\sqrt{p_i}} &=
+        \frac{(I \otimes M_i) \sqrt{p_i}\ket{\psi_i}\ket{i}}{\sqrt{p_i}} \\
+    &= (I\ket{\psi_i}) \otimes (M_i\ket{i}) \\
+    &= (I\ket{\psi_i}) \otimes (\ket{i}\braket{i|i}) \\
+    &= \ket{\psi_i} \ket{i}
+\end{align}
+
+Therefore, the measurement of the system A will always be $\ket{\psi_i}$.
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item c
 \end{enumerate}
