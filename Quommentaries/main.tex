@@ -2,7 +2,14 @@
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper, total={6in, 8in}]{geometry}
 
+\usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{braket}
+    \renewcommand{\braket}[2]{\mathop{\mathinner{
+        \langle{#1}|{#2}\rangle}}}
+    \newcommand{\ketbra}[2]{\mathop{\mathinner{
+        |{#1}\rangle \langle{#2}|}}}
+
 \usepackage{hyperref}
     \hypersetup{
         colorlinks=true,
@@ -10,9 +17,7 @@
         filecolor=magenta,      
         urlcolor=blue,
     }
-
-\usepackage{amsmath}
-\usepackage{amsfonts}
+    
 \usepackage{titlesec}
     \setlength{\parindent}{0em}
     \setlength{\parskip}{1em}
@@ -50,5 +55,5 @@
 	\input{tex/introduction.tex}
 	\input{tex/chuang/chapter01/chapter01.tex}
 	\input{tex/chuang/chapter02/chapter02.tex}
-    
+
 \end{document}

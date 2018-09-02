@@ -13,7 +13,7 @@
 The definition of equation (2.122) will be needed for this section. In order to understand equation (2.123), it is necessary to recall the definition of inner product \footnote{For more details, refer to Nielsen and Chuang's section 2.1.4} between two states $\ket{\psi}$ and $\ket{\varphi}$:
 
 \[
-(\ket{\varphi}, \ket{\psi}) = \ket{\varphi}^\dagger \ket{\psi} = \braket{\varphi | \psi}
+(\ket{\varphi}, \ket{\psi}) = \ket{\varphi}^\dagger \ket{\psi} = \braket{\varphi}{\psi}
 \]
 
 However, the inner product on equation (2.123) is a composite system inner product. Since composite systems are described using tensor products, it is necessary to apply the definition of equation (2.49). Hence, it is possible to calculate
@@ -22,13 +22,13 @@ However, the inner product on equation (2.123) is a composite system inner produ
     \left( U \ket{\varphi} \ket{0}, U \ket{\psi} \ket{0} \right) &= 
     \left( \sum_m M_m \ket{\varphi} \ket{m} , \sum_{m'.} M_{m'} \ket{\psi} \ket{m'} \right)
     \\
-    &= \sum_{m, m'} (M_m\ket{\varphi})^\dagger M_{m'.}\ket{\psi} \braket{m | m'}
+    &= \sum_{m, m'} (M_m\ket{\varphi})^\dagger M_{m'.}\ket{\psi} \braket{m}{m'}
 \end{align}
 
 Then, from the definitions on section 2.1.6:
 \begin{align}
-    \sum_{m, m'} (M_m\ket{\varphi})^\dagger M_{m'.}\ket{\psi} \braket{m | m'} =
-    \sum_{m, m'} \bra{\varphi} M_m^\dagger M_{m'.}\ket{\psi} \braket{m | m'}
+    \sum_{m, m'} (M_m\ket{\varphi})^\dagger M_{m'.}\ket{\psi} \braket{m}{m'} =
+    \sum_{m, m'} \bra{\varphi} M_m^\dagger M_{m'.}\ket{\psi} \braket{m}{m'}
 \end{align}
 
 
@@ -58,7 +58,7 @@ since $\bra{\varphi} M_m^\dagger M_{m'} \ket{\psi}$ is a scalar:
 
 \begin{align}
     \sum_{m, m'} \bra{m} \bra{\varphi} M_m^\dagger M_{m'} \ket{\psi} \ket{m'} =
-    \sum_{m, m'} \bra{\varphi} M_m^\dagger M_{m'} \ket{\psi} \braket{m | m'}
+    \sum_{m, m'} \bra{\varphi} M_m^\dagger M_{m'} \ket{\psi} \braket{m}{m'}
 \end{align}
 
 Which is another way to obtain equation (2.123).

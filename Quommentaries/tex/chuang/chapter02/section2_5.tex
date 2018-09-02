@@ -16,7 +16,7 @@ $\sum_{ijkl} \ket{i}\bra{j} tr(\ket{k}\bra{l})$, where $i, j, k, l \in \{0, 1\}$
 Since $tr(\ket{a}\bra{b}) = \bra{b}\ket{a}$:
 \begin{align}
     \sum_{ijkl} \ket{i}\bra{j} tr(\ket{k}\bra{l}) &=
-        \sum_{ijkl} \ket{i}\bra{j}\braket{l|k} \\
+        \sum_{ijkl} \ket{i}\bra{j}\braket{l}{k} \\
         &= \sum_{ijkl} \ket{i}\bra{j}\delta_{lk}
 \end{align}
 
@@ -89,9 +89,9 @@ Using an analogous line of thought $tr((\rho^B)^2) = \frac{7}{9}$ is obtained.
         &= \sum_{ij} \sqrt{p_i p_j} (\ket{\psi_i}\bra{\psi_j}) tr(\ket{i}\bra{j})
     \end{align}
     
-    Since $tr(\ket{a}\bra{b}) = \braket{b|a}$:
+    Since $tr(\ket{a}\bra{b}) = \braket{b}{a}$:
     \begin{align}
-        tr_B(\rho^{AB}) &= \sum_{ij} \sqrt{p_i p_j}\ (\ket{\psi_i}\bra{\psi_j}) \braket{j|i} \\
+        tr_B(\rho^{AB}) &= \sum_{ij} \sqrt{p_i p_j}\ (\ket{\psi_i}\bra{\psi_j}) \braket{j}{i} \\
         &= \sum_{ij} \sqrt{p_i p_j}\ \ket{\psi_i}\bra{\psi_j}\ \delta_{ij} \\
         &= \sum_i \sqrt{p_i p_i}\ \ket{\psi_i}\bra{\psi_i} \\
         &= \sum_i p_i\ket{\psi_i}\bra{\psi_i}
@@ -128,14 +128,14 @@ Using an analogous line of thought $tr((\rho^B)^2) = \frac{7}{9}$ is obtained.
     
     Then, by the definition of inner product (equation (2.49)):
     \begin{align}
-        p(i) = p_i \braket{\psi_i|\psi_i} \bra{i}M_i^\dagger M_i\ket{i}
+        p(i) = p_i \braket{\psi_i}{\psi_i} \bra{i}M_i^\dagger M_i\ket{i}
     \end{align}
     
     Recall that $\ket{\psi_i}$ and $\ket{i}$ are orthonormal. Also, since $M_i$ is the measurement operator that corresponds to obtaining state $\ket{i}$, it is possible to consider $\ket{i}$ as a "measurement basis" defining $M_i = \ket{i}\bra{i}$. A similar example can be seen in Nielsen and Chuang's book in a paragraph between Equations (2.95) and (2.96). Therefore,
     \begin{align}
         p(i) &= p_i \cdot 1 \cdot \bra{i}(\ket{i}\bra{i})^\dagger (\ket{i}\bra{i}) \ket{i} \\
         &= p_i \bra{i}(\ket{i}\bra{i}) (\ket{i}\bra{i}) \ket{i} \\
-        &= p_i \braket{i|i} \braket{i|i} \braket{i|i} \\
+        &= p_i \braket{i}{i} \braket{i}{i} \braket{i}{i} \\
         &= p_i \cdot 1 \cdot 1 \cdot 1 \\
         &= p_i
     \end{align}
