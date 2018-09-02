@@ -171,11 +171,49 @@ Using an analogous line of thought $tr((\rho^B)^2) = \frac{7}{9}$ is obtained.
         By (2), if we measure the system $R$ w.r.t $\ket{i}$, post-measurement state for system $A$ is $\ket{\psi_i}$ with probability $p_i$, which prove the assertion.
     \end{quotation}
     
+    \todo{Is the previous solution plausible in same way?}
+    
     However, if system $R$ is measured with respected to $\ket{i}$
-    (that is, the measurement operator is $M_m = I \otimes \ket{i}\bra{i}$)
+    (that is, the measurement operator $M_m = I \otimes \ket{i}\bra{i}$
+    is applied to $\sum_i \sqrt{p_i} \ket{\psi_i}\ket{i}$)
     the same result of Exercise 2.82(2) will be achieved.
     
-    Another way to try to solve this problem is:
+    A similar way to try to solve this problem is:
+    define $\ket{AR_i} = \ket{\psi_i}\ket{r_i}$
+    and use the measurement operator $M_m = I \otimes \ket{i}\bra{i}$.
+    Then, the probability of measuring $\ket{i}$ is calculated
+    according to Equation (2.92):
+    \begin{align}
+        p(i) &= (\sqrt{p_i}\ (I \otimes \ketbra{i}{i}) \ket{\psi_i}\ket{r_i})^\dagger
+            \ \sqrt{p_i}\ (I \otimes \ketbra{i}{i}) \ket{\psi_i}\ket{r_i} \\
+        &= p_i \bra{r_i}\bra{\psi_i} (\ketbra{i}{i} \otimes I)
+            \ (I \otimes \ketbra{i}{i}) \ket{\psi_i}\ket{r_i}
+    \end{align}
     
-    Even so, the result is the same of Exercise 2.82(2).
+    Then, using Equations (2.48) and (2.49):
+    \begin{align}
+        p(i) &= p_i  (\bra{r_i} \ketbra{i}{i}) \otimes (\bra{\psi_i} I)
+            \ (I \ket{\psi_i}) \otimes (\ketbra{i}{i} \ket{r_i}) \\
+        &= p_i (\braket{r_i}{i} \bra{i}) \otimes \bra{\psi_i}
+            \ \ket{\psi_i} \otimes (\braket{i}{r_i} \ket{i}) \\
+        &= p_i \braket{r_i}{i} \braket{i}{r_i}\ (\bra{i} \bra{\psi_i} \ket{\psi_i} \ket{i}) \\
+        &= p_i\ \norm{\braket{i}{r_i}}^2
+    \end{align}
+    
+    if $\norm{\braket{i}{r_i}}^2 = 1/p_i$, the desired result would obtained.
+    However, $0 < p_i < 1$, then $1/p_i > 1$, which is not possible
+    since both $\ket{i}$ and $\ket{r_i}$ are orthonormal vectors.
+    Independently, if the post-measurement state is calculated as given by Equation (2.93):
+    \begin{align}
+        \frac{M_m\ket{\psi}}{\sqrt{\bra{\psi}M_m^\dagger M_m\ket{\psi}}} &=
+            \frac{(I \otimes \ketbra{i}{i})\sqrt{p_i}\ket{\psi_i}\ket{r_i}}
+            {\sqrt{p_i \norm{\braket{i}{r_i}}^2}} \\
+        &= \frac{\sqrt{p_i} \ket{\psi_i} \ketbra{i}{i} \ket{r_i}}
+            {\sqrt{p_i}\ \norm{\ketbra{i}{r_i}}} \\
+        &= \frac{\braket{i}{r_i} \ket{\psi_i} \ket{i}}{\norm{\braket{i}{r_i}}}
+    \end{align}
+    
+    Therefore, $\frac{\braket{i}{r_i}}{\sqrt{\braket{i}{r_i}\braket{r_i}{i}}} = p_i$.
+    \todo{In conclusion ?????}
+    
 \end{enumerate}
