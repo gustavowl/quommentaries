@@ -12,6 +12,7 @@
     }
 
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{titlesec}
     \setlength{\parindent}{0em}
     \setlength{\parskip}{1em}
@@ -27,7 +28,7 @@
 
 \renewcommand\labelitemii{\textasteriskcentered}
 
-\newcommand{\todo}[1][TODO]{ %adds flashy todo text
+\newcommand{\todo}[1]{ %adds flashy todo text
     { \color{red} \MakeUppercase{\textbf{TODO: #1}} }
 }
 
@@ -40,14 +41,14 @@
 %\date{}
 
 \begin{document}
-    \maketitle
+	\maketitle
 
-    \tableofcontents
-    \pagebreak
+	\tableofcontents
+	\pagebreak
 
-    \input{tex/leftoverture.tex}
-    \input{tex/introduction.tex}
-    \input{tex/chuang/chapter01/chapter01.tex}
-    \input{tex/chuang/chapter02/chapter02.tex}
+	\input{tex/leftoverture.tex}
+	\input{tex/introduction.tex}
+	\input{tex/chuang/chapter01/chapter01.tex}
+	\input{tex/chuang/chapter02/chapter02.tex}
     
 \end{document}
