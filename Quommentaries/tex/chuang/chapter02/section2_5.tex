@@ -61,99 +61,121 @@ Using an analogous line of thought $tr((\rho^B)^2) = \frac{7}{9}$ is obtained.
 
 \begin{enumerate}
 \item From the definition of purification, it is necessary to prove that $\rho^A = tr_R(\ket{AR}\bra{AR})$.
-
-Suppose $\sum_i \sqrt(p_i) \ket{\psi_i} \ket{i}$ is a purification. From equation (2.138) of Nielsen and Chuang's book:
-\begin{align}
-    \rho^{AB} = \sum_{ij} \left( \sqrt{p_i} \ket{\psi_i} \ket{i} \right) \left( \sqrt{p_j} \ket{\psi_j} \ket{j} \right) ^ \dagger
-\end{align}
-
-Since $p_j \in \mathbb{R}$, $p_j^\dagger = p_j$. And since it is a scalar:
-\begin{align}
-    \rho^{AB} = \sum_{ij} \sqrt{p_i p_j} \left( \ket{\psi_i} \ket{i} \right) \left( \ket{\psi_j} \ket{j} \right) ^ \dagger
-\end{align}
-
-Recall that for any states $\ket{\varphi}$ and $\ket{\gamma}$ writing $\ket{\varphi} \ket{\gamma}$ is the same as $\ket{\varphi} \otimes \ket{\gamma}$. Then, applying equation (2.48):
-\begin{align}
-    \rho^{AB} &= \sum_{ij} \sqrt{p_i p_j} \left( \ket{\psi_i} \otimes \ket{i} \right)
-        \left( \bra{\psi_j} \otimes \bra{j} \right) \\
-    \rho^{AB} &= \sum_{ij} \sqrt{p_i p_j} (\ket{\psi_i}\bra{\psi_j}) \otimes (\ket{i}\bra{j})
-\end{align}
-
-If $\sum_i \sqrt{p_i} \ket{\psi_i}\ket{i}$ is a purification, then
-$\rho^A = tr_B(\ (\ket{\psi_i}\ket{i}) (\bra{\psi_i}\bra{i})\ )$.
-The question gives $\rho = \sum_i p_i \ket{\psi_i}\bra{\psi_i}$, in other words $\rho = \rho^A$.
-
-Now, it is necessary to calculate $tr_B(\ (\ket{\psi_i}\ket{i}) (\bra{\psi_i}\bra{i})\ )$. Then, using the definitions given in equations (2.177) and (2.178) of Nielsen and Chuang's book:
-\begin{align}
-    tr_B(\rho^{AB}) &= tr_B \left(\sum_{ij} \sqrt{p_i p_j} (\ket{\psi_i}\bra{\psi_j}) \otimes (\ket{i}\bra{j}) \right) \\
-    &= \sum_{ij} \sqrt{p_i p_j} (\ket{\psi_i}\bra{\psi_j}) tr(\ket{i}\bra{j})
-\end{align}
-
-Since $tr(\ket{a}\bra{b}) = \braket{b|a}$:
-\begin{align}
-    tr_B(\rho^{AB}) &= \sum_{ij} \sqrt{p_i p_j}\ (\ket{\psi_i}\bra{\psi_j}) \braket{j|i} \\
-    &= \sum_{ij} \sqrt{p_i p_j}\ \ket{\psi_i}\bra{\psi_j}\ \delta_{ij} \\
-    &= \sum_i \sqrt{p_i p_i}\ \ket{\psi_i}\bra{\psi_i} \\
-    &= \sum_i p_i\ket{\psi_i}\bra{\psi_i}
-\end{align}
-
-Since $\rho^A = \sum_i p_i \ket{\psi_i}\bra{\psi_i} = tr_B(\rho^{AB})$,
-it is possible to conclude that $\sum_i \sqrt{p_i} \ket{\psi_i}\ket{i}$ is a purification.
+    
+    Suppose $\sum_i \sqrt(p_i) \ket{\psi_i} \ket{i}$ is a purification. From equation (2.138) of Nielsen and Chuang's book:
+    \begin{align}
+        \rho^{AB} = \sum_{ij} \left( \sqrt{p_i} \ket{\psi_i} \ket{i} \right) \left( \sqrt{p_j} \ket{\psi_j} \ket{j} \right) ^ \dagger
+    \end{align}
+    
+    Since $p_j \in \mathbb{R}$, $p_j^\dagger = p_j$. And since it is a scalar:
+    \begin{align}
+        \rho^{AB} = \sum_{ij} \sqrt{p_i p_j} \left( \ket{\psi_i} \ket{i} \right) \left( \ket{\psi_j} \ket{j} \right) ^ \dagger
+    \end{align}
+    
+    Recall that for any states $\ket{\varphi}$ and $\ket{\gamma}$ writing $\ket{\varphi} \ket{\gamma}$ is the same as $\ket{\varphi} \otimes \ket{\gamma}$. Then, applying equation (2.48):
+    \begin{align}
+        \rho^{AB} &= \sum_{ij} \sqrt{p_i p_j} \left( \ket{\psi_i} \otimes \ket{i} \right)
+            \left( \bra{\psi_j} \otimes \bra{j} \right) \\
+        \rho^{AB} &= \sum_{ij} \sqrt{p_i p_j} (\ket{\psi_i}\bra{\psi_j}) \otimes (\ket{i}\bra{j})
+    \end{align}
+    
+    If $\sum_i \sqrt{p_i} \ket{\psi_i}\ket{i}$ is a purification, then
+    $\rho^A = tr_B(\ (\ket{\psi_i}\ket{i}) (\bra{\psi_i}\bra{i})\ )$.
+    The question gives $\rho = \sum_i p_i \ket{\psi_i}\bra{\psi_i}$, in other words $\rho = \rho^A$.
+    
+    Now, it is necessary to calculate $tr_B(\ (\ket{\psi_i}\ket{i}) (\bra{\psi_i}\bra{i})\ )$. Then, using the definitions given in equations (2.177) and (2.178) of Nielsen and Chuang's book:
+    \begin{align}
+        tr_B(\rho^{AB}) &= tr_B \left(\sum_{ij} \sqrt{p_i p_j} (\ket{\psi_i}\bra{\psi_j}) \otimes (\ket{i}\bra{j}) \right) \\
+        &= \sum_{ij} \sqrt{p_i p_j} (\ket{\psi_i}\bra{\psi_j}) tr(\ket{i}\bra{j})
+    \end{align}
+    
+    Since $tr(\ket{a}\bra{b}) = \braket{b|a}$:
+    \begin{align}
+        tr_B(\rho^{AB}) &= \sum_{ij} \sqrt{p_i p_j}\ (\ket{\psi_i}\bra{\psi_j}) \braket{j|i} \\
+        &= \sum_{ij} \sqrt{p_i p_j}\ \ket{\psi_i}\bra{\psi_j}\ \delta_{ij} \\
+        &= \sum_i \sqrt{p_i p_i}\ \ket{\psi_i}\bra{\psi_i} \\
+        &= \sum_i p_i\ket{\psi_i}\bra{\psi_i}
+    \end{align}
+    
+    Since $\rho^A = \sum_i p_i \ket{\psi_i}\bra{\psi_i} = tr_B(\rho^{AB})$,
+    it is possible to conclude that $\sum_i \sqrt{p_i} \ket{\psi_i}\ket{i}$ is a purification.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \item \todo[Add intuitive solution/explanation]
 
-For this exercise it is necessary to review Postulate 3. For the system $\ket{AR}$, there is a set of measurement operators $\{M_m\}$. Only system $R$ is being measured, though. So, it is possible to define every measurement operator $M_m = I \otimes M_i$ where $I$ is the identity operator acting on system $A$ and $M_i$ is the measurement operator acting on system $R$ which corresponds to measuring the state $\ket{i}$.
-
-The probability of measuring $\ket{i}$ is requested, i.e. $p(i)$. Using $\ket{\varphi_i} = \sqrt{p_i}\ket{\psi_i} \ket{i}$ temporarily for simplicity and by Equation (2.92):
-\begin{align}
-    p(i) &= \bra{\varphi_i}M_m^\dagger M_m \ket{\varphi_i} \\
-    &= \bra{\varphi_i}(I \otimes M_i)^\dagger (I \otimes M_i) \ket{\varphi_i} \\
-    &= \sqrt{p_i} \bra{\psi_i}\bra{i}(I \otimes M_i)^\dagger
-        (I \otimes M_i) \sqrt{p_i}\ket{\psi_i}\ket{i} \\
-    &= p_i \bra{\psi_i}\bra{i}(I^\dagger \otimes M_i^\dagger)
-        (I \otimes M_i) \ket{\psi_i}\ket{i} \\
-    &= p_i \bra{\psi_i}\bra{i}(I \otimes M_i^\dagger)
-        (I \otimes M_i) \ket{\psi_i}\ket{i}
-\end{align}
-
-Using equation (2.48):
-\begin{align}
-    p(i) &= p_i (\bra{\psi_i}I \otimes \bra{i}M_i^\dagger)
-        \ (I\ket{\psi_i} \otimes M_i\ket{i}) \\
-    &= p_i (\bra{\psi_i} \otimes \bra{i}M_i^\dagger )
-        \ (\ket{\psi_i} \otimes M_i\ket{i})
-\end{align}
-
-Then, by the definition of inner product (equation (2.49)):
-\begin{align}
-    p(i) = p_i \braket{\psi_i|\psi_i} \bra{i}M_i^\dagger M_i\ket{i}
-\end{align}
-
-Recall that $\ket{\psi_i}$ and $\ket{i}$ are orthonormal. Also, since $M_i$ is the measurement operator that corresponds to obtaining state $\ket{i}$, it is possible to consider $\ket{i}$ as a "measurement basis" defining $M_i = \ket{i}\bra{i}$. A similar example can be seen in Nielsen and Chuang's book in a paragraph between Equations (2.95) and (2.96). Therefore,
-\begin{align}
-    p(i) &= p_i \cdot 1 \cdot \bra{i}(\ket{i}\bra{i})^\dagger (\ket{i}\bra{i}) \ket{i} \\
-    &= p_i \bra{i}(\ket{i}\bra{i}) (\ket{i}\bra{i}) \ket{i} \\
-    &= p_i \braket{i|i} \braket{i|i} \braket{i|i} \\
-    &= p_i \cdot 1 \cdot 1 \cdot 1 \\
-    &= p_i
-\end{align}
-
-Hence, the probability of measuring state $\ket{i}$ is $p_i$. Now, it is requested to obtain the state of system A after the measurement $M_m$, which is described by Postulate 3 as:
-\begin{align}
-    \frac{M_m \ket{\varphi_i}}{\sqrt{p_i}} &=
-        \frac{(I \otimes M_i) \sqrt{p_i}\ket{\psi_i}\ket{i}}{\sqrt{p_i}} \\
-    &= (I\ket{\psi_i}) \otimes (M_i\ket{i}) \\
-    &= (I\ket{\psi_i}) \otimes (\ket{i}\braket{i|i}) \\
-    &= \ket{\psi_i} \ket{i}
-\end{align}
-
-Therefore, the measurement of the system A will always be $\ket{\psi_i}$.
+    For this exercise, it is necessary to review Postulate 3. For the system $\ket{AR}$, there is a set of measurement operators $\{M_m\}$. Only system $R$ is being measured, though. So, it is possible to define every measurement operator $M_m = I \otimes M_i$ where $I$ is the identity operator acting on system $A$ and $M_i$ is the measurement operator acting on system $R$ which corresponds to measuring the state $\ket{i}$.
+    
+    The probability of measuring $\ket{i}$ is requested, i.e. $p(i)$. Using $\ket{\varphi_i} = \sqrt{p_i}\ket{\psi_i} \ket{i}$ temporarily for simplicity and by Equation (2.92):
+    \begin{align}
+        p(i) &= \bra{\varphi_i}M_m^\dagger M_m \ket{\varphi_i} \\
+        &= \bra{\varphi_i}(I \otimes M_i)^\dagger (I \otimes M_i) \ket{\varphi_i} \\
+        &= \sqrt{p_i} \bra{\psi_i}\bra{i}(I \otimes M_i)^\dagger
+            (I \otimes M_i) \sqrt{p_i}\ket{\psi_i}\ket{i} \\
+        &= p_i \bra{\psi_i}\bra{i}(I^\dagger \otimes M_i^\dagger)
+            (I \otimes M_i) \ket{\psi_i}\ket{i} \\
+        &= p_i \bra{\psi_i}\bra{i}(I \otimes M_i^\dagger)
+            (I \otimes M_i) \ket{\psi_i}\ket{i}
+    \end{align}
+    
+    Using equation (2.48):
+    \begin{align}
+        p(i) &= p_i (\bra{\psi_i}I \otimes \bra{i}M_i^\dagger)
+            \ (I\ket{\psi_i} \otimes M_i\ket{i}) \\
+        &= p_i (\bra{\psi_i} \otimes \bra{i}M_i^\dagger )
+            \ (\ket{\psi_i} \otimes M_i\ket{i})
+    \end{align}
+    
+    Then, by the definition of inner product (equation (2.49)):
+    \begin{align}
+        p(i) = p_i \braket{\psi_i|\psi_i} \bra{i}M_i^\dagger M_i\ket{i}
+    \end{align}
+    
+    Recall that $\ket{\psi_i}$ and $\ket{i}$ are orthonormal. Also, since $M_i$ is the measurement operator that corresponds to obtaining state $\ket{i}$, it is possible to consider $\ket{i}$ as a "measurement basis" defining $M_i = \ket{i}\bra{i}$. A similar example can be seen in Nielsen and Chuang's book in a paragraph between Equations (2.95) and (2.96). Therefore,
+    \begin{align}
+        p(i) &= p_i \cdot 1 \cdot \bra{i}(\ket{i}\bra{i})^\dagger (\ket{i}\bra{i}) \ket{i} \\
+        &= p_i \bra{i}(\ket{i}\bra{i}) (\ket{i}\bra{i}) \ket{i} \\
+        &= p_i \braket{i|i} \braket{i|i} \braket{i|i} \\
+        &= p_i \cdot 1 \cdot 1 \cdot 1 \\
+        &= p_i
+    \end{align}
+    
+    Hence, the probability of measuring state $\ket{i}$ is $p_i$. Now, it is requested to obtain the state of system A after the measurement $M_m$, which is described by Postulate 3 as:
+    \begin{align}
+        \frac{M_m \ket{\varphi_i}}{\sqrt{p_i}} &=
+            \frac{(I \otimes M_i) \sqrt{p_i}\ket{\psi_i}\ket{i}}{\sqrt{p_i}} \\
+        &= (I\ket{\psi_i}) \otimes (M_i\ket{i}) \\
+        &= (I\ket{\psi_i}) \otimes (\ket{i}\braket{i|i}) \\
+        &= \ket{\psi_i} \ket{i}
+    \end{align}
+    
+    Therefore, the measurement of the system A will always be $\ket{\psi_i}$.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item c
-\end{enumerate}
+\item
+    \href{https://github.com/goropikari}{Goropikari} attempted to solve this exercise as follows\footnote
+    {The original code can be found at \href{https://github.com/goropikari/SolutionForQuantumComputationAndQuantumInformation/blob/master/chapter/chapter2.tex}
+    {SolutionForQuantumComputationAndQuantumInformation}}:
 
-----------------------------------
+    \begin{quotation}
+        Suppose $\ket{AR}$ is a purification of $\rho$ such that $\ket{AR} = \sum_i \sqrt{p_i} \ket{\psi_i} \ket{r_i}$.
+        By exercise 2.81, the others purification is written as $(I \otimes U) \ket{AR}$.
+        \begin{align*}
+            (I \otimes U)  \ket{AR} &= (I \otimes U) \sum_i \sqrt{p_i} \ket{\psi_i} \ket{r_i}\\
+                &= \sum_i \sqrt{p_i} \ket{\psi_i} U\ket{r_i}\\
+                &= \sum_i \sqrt{p_i} \ket{\psi_i} \ket{i}
+        \end{align*}
+        where $U = \sum_i \ket{i}\bra{r_i}$.
+        
+        By (2), if we measure the system $R$ w.r.t $\ket{i}$, post-measurement state for system $A$ is $\ket{\psi_i}$ with probability $p_i$, which prove the assertion.
+    \end{quotation}
+    
+    However, if system $R$ is measured with respected to $\ket{i}$
+    (that is, the measurement operator is $M_m = I \otimes \ket{i}\bra{i}$)
+    the same result of Exercise 2.82(2) will be achieved.
+    
+    Another way to try to solve this problem is:
+    
+    Even so, the result is the same of Exercise 2.82(2).
+\end{enumerate}
