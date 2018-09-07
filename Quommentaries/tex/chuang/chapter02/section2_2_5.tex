@@ -1,5 +1,6 @@
 \subsection{Section 2.2.5}
 \subsubsection{Equation (2.116)}
+\label{sec:nielsen_and_chuang_equation_2_116}
 
 This definition may be rather confusing since $\vec{v}$ is defined
 but the definition of $\vec{\sigma}$ is not recapitulated.
@@ -31,11 +32,214 @@ Therefore:
         1 & 0 \\ 0 & -1\end{matrix} \right]
         \\
         &= \left[ \begin{matrix}
-        v_3 & v_1 -v_2 i \\ v_1 + v_2 i & v_3
+        v_3 & v_1 -v_2 i \\ v_1 + v_2 i & - v_3
         \end{matrix} \right]
 \end{align}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Exercise 2.60}
 \label{sec:nielsen_and_chuang_exercise_2_60}
-\todo{Write solution}
+This section will only find the requested eigenvalues,
+and the Projector given by $P_+$.
+The projector given by $P_-$ can be found by following the same
+steps as $P_+$'s solution.
+
+\MakeUppercase{\underline{The eigenvalues}} of
+$\vec{v} \vec{\sigma}$ can be found by using
+basic Linear Algebra knowledge:
+$det(\vec{v} \vec{\sigma} - \lambda I) = 0$.
+Therefore, referring to Section \ref{sec:nielsen_and_chuang_equation_2_116},
+calculate
+
+\begin{align}
+    det(\vec{v} \vec{\sigma} - \lambda I) &= 0 \\
+    \left| \begin{matrix}
+        v_3 - \lambda & v_1 - v_2i \\ v_1 + v_2i & -v_3 - \lambda
+        \end{matrix} \right| &= 0 \\
+    \notag \\
+    \lambda^2 - v_3^2 - (v_1^2 + v_2^2) &= 0 \\
+    \lambda^2 &= v_1^2 + v_2^2 + v_3^2
+\end{align}
+
+A bit of cleverness is required here.
+Recall that just before the definition of
+\href{sec:nielsen_and_chuang_equation_2_116}{Equation 2.116},
+$\vec{v}$ is supposed to be a unit vector.
+This means that $\vec{v} \cdot \vec{v} = 1$.
+Since $\vec{v} \in \mathbb{R}^3$),
+$\vec{v} \cdot \vec{v} = v_1 \cdot v_1 +
+v_2 \cdot v_2 + v_3 \cdot v_3$.
+Therefore, $v_1^2 + v_2^2 + v_3^2 = 1$.
+Plugging this into the previous result to find the values of $\lambda$:
+
+\begin{align}
+    \lambda^2 &= 1 \\
+    \lambda &= \pm 1
+\end{align}
+
+as requested.
+
+\MakeUppercase{\underline{To find the Projector}} $P_+$ it is necessary to
+calculate the eigenspace of the eigenvector of $+1$.
+In order to find the eigenspace, basic Linear Algebra knowledge may be used.
+Hence, for $\lambda = +1$ and applying row reducing:
+
+\begin{align}
+    \left[ \begin{matrix}
+        v_3 - \lambda & v_1 - v_2i \\ v_1 + v_2i & -v_3 - \lambda
+        \end{matrix} \right]
+        &=
+        \left[ \begin{matrix}
+            v_3 - 1 & v_1 - v_2i \\ v_1 + v_2i & -v_3 - 1
+        \end{matrix} \right] \\ \notag \\
+    &= \left[ \begin{matrix}
+            (v_3 - 1)(v_1 + v_2i) & v_1^2 + v_2^2 \\
+            (v_1 + v_2i)(v_3 - 1) & 1 -v_3^2
+        \end{matrix} \right]
+\end{align}
+
+Note that $1 - v_3^2 = v_1^2 + v_2^2$,
+since $v_1^2 + v_2^2 + v_3^2 = 1$. Therefore,
+
+\begin{align}
+    \left[ \begin{matrix}
+            (v_3 - 1)(v_1 + v_2i) & v_1^2 + v_2^2 \\
+            (v_1 + v_2i)(v_3 - 1) & 1 -v_3^2
+        \end{matrix} \right]
+        &=
+        \left[ \begin{matrix}
+            (v_3 - 1)(v_1 + v_2i) & v_1^2 + v_2^2 \\
+            (v_3 - 1)(v_1 + v_2i) & v_1^2 + v_2^2
+        \end{matrix} \right] \\ \notag \\
+    &= \left[ \begin{matrix}
+            (v_3 - 1)(v_1 + v_2i) & v_1^2 + v_2^2 \\
+            0 & 0
+        \end{matrix} \right]
+\end{align}
+
+Therefore, if $t$ is a scalar,
+the eigenspace can be given by:
+\begin{align}
+    t \left[ \begin{matrix}
+        \frac{-(v_1 - v_2i)}{v_3 - 1} \\ 1
+    \end{matrix} \right]
+\end{align}
+because:
+\begin{align}
+    (v_3 - 1)(v_1 + v_2i) \cdot
+    \frac{-(v_1 - v_2i)}{v_3 - 1} +
+    (v_1^2 + v_2^2) \cdot 1 &= 0 \\
+    -(v_1^2 + v_2^2) + (v_1^2 + v_2^2) &= 0
+\end{align}
+
+However, it is not possible to use the definition
+and keep calculating with $P_m = \ketbra{m}{m}$,
+where $\ket{m} = \left[ \begin{matrix}
+        \frac{-(v_1 - v_2i)}{v_3 - 1} \\ 1
+    \end{matrix} \right]$
+because it is necessary that $\ket{m}$ is unitary
+($\braket{m}{m} = 1$).
+And, if $\braket{m}{m}$ is calculated, the following
+result would be obtained:
+\begin{align}
+    \braket{m}{m} &= \left[ \begin{matrix}
+        \frac{-(v_1 + v_2i)}{v_3 - 1} & 1
+        \end{matrix} \right]
+        %inner product
+        \left[ \begin{matrix}
+            \frac{-(v_1 - v_2i)}{v_3 - 1} \\ 1
+        \end{matrix} \right] \\
+    &= \left[ \begin{matrix}
+        \frac{-v_1 - v_2i}{v_3 - 1} & 1
+        \end{matrix} \right]
+        %inner product
+        \left[ \begin{matrix}
+            \frac{-v_1 + v_2i}{v_3 - 1} \\ 1
+        \end{matrix} \right] \\
+    &= \frac{v_1^2 + v_2^2}{(v_3 - 1)^2} + 1 \\
+    &= \frac{1 - v_3^2}{{(v_3 - 1)^2}} +
+        \frac{{(v_3 - 1)^2}}{{(v_3 - 1)^2}} \\
+    &= \frac{1 - v_3^2 + v_3^2 - 2v_3 + 1}
+        {(v_3 - 1)^2} \\
+    &= \frac{-2v_3 + 2}{(v_3 - 1)^2} \\
+    &= \frac{-2 (v_3 - 1)}{(v_3 - 1)^2} \\
+    &= - \frac{2}{v_3 - 1}
+\end{align}
+
+Hence, it is necessary to normalize $\ket{m}$.
+Recall that the norm of a vector $\ket{m}$ is given by
+$\sqrt{\braket{m}{m}}$.
+To normalize a vector, divide it by its norm.
+\begin{align}
+    \ket{\psi} &= \frac{\ket{m}}{\sqrt{\braket{m}{m}}} \\
+    &= \ket{m} / \sqrt{- \frac{2}{v_3 - 1}} \\
+    &= \sqrt{- \frac{v_3 - 1}{2}} \ket{m} \\
+    &= \frac{i}{\sqrt2} \sqrt{v_3 - 1} \ket{m}
+\end{align}
+
+However, this would not be right because
+$\sqrt{\braket{m}{m}} \geq 0$ and
+$\sqrt{\braket{m}{m}} \in \mathbb{R}$.
+It is necessary to rearrange the value of $\braket{m}{m}$:
+\begin{align}
+    \ket{\psi} &= \sqrt{- \frac{v_3 - 1}{2}} \ket{m} \\
+    &= \sqrt{\frac{1 - v_3}{2}} \ket{m} \\
+    &= \frac{1}{\sqrt2} \sqrt{1 - v_3}
+        \left[ \begin{matrix}
+            \frac{-(v_1 - v_2i)}{v_3 - 1} \\ 1
+        \end{matrix} \right] \\
+    &= \frac{1}{\sqrt2} \sqrt{1 - v_3}
+        \left[ \begin{matrix}
+            \frac{v_1 - v_2i}{1 - v_3} \\ 1
+        \end{matrix} \right] \\
+    &= \frac{1}{\sqrt2} \left[ \begin{matrix}
+            \frac{v_1 - v_2i}{\sqrt{1 - v_3}} \\
+            \sqrt{1 - v_3}
+        \end{matrix} \right]
+\end{align}
+
+Now that the normalized vector was obtained,
+it is possible to calculate the respective Projector by:
+\begin{align}
+    \ketbra{\psi}{\psi} &= \frac{1}{\sqrt2}
+        \left[ \begin{matrix}
+            \frac{v_1 - v_2i}{\sqrt{1 - v_3}} \\
+            \sqrt{1 - v_3}
+        \end{matrix} \right]
+        %times
+        \frac{1}{\sqrt2}
+        \left[ \begin{matrix}
+            \frac{v_1 + v_2i}{\sqrt{1 - v_3}} &
+            \sqrt{1 - v_3}
+        \end{matrix} \right] \\
+    &= \frac{1}{2} \left[ \begin{matrix}
+            \frac{v_1 - v_2i}{\sqrt{1 - v_3}} \\
+            \sqrt{1 - v_3}
+        \end{matrix} \right]
+        %times
+        \left[ \begin{matrix}
+            \frac{v_1 + v_2i}{\sqrt{1 - v_3}} &
+            \sqrt{1 - v_3}
+        \end{matrix} \right] \\
+    &= \frac{1}{2} \left[ \begin{matrix}
+        \frac{v_1^2 + v_2^2}{1 - v_3} & v_1 - v_2i \\
+        v_1 + v_2i & 1 - v_3
+        \end{matrix} \right] \\
+    &= \frac{1}{2} \left[ \begin{matrix}
+        \frac{1 - v_3^2}{1 - v_3} & v_1 - v_2i \\
+        v_1 + v_2i & 1 - v_3
+        \end{matrix} \right] \\
+    &= \frac{1}{2} \left[ \begin{matrix}
+        \frac{(1 + v_3)(1 - v_3)}{1 - v_3} & v_1 - v_2i \\
+        v_1 + v_2i & 1 - v_3
+        \end{matrix} \right] \\
+    &= \frac{1}{2} \left[ \begin{matrix}
+        1 + v_3 & v_1 - v_2i \\
+        v_1 + v_2i & 1 - v_3
+        \end{matrix} \right] \\
+    &= (I + \vec{v} \vec{\sigma}) / 2 = P_+
+\end{align}
+
+as requested.
+$P_-$ can be easily obtained following the same steps,
+but with $\lambda = -1$.
