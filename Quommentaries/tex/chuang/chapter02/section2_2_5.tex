@@ -1,0 +1,41 @@
+\subsection{Section 2.2.5}
+\subsubsection{Equation (2.166)}
+
+This definition may be rather confusing since $\vec{v}$ is defined
+but the definition of $\vec{\sigma}$ is not recapitulated.
+More specifically, $\sigma_1$, $\sigma_1$, and $\sigma_3$ were
+defined in Table 2.2 of the book.
+However, since $X$, $Y$ and $Z$ are used more frequently to
+denote the Pauli Matrices, the reader may not remind of the
+equivalent $\sigma$ notation.
+
+In order to reduce the calculi on Exercise 2.60
+(section \ref{sec:nielsen_and_chuang_exercise_2_60}),
+The matrix form of $\vec{v} \vec{\sigma}$ is computed in this section.
+
+Recall that $\sigma_1 \equiv X$, $\sigma_2 \equiv Y$,
+and $\sigma_3 \equiv Z$, which have matrix form as defined in
+the book's Table 2.2.
+Since $\vec{v}$ is a vector with components
+$v_1, v_2, v_3 \in \mathbb{R}$,
+it is possible to interpret $\vec{\sigma}$ as being a vector of
+matrices, i.e. $\vec{\sigma} \in (\mathbb{R}^{2 \times 2})^3$
+Therefore:
+
+\begin{align}
+    \vec{v} \vec{\sigma} &= v_1 \left[ \begin{matrix}
+        0 & 1 \\ 1 & 0 \end{matrix}\right] +
+        v_2 \left[ \begin{matrix}
+        0 & -i \\ i & 0 \end{matrix} \right] +
+        v_3 \left[ \begin{matrix}
+        1 & 0 \\ 0 & -1\end{matrix} \right]
+        \\
+        &= \left[ \begin{matrix}
+        v_3 & v_1 -v_2 i \\ v_1 + v_2 i & v_3
+        \end{matrix} \right]
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Exercise 2.60}
+\label{sec:nielsen_and_chuang_exercise_2_60}
+\todo{Write solution}
