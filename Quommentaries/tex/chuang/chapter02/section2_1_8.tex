@@ -1,0 +1,42 @@
+\subsection{Section 2.1.8}
+\subsubsection{Exercise 2.35}
+
+In order to solve this exercise,
+it is necessary to find a spectral decomposition for $\vec{v} \vec{\sigma}$.
+Then, it is possible to apply the definition of Operator functions.
+
+With the aid of \hyperref[sec:nielsen-and-chuang-exercise-2-60]{Exercise 2.60},
+the required spectral decomposition is obtained:
+\begin{align}
+    \vec{v}\vec{\sigma} &= +1 P_+ -1 P_- \\
+    &= \frac{I + \vec{v}\vec{\sigma}}{2} - \frac{I - \vec{v}\vec{\sigma}}{2}
+\end{align}
+
+Now, calculating the value of $exp(i \theta \vec{v}\cdot\vec{\sigma})$
+and applying the definition of Operator functions:
+\begin{align}
+    exp(i \theta \vec{v}\cdot\vec{\sigma}) &=
+        exp(i \theta P_+) + exp(-i \theta P_-) \\
+    &= exp(i \theta) P_+ + exp(-i \theta) P_- \\
+    &= e^{i \theta} P_+ + e^{-i \theta} P_-
+\end{align}
+
+Then, applying Euler's Formula:
+\begin{align}
+    exp(i \theta \vec{v}\cdot\vec{\sigma}) &=
+        cos(\theta)P_+ + i sin(\theta)P_+ +
+        cos(\theta)P_- - i sin(\theta)P_- \\
+    &= cos(\theta)\frac{I + \vec{v}\vec{\sigma}}{2} +
+        i sin(\theta)\frac{I + \vec{v}\vec{\sigma}}{2} +
+        cos(\theta)\frac{I - \vec{v}\vec{\sigma}}{2} -
+        i sin(\theta)\frac{I - \vec{v}\vec{\sigma}}{2} \\
+    &= cos(\theta) \left(
+            \frac{I + \vec{v}\vec{\sigma} + I - \vec{v}\vec{\sigma}}{2}
+        \right)
+        + i sin(\theta) \left(
+            \frac{I + \vec{v}\vec{\sigma} - I + \vec{v}\vec{\sigma}}{2}
+        \right) \\
+    &= cos(\theta) I + i\ sin(\theta) \vec{v}\vec{\sigma}
+\end{align}
+
+Thus obtaining the required result.
