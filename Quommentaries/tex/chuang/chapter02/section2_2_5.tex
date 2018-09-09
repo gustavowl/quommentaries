@@ -1,6 +1,6 @@
 \subsection{Section 2.2.5}
 \subsubsection{Equation (2.116)}
-\label{sec:nielsen_and_chuang_equation_2_116}
+\label{sec:nielsen-and-chuang-equation-2-116}
 
 This definition may be rather confusing since $\vec{v}$ is defined
 but the definition of $\vec{\sigma}$ is not recapitulated.
@@ -11,7 +11,7 @@ denote the Pauli Matrices, the reader may not remind of the
 equivalent $\sigma$ notation.
 
 In order to reduce the calculi on Exercise 2.60
-(section \ref{sec:nielsen_and_chuang_exercise_2_60}),
+(section \ref{sec:nielsen-and-chuang-exercise-2-60}),
 The matrix form of $\vec{v} \vec{\sigma}$ is computed in this section.
 
 Recall that $\sigma_1 \equiv X$, $\sigma_2 \equiv Y$,
@@ -38,7 +38,7 @@ Therefore:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Exercise 2.60}
-\label{sec:nielsen_and_chuang_exercise_2_60}
+\label{sec:nielsen-and-chuang-exercise-2-60}
 This section will only find the requested eigenvalues,
 and the Projector given by $P_+$.
 The projector given by $P_-$ can be found by following the same
@@ -48,7 +48,7 @@ steps as $P_+$'s solution.
 $\vec{v} \vec{\sigma}$ can be found by using
 basic Linear Algebra knowledge:
 $det(\vec{v} \vec{\sigma} - \lambda I) = 0$.
-Therefore, referring to Section \ref{sec:nielsen_and_chuang_equation_2_116},
+Therefore, referring to Section \ref{sec:nielsen-and-chuang-equation-2-116},
 calculate
 
 \begin{align}
@@ -63,7 +63,7 @@ calculate
 
 A bit of cleverness is required here.
 Recall that just before the definition of
-\href{sec:nielsen_and_chuang_equation_2_116}{Equation 2.116},
+\hyperref[sec:nielsen-and-chuang-equation-2-116]{Equation 2.116},
 $\vec{v}$ is supposed to be a unit vector.
 This means that $\vec{v} \cdot \vec{v} = 1$.
 Since $\vec{v} \in \mathbb{R}^3$),
@@ -243,3 +243,32 @@ it is possible to calculate the respective Projector by:
 as requested.
 $P_-$ can be easily obtained following the same steps,
 but with $\lambda = -1$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Exercise 2.61}
+This Exercise can be done very easily by using Equations (2.103) and (2.104)
+alongside the value of $P_+$ obtained in
+\hyperref[sec:nielsen-and-chuang-exercise-2-60]{Exercise 2.60}.
+
+The probability can be calculated by using Equation (2.103):
+\begin{align}
+    p(+1) &= \bra{0}P_+\ket{0} \\
+    &= [ \begin{matrix} 1 & 0 \end{matrix} ]
+        \ (I + \vec{v} \vec{\sigma}) / 2
+        \ \left[ \begin{matrix} 1 \\ 0 \end{matrix} \right] \\
+    &= \frac{1}{2} \left[ \begin{matrix} 1 + v_3 & v_1 - v_2i \end{matrix} \right]
+        \left[ \begin{matrix} 1 \\ 0 \end{matrix} \right] \\
+    &= \frac{1 + v_3}{2}
+\end{align}
+
+Then, using Equation (2.104) to obtain the state of the system
+after the measurement:
+\begin{align}
+    \ket{\psi} &= \frac{P_+ \ket{0}}{\sqrt{p(+1)}} \\
+    &= \frac{1}{\sqrt{p(+1)}} \frac{1}{2} (I + \vec{v} + \vec{\sigma})
+        \left[ \begin{matrix} 1 \\ 0 \end{matrix} \right] \\
+    &= \frac{\sqrt{2}}{\sqrt{1 + v_3}} \frac{1}{2}
+        \left[ \begin{matrix} v_3 + 1 \\ v_1 + v_2i \end{matrix} \right] \\
+    \notag \\
+    &= \frac{(v_3 + 1)\ket{0} + (v_1 + v_2i)\ket{1}}{\sqrt{2 + 2v_3}}
+\end{align}
