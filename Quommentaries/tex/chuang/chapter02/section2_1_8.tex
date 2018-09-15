@@ -1,43 +1,106 @@
 \subsection{Section 2.1.8}
 \subsubsection{Exercise 2.35}
 \label{sec:nielsen-and-chuang-exercise-2-35}
+    In order to solve this exercise,
+    it is necessary to find a spectral decomposition for $\vec{v} \vec{\sigma}$.
+    Then, it is possible to apply the definition of Operator functions.
+    
+    With the aid of \hyperref[sec:nielsen-and-chuang-exercise-2-60]{Exercise 2.60},
+    the required spectral decomposition is obtained:
+    \begin{align}
+        \vec{v}\vec{\sigma} &= +1 P_+ -1 P_- \\
+        &= \frac{I + \vec{v}\vec{\sigma}}{2} - \frac{I - \vec{v}\vec{\sigma}}{2}
+    \end{align}
+    
+    Now, calculating the value of $exp(i \theta \vec{v}\cdot\vec{\sigma})$
+    and applying the definition of Operator functions:
+    \begin{align}
+        exp(i \theta \vec{v}\cdot\vec{\sigma}) &=
+            exp(i \theta P_+) + exp(-i \theta P_-) \\
+        &= exp(i \theta) P_+ + exp(-i \theta) P_- \\
+        &= e^{i \theta} P_+ + e^{-i \theta} P_-
+    \end{align}
+    
+    Then, applying Euler's Formula:
+    \begin{align}
+        exp(i \theta \vec{v}\cdot\vec{\sigma}) &=
+            cos(\theta)P_+ + i sin(\theta)P_+ +
+            cos(\theta)P_- - i sin(\theta)P_- \\
+        &= cos(\theta)\frac{I + \vec{v}\vec{\sigma}}{2} +
+            i sin(\theta)\frac{I + \vec{v}\vec{\sigma}}{2} +
+            cos(\theta)\frac{I - \vec{v}\vec{\sigma}}{2} -
+            i sin(\theta)\frac{I - \vec{v}\vec{\sigma}}{2} \\
+        &= cos(\theta) \left(
+                \frac{I + \vec{v}\vec{\sigma} + I - \vec{v}\vec{\sigma}}{2}
+            \right)
+            + i sin(\theta) \left(
+                \frac{I + \vec{v}\vec{\sigma} - I + \vec{v}\vec{\sigma}}{2}
+            \right) \\
+        &= cos(\theta) I + i\ sin(\theta) \vec{v}\vec{\sigma}
+    \end{align}
+    
+    Thus obtaining the required result.
 
-In order to solve this exercise,
-it is necessary to find a spectral decomposition for $\vec{v} \vec{\sigma}$.
-Then, it is possible to apply the definition of Operator functions.
-
-With the aid of \hyperref[sec:nielsen-and-chuang-exercise-2-60]{Exercise 2.60},
-the required spectral decomposition is obtained:
-\begin{align}
-    \vec{v}\vec{\sigma} &= +1 P_+ -1 P_- \\
-    &= \frac{I + \vec{v}\vec{\sigma}}{2} - \frac{I - \vec{v}\vec{\sigma}}{2}
-\end{align}
-
-Now, calculating the value of $exp(i \theta \vec{v}\cdot\vec{\sigma})$
-and applying the definition of Operator functions:
-\begin{align}
-    exp(i \theta \vec{v}\cdot\vec{\sigma}) &=
-        exp(i \theta P_+) + exp(-i \theta P_-) \\
-    &= exp(i \theta) P_+ + exp(-i \theta) P_- \\
-    &= e^{i \theta} P_+ + e^{-i \theta} P_-
-\end{align}
-
-Then, applying Euler's Formula:
-\begin{align}
-    exp(i \theta \vec{v}\cdot\vec{\sigma}) &=
-        cos(\theta)P_+ + i sin(\theta)P_+ +
-        cos(\theta)P_- - i sin(\theta)P_- \\
-    &= cos(\theta)\frac{I + \vec{v}\vec{\sigma}}{2} +
-        i sin(\theta)\frac{I + \vec{v}\vec{\sigma}}{2} +
-        cos(\theta)\frac{I - \vec{v}\vec{\sigma}}{2} -
-        i sin(\theta)\frac{I - \vec{v}\vec{\sigma}}{2} \\
-    &= cos(\theta) \left(
-            \frac{I + \vec{v}\vec{\sigma} + I - \vec{v}\vec{\sigma}}{2}
-        \right)
-        + i sin(\theta) \left(
-            \frac{I + \vec{v}\vec{\sigma} - I + \vec{v}\vec{\sigma}}{2}
-        \right) \\
-    &= cos(\theta) I + i\ sin(\theta) \vec{v}\vec{\sigma}
-\end{align}
-
-Thus obtaining the required result.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Equation 2.60}
+\label{sec:nielsen-and-chuang-equation-2-60}
+    It is known that $tr(U A U^\dagger) = tr(A)$. Therefore,
+    \begin{align}
+        tr(A \ketbra{\psi}{\psi}) = tr(U A \ketbra{\psi}{\psi} U^\dagger))
+    \end{align}
+    
+    By Equation 2.22, $\sum_i \ketbra{i}{i} = I$.
+    Since $I$ is an Unitary Operator, it is possible to write
+    \begin{align}
+        tr(U A \ketbra{\psi}{\psi} U^\dagger) &=
+            tr(I A \ketbra{\psi}{\psi} I^\dagger)) \\
+        &= tr(I A \ketbra{\psi}{\psi} I)) \\
+        &= tr(\sum_{ij} \ketbra{i}{i} A \ketbra{\psi}{\psi} \ketbra{j}{j})
+    \end{align}
+    
+    Since $\bra{i}A\ket{\psi}$ and $\braket{\psi}{j}$ are scalars,
+    \begin{align}
+        tr(\sum_{ij} \ketbra{i}{i} A \ketbra{\psi}{\psi} \ketbra{j}{j}) &=
+            tr(\sum_{ij} \bra{i}A\ket{\psi} \braket{\psi}{j} \ketbra{i}{j})
+    \end{align}
+    
+    Similarly to Equation 2.25,
+    $tr(\sum_{ij} \bra{i}A\ket{\psi} \braket{\psi}{j} \ketbra{i}{j})$
+    is an Outer Product representation \\
+    for $A\ketbra{\psi}{\psi}$
+    where element $m_{ij} = \bra{i}A\ket{\psi} \braket{\psi}{j}$
+    (check Section \ref{sec:nielsen-and-chuang-outer-product-of-a} for details).
+    Then, by the definition of trace (Equation 2.59):
+    \begin{align}
+        tr(\sum_{ij} \bra{i}A\ket{\psi} \braket{\psi}{j} \ketbra{i}{j}) &=
+            m_{ii} \\
+        &= \sum_i \bra{i}A\ket{\psi} \braket{\psi}{i}
+    \end{align}
+    
+\subsubsection[Trace of ketbra equals braket]
+{$tr(\ketbra{\psi}{\varphi} = \braket{\varphi}{\psi})$}
+\label{sec:nielsen-and-chuang-trace-of-ketbra-equals-braket}
+    I decided to add this section because this equation is used
+    throughout the book, e.g. \hyperref[sec:nielsen-and-chuang-equations-2-208-209]
+    {Equation 2.208 to 2.209}, and
+    \hyperref[sec:nielsen-and-chuang-exercise-2-82]{Exercise 2.82}.
+    I do not remember it being explicitly stated or explained, though.
+    
+    Suppose two different states $\ket{\psi}$ and $\ket{\varphi}$. Then,
+    following the same reasoning as \hyperref[sec:nielsen-and-chuang-equation-2-60]
+    {Equation 2.60} and Equation 2.61:
+    \begin{align}
+        tr(\braket{\psi}{\varphi}) &= tr(I\braket{\psi}{\varphi}) \\
+        &= \sum_i \bra{i} I \ket{\psi} \braket{\varphi}{i} \\
+        &= \sum_i \braket{i}{\psi} \braket{\varphi}{i} \\
+        &= \sum_i \bra{\varphi} \ketbra{i}{i} \ket{\psi} \\
+        &= \bra{\varphi} I \ket{\psi} \\
+        &= \braket{\varphi}{\psi}
+    \end{align}
+    
+    Note that although \hyperref[sec:nielsen-and-chuang-equation-2-60]
+    {Equation 2.60} defines a orthonormal basis $\ket{i}$ containing
+    $\ket{\psi}$, this is not necessary.
+    The only restriction is that, if $\ket{\psi} \in V$ and
+    $\ket{\varphi} \in W$, then $dim(V) = dim(W)$.
+    In other words, that $\ketbra{\psi}{\varphi}$ is a square matrix.

@@ -1,62 +1,4 @@
 \subsection{Section 2.5}
-\subsubsection{Exercise 2.78}
-\MakeUppercase{\underline{Product State if and only if Schimidt number 1}}.
-
-Suppose state $\ket{\psi}$ is a product state of systems
-$A$ and $B$, i.e. $A \otimes B$.
-Then, there exist orthonormal states $\ket{a}$ and $\ket{b}$,
-respectively for systems $A$ and $B$, such that
-$\ket{\psi} = \ket{a} \ket{b}$.
-Therefore, the only possible Schmidt decomposition for state $\ket{\psi}$ is
-$\ket{\psi} = 1 \ket{a} \ket{b} + \sum_i 0 \ket{i_A} \ket{i_B}$ where
-$\ket{i_A}$ and $\ket{i_B}$ are part of the orthonormal bases alongside
-$\ket{a}$ and $\ket{b}$; in other words:
-$\braket{a}{a} = \braket{i_A}{i_A} = 1$ and
-$\braket{a}{i_A} = \braket{i_A}{a} = 0$,
-analogously for $\ket{b}$ and $\ket{i_B}$.
-As a consequence, the Schmidt number is 1
-(refer to equation
-$\ket{\psi} = 1 \ket{a} \ket{b} + \sum_i 0 \ket{i_A} \ket{i_B}$).
-
-Suppose state $\ket{\psi}$ has Schmidt number 1.
-Then, from Theorem 2.7,
-$\ket{\psi} = \sum_i \lambda_i \ket{i_A} \ket{i_B}$.
-Since $\ket{\psi}$ has Schmidt number 1,
-there exist $\lambda_i = 1$ and $\lambda_j = 0$ such that
-$\ket{\psi} = 1 \ket{i_A} \ket{i_B} + \sum_j 0 \ket{j_A} \ket{j_B}
-= \ket{i_A} \ket{i_B}$.
-Therefore, $\ket{\psi}$ is a product state.
-
-Quod erat demonstrandum.
-
-\MakeUppercase{\underline{Product State if and only if $\rho^A$ are pure states}}.
-
-Suppose $\ket{\psi}$ is a product state of composite system
-$A \otimes B$, then $\ket{\psi} = \ket{a}\ket{b}$ where
-$\ket{a}$ and $\ket{b}$ are orthonormal states of systems
-$A$ and $B$, respectively.
-
-Then, by definition of density operator in Equation (2.138):
-$\rho = 1 \cdot \ketbra{ab}{ab}$.
-And $rho$ is pure if $tr(\rho^2) = 1$:
-\begin{align}
-    tr(\rho^2) &= tr(\ket{ab}\braket{ab}{ab}\bra{ab}) \\
-    &= tr(\ketbra{ab}{ab}) \\
-    &= \braket{ab}{ab} \\
-    &= 1
-\end{align}
-
-If $\rho$ is pure, consequently $rho^A$ and $rho^B$ are pure.
-Otherwise, $\braket{a}{a} \neq 1 \neq \braket{b}{b}$,
-which would be a contradiction with $\rho$ being pure.
-
-The converse can be proved naturally following these steps reversely.
-Suppose $\rho^A$ is pure. Then $rho^B$ is pure. Then $rho$ is pure.
-Then $\ket{\psi}$ is a state product and can be written as
-$\ket{\psi} = \ket{a} \ket{b}$.
-
-Quod erat demonstrandum.
-
 \subsubsection[Symmetry of Triple State Entanglement]
 {Symmetry of $(\ket{00} + \ket{01} + \ket{11})/\sqrt{3}$}
 
@@ -72,7 +14,8 @@ for $(\ket{00} + \ket{01} + \ket{11})/\sqrt{3}$. By Equation (2.138):
 Before using Equations (2.177) and (2.178) it is necessary to apply the distributive property.
 However from Equation (2.178), the result will be similar to
 $\sum_{ijkl} \ket{i}\bra{j} tr(\ket{k}\bra{l})$, where $i, j, k, l \in \{0, 1\}$.
-Since $tr(\ket{a}\bra{b}) = \bra{b}\ket{a}$:
+Since $tr(\ket{a}\bra{b}) = \braket{b}{a}$
+(check Section \ref{sec:nielsen-and-chuang-trace-of-ketbra-equals-braket}):
 \begin{align}
     \sum_{ijkl} \ket{i}\bra{j} tr(\ket{k}\bra{l}) &=
         \sum_{ijkl} \ket{i}\bra{j}\braket{l}{k} \\
@@ -116,7 +59,79 @@ Now, calculate $tr((\rho^A)^2)$:
 Using an analogous line of thought $tr((\rho^B)^2) = \frac{7}{9}$ is obtained.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Exercise 2.78}
+\MakeUppercase{\underline{Product State if and only if Schimidt number 1}}.
+
+Suppose state $\ket{\psi}$ is a product state of systems
+$A$ and $B$, i.e. $A \otimes B$.
+Then, there exist orthonormal states $\ket{a}$ and $\ket{b}$,
+respectively for systems $A$ and $B$, such that
+$\ket{\psi} = \ket{a} \ket{b}$.
+Therefore, the only possible Schmidt decomposition for state $\ket{\psi}$ is
+$\ket{\psi} = 1 \ket{a} \ket{b} + \sum_i 0 \ket{i_A} \ket{i_B}$ where
+$\ket{i_A}$ and $\ket{i_B}$ are part of the orthonormal bases alongside
+$\ket{a}$ and $\ket{b}$; in other words:
+$\braket{a}{a} = \braket{i_A}{i_A} = 1$ and
+$\braket{a}{i_A} = \braket{i_A}{a} = 0$,
+analogously for $\ket{b}$ and $\ket{i_B}$.
+As a consequence, the Schmidt number is 1
+(refer to equation
+$\ket{\psi} = 1 \ket{a} \ket{b} + \sum_i 0 \ket{i_A} \ket{i_B}$).
+
+Suppose state $\ket{\psi}$ has Schmidt number 1.
+Then, from Theorem 2.7,
+$\ket{\psi} = \sum_i \lambda_i \ket{i_A} \ket{i_B}$.
+Since $\ket{\psi}$ has Schmidt number 1,
+there exist $\lambda_i = 1$ and $\lambda_j = 0$ such that
+$\ket{\psi} = 1 \ket{i_A} \ket{i_B} + \sum_j 0 \ket{j_A} \ket{j_B}
+= \ket{i_A} \ket{i_B}$.
+Therefore, $\ket{\psi}$ is a product state.
+
+Quod erat demonstrandum.
+
+\MakeUppercase{\underline{Product State if and only if $\rho^A$ are pure states}}.
+
+Suppose $\ket{\psi}$ is a product state of composite system
+$A \otimes B$, then $\ket{\psi} = \ket{a}\ket{b}$ where
+$\ket{a}$ and $\ket{b}$ are orthonormal states of systems
+$A$ and $B$, respectively.
+
+Then, by definition of density operator in Equation (2.138):
+$\rho = 1 \cdot \ketbra{ab}{ab}$, and $\rho$ is pure if $tr(\rho^2) = 1$:
+\begin{align}
+    tr(\rho^2) &= tr(\ket{ab}\braket{ab}{ab}\bra{ab}) \\
+    &= tr(\ketbra{ab}{ab}) \\
+    &= tr(\rho)
+\end{align}
+
+Them, by Theorem 2.5, $tr(\rho) = 1$.
+
+If $\rho$ is pure, consequently $\rho^A$ and $\rho^B$ are pure.
+Otherwise, $\braket{a}{a} \neq 1 \neq \braket{b}{b}$,
+which would be a contradiction with $\rho$ being pure.
+
+The converse can be proved naturally following these steps reversely.
+Suppose $\rho^A$ is pure. Then $\rho^B$ is pure. Then $\rho$ is pure.
+Then $\ket{\psi}$ is a state product and can be written as
+$\ket{\psi} = \ket{a} \ket{b}$.
+
+Quod erat demonstrandum.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Equations 2.208 and 2.209}
+\label{sec:nielsen-and-chuang-equations-2-208-209}
+When I firstly read these equations I thought there was a possibility that
+an extra explanation would be necessary.
+This thought raised, most likely,
+because I was unaccustomed to Tensor Product Properties and
+the Reduced Density Operator.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Exercise 2.82}
+\label{sec:nielsen-and-chuang-exercise-2-82}
 
 \begin{enumerate}
 \item From the definition of purification, it is necessary to prove that $\rho^A = tr_R(\ket{AR}\bra{AR})$.
@@ -148,7 +163,8 @@ Using an analogous line of thought $tr((\rho^B)^2) = \frac{7}{9}$ is obtained.
         &= \sum_{ij} \sqrt{p_i p_j} (\ket{\psi_i}\bra{\psi_j}) tr(\ket{i}\bra{j})
     \end{align}
     
-    Since $tr(\ket{a}\bra{b}) = \braket{b}{a}$:
+    Since $tr(\ket{a}\bra{b}) = \braket{b}{a}$
+    (refer back to Section \ref{sec:nielsen-and-chuang-trace-of-ketbra-equals-braket}):
     \begin{align}
         tr_B(\rho^{AB}) &= \sum_{ij} \sqrt{p_i p_j}\ (\ket{\psi_i}\bra{\psi_j}) \braket{j}{i} \\
         &= \sum_{ij} \sqrt{p_i p_j}\ \ket{\psi_i}\bra{\psi_j}\ \delta_{ij} \\

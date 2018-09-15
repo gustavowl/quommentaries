@@ -1,0 +1,40 @@
+\subsection{Section 2.1.4}
+\subsubsection{Outer Product Representation of A}
+    \label{sec:nielsen-and-chuang-outer-product-of-a}
+    It is stated from Equation 2.25 that it is possible to
+    "[...] see from this equation that A has matrix element
+    $\bra{w_j}A\ket{v_i}$".
+    To see this, it is possible to compare the matrix and
+    Dirac representations. Consider two systems $V$ and $W$
+    with dimensions $n$ and $m$, respectively.
+    In addition, suppose $\ket{v} \in V$ and $\ket{w} \in W$. 
+    
+    Using matrix representation:
+    \begin{align}
+        \braket{v}{w} &= \left[ \begin{matrix}
+            v_1 \\ \vdots \\ v_i \\ \vdots \\ v_n
+            \end{matrix} \right]
+            \left[ \begin{matrix}
+            w_1 & \cdots & w_j & \cdots & w_m
+            \end{matrix} \right] \\
+        &= \left[ \begin{matrix}
+            v_1 w_1 & \cdots & v_1 w_j & \cdots & v_1 w_m \\
+            \vdots & \ddots & \vdots & \ddots & \vdots \\
+            v_i w_1 & \cdots & v_i w_j & \cdots & v_i w_m \\
+            \vdots & \ddots & \vdots & \ddots & \vdots \\
+            v_n w_1 & \cdots & v_n w_j & \cdots & v_n w_m
+            \end{matrix} \right]
+    \end{align}
+    
+    Using Dirac notation and the last part of Equation 2.21:
+    \begin{align}
+        \ketbra{v}{w} &= \sum_{ij} v_i\ket{i} w_j\bra{j} \\
+            &= \sum_{ij} v_i w_j \ketbra{i}{j}
+    \end{align}
+    
+    Then, comparing matrix and Dirac representation,
+    it is easily verified that the matrix has elements
+    $m_{ij} = v_i w_j$ for the $i$-th row and $j$-th column
+    ( $\braket{i}{j}$ )
+    with respect to the orthonormal basis $\ket{i}$ and $\ket{j}$
+    for systems $V$ and $W$, respectively.
