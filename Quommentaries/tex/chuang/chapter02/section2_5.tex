@@ -128,6 +128,45 @@ This thought raised, most likely,
 because I was unaccustomed to Tensor Product Properties and
 the Reduced Density Operator.
 
+Using $ket{AR}$ as defined in Equation 2.207:
+\begin{align}
+    \ketbra{AR}{AR} &= \left( \sum_i \sqrt{p_i} \ket{i^A}\ket{i^R} \right)
+        \left( \sum_j \sqrt{p_j} \bra{j^A}\bra{j^R} \right) \\
+    &= \left( \sum_i \sqrt{p_i} \ket{i^A} \otimes \ket{i^R} \right)
+        \left( \sum_j \sqrt{p_j} \bra{j^A} \otimes \bra{j^R} \right) \\
+    &= \sum_{ij} \sqrt{p_i p_j} (\ \ket{i^A} \otimes \ket{i^R}\ )
+        (\ \bra{j^A} \otimes \bra{j^R}\ )
+\end{align}
+
+Then, by applying the properties as similarly defined in Equation 2.46:
+\begin{align}
+    \sum_{ij} \sqrt{p_i p_j} (\ \ket{i^A} \otimes \ket{i^R}\ )
+        (\ \bra{j^A} \otimes \bra{j^R}\ ) &=
+        \sum_{ij} \sqrt{p_i p_j} \ketbra{i^A}{j^A} \otimes \ketbra{i^R}{j^R}
+\end{align}
+
+Therefore, using the definition of the Reduced Density Operator (Equation 2.178):
+\begin{align}
+    tr_R(\ketbra{AR}{AR}) &= tr_R \left( \sum_{ij} \sqrt{p_i p_j}
+        \ketbra{i^A}{j^A} \otimes \ketbra{i^R}{j^R} \right) \\
+    &= \sum_{ij} \sqrt{p_i p_j} \ketbra{i^A}{j^A} tr(\ketbra{i^R}{j^R}) \\
+\end{align}
+
+Thus obtaining Equation 2.208.
+
+In order to obtain Equation 2.209 it is necessary to apply
+\hyperref[sec:nielsen-and-chuang-trace-of-ketbra-equals-braket]
+{$tr(\ketbra{\psi}{\varphi}) = \braket{\varphi}{\psi}$}.
+Also, recall that $\ket{i^R}$ are orthonormal states and that
+$\delta_{ij} = 1$ if $i = j$ and $\delta_{ij} = 0$ otherwise.
+Hence,
+\begin{align}
+    \sum_{ij} \sqrt{p_i p_j} \ketbra{i^A}{j^A} tr(\ketbra{i^R}{j^R}) &=
+        \sum_{ij} \sqrt{p_i p_j} \ketbra{i^A}{j^A} \braket{j^R}{i^R} \\
+    &= \sum_{ij} \sqrt{p_i p_j} \ketbra{i^A}{j^A} \delta_{ij}
+\end{align}
+
+as required.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Exercise 2.82}
