@@ -1,6 +1,7 @@
 \subsection{Section 2.5}
 \subsubsection[Symmetry of Triple State Entanglement]
 {Symmetry of $(\ket{00} + \ket{01} + \ket{11})/\sqrt{3}$}
+\label{sec:nielsen-and-chuang-symmetry-of-triple-state-entanglement}
 
 This subsection is dedicated to calculate $tr((\rho^A)^2)$
 for $(\ket{00} + \ket{01} + \ket{11})/\sqrt{3}$. By Equation (2.138):
@@ -120,6 +121,250 @@ Quod erat demonstrandum.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsubsection{Exercise 2.79}
+In order to solve this exercise, refer back to Theorem 2.7 and
+factor each state.
+
+\begin{enumerate}
+    \item \begin{align}
+            \frac{\ket{00} + \ket{11}}{\sqrt2} &= \frac{1}{\sqrt2} \ket{0} \ket{0} +
+                \frac{1}{\sqrt2} \ket{1} \ket{1} \\
+            &= \sum_{i \in \{0, 1\}} \lambda_i \ket{i} \ket{i}
+        \end{align}
+        where $\lambda_0 = \lambda_1 = 1 / \sqrt{2}$.
+    
+    \item Since Schmidt's decomposition requires that $\ket{i_A}$ and $\ket{i_B}$ are
+        orthonormal states and $\ket{+}$ and $\ket{-}$ are examples of such states:
+        \begin{align}
+            \frac{\ket{00} + \ket{01} + \ket{10} + \ket{11}}{2} &=
+                \frac{\ket{0} + \ket{1}}{\sqrt2}\ \frac{\ket{0} + \ket{1}}{\sqrt2} \\
+            &= \ket{+} \ket{+} \\
+            &= 1 \cdot \ket{+} \ket{+} + 0 \cdot \ket{-} \ket{-} \\
+            &= \sum_{i \in \{+, -\}} \lambda_i \ket{i} \ket{i}
+        \end{align}
+        where $\lambda_+ = 1$ and $\lambda_- = 0$.
+        
+    \item Analysing the state
+        \footnote{Note that similarly to state $(\ket{00} + \ket{01} + \ket{11})/\sqrt{3}$
+            described in Section
+            \ref{sec:nielsen-and-chuang-symmetry-of-triple-state-entanglement}
+        , $\ket{\psi}$ has symmetry $7/9$.
+        Hence, obtaining its Schmidt Decomposition is not intuitive.}
+        $\ket{\psi} = \frac{\ket{00} + \ket{01} + \ket{10}}{\sqrt3}$
+        for both systems separately:
+        
+        For the first qubit: $\frac{\sqrt2 \ket{0} + \ket{1}}{\sqrt3}$.
+        
+        For the second qubit: $\frac{\sqrt2 \ket{0} + \ket{1}}{\sqrt3}$
+        as well.
+        
+        It is easy to check that $\frac{\sqrt2 \ket{0} + \ket{1}}{\sqrt3}$ is        orthonormal.
+        However, following this line of thought may lead to erroneous solutions.
+        A bit more of cleverness is required:
+        it is possible to use the interesting results obtained for
+        $\rho^A$, $\rho^B$, and their eigenvalues as stated in the paragraph
+        that follows Theorem 2.7.
+        
+        Then, calculate $\rho$ to obtain $\rho^A$ and $\rho^B$ afterwards.
+        Since $\ket{\psi}$ is pure:
+        \begin{align}
+            \rho &= \ketbra{\psi}{\psi} \\
+            %
+            &= \frac{\ket{00} + \ket{01} + \ket{10}}{\sqrt3} \ 
+                \frac{\bra{00} + \bra{01} + \bra{10}}{\sqrt3} \\
+            %
+            &= \frac{1}{3} \left[ \begin{matrix}
+                    1 & 1 & 1 & 0 \\ 1 & 1 & 1 & 0 \\
+                    1 & 1 & 1 & 0 \\ 0 & 0 & 0 & 0
+                \end{matrix} \right]
+        \end{align}
+        
+        Calculating $\rho^A$ using the definition in Equations (2.177) and (2.178),
+        alongside $tr(\ketbra{\psi}{\varphi}) = \braket{\varphi}{\psi}$
+        (Section \ref{sec:nielsen-and-chuang-trace-of-ketbra-equals-braket}):
+        \begin{align}
+            \rho^A &= \frac{1}{3} tr_B(\ (\ket{00} + \ket{01} + \ket{10})
+                (\bra{00} + \bra{01} + \bra{10})\ ) \\
+            &= \frac{1}{3} (\ \ketbra{0}{0} tr(\ketbra{0}{0} + \ketbra{1}{1}) +
+                \ketbra{0}{1} tr(\ketbra{0}{0}) +
+                \ketbra{1}{0} tr(\ketbra{0}{0}) +
+                \ketbra{1}{1} tr(\ketbra{0}{0})
+                \ ) \\
+            &= \frac{1}{3} (\ 2 \ketbra{0}{0} + \ketbra{0}{1} + \ketbra{1}{0} +
+                \ketbra{1}{1} \ ) \\
+            &= \frac{1}{3} \left[ \begin{matrix}
+                2 & 1 \\ 1 & 1
+                \end{matrix} \right]
+        \end{align}
+        
+        Also, calculating $\rho^B$ it is possible to verify that $\rho^B = \rho^A$.
+        In order to write the Schmidt Decomposition, it is necessary to find the
+        eigenvalues and eigenvectors of $\rho^A$:
+        \begin{align}
+            \left| \begin{matrix}
+            2/3 - v & 1 \\ 1 & 1/3 - v
+            \end{matrix} \right|
+            = v^2 - v + \frac{1}{9} = 0
+        \end{align}
+        
+        Solving the polynomial, the eigenvalues found are $v = \frac{3 \pm \sqrt5}{6}$.
+        Calculate the corresponding eigenvectors $\ket{v_1}$ and $\ket{v_2}$.
+        
+        For $v_1 = \frac{3 + \sqrt5}{6}$: substitute and row reduce
+        \begin{align}
+            \left[ \begin{matrix}
+            \frac{4}{6} - \frac{3 + \sqrt5}{6} & \frac{1}{3} \\
+            \frac{1}{3} & \frac{2}{6} - \frac{3 + \sqrt5}{6}
+            \end{matrix} \right]
+            &=
+            \left[ \begin{matrix}
+            \frac{1 - \sqrt5}{6} & \frac{1}{3} \\
+            \frac{1}{3} & \frac{-1 - \sqrt5}{6}
+            \end{matrix} \right] \\
+            %
+            &\sim \left[ \begin{matrix}
+                1 - \sqrt5 & 2 \\ 2 & -1 -\sqrt5 \end{matrix} \right]
+            %
+            &\sim \left[ \begin{matrix}
+                1 - \sqrt5 & 2 \\ 0 & 0 \end{matrix} \right]
+        \end{align}
+        
+        Then, the eigenspace of $v_1$ is
+        $\left\{ \left[ \begin{matrix} \frac{-2}{1 - \sqrt5} \\
+        1 \end{matrix} \right] \right\}$.
+        The orthonormal vector of the eigenspace is of interest.
+        Therefore, normalise $\ket{v_1}$:
+        \begin{align}
+            \ket{v_1} &= \frac{1}{\sqrt{\braket{v_1}{v_1}}} \ket{v_1} \\
+            %
+            &= \sqrt{\frac{2}{5 + \sqrt5}} \left[ \begin{matrix}
+                \frac{-2}{1 - \sqrt5} \\ 1 \end{matrix} \right]
+        \end{align}
+        
+        For $v_2 = \frac{3 - \sqrt5}{6}$, the normalised vector
+        $\ket{v_2} = \sqrt{\frac{2}{5 - \sqrt5}} \left[ \begin{matrix}
+                \frac{-2}{1 + \sqrt5} \\ 1 \end{matrix} \right]$
+        is found.
+        \footnote{Verify that the values found match
+            $\braket{v_1}{v_2} = \braket{v_2}{v_1} = 0$,
+            $\braket{v_1}{v_1} = \braket{v_2}{v_2} = 1$,
+            and $\rho^A = \rho^B = \sum_i v_i \ketbra{v_i}{v_i}$}
+
+        From the results that follow Theorem 2.7,
+        it is known that $\rho^A = \sum_i \lambda_i^2 \ketbra{i_A}{i_A}$
+        where $\lambda_i^2$ are the eigenvalues of $\rho^A$,
+        i.e. $\lambda_i^2 = v_i$.
+        Therefore, since $rho^A$ and $rho^B$ have the same eigenvalues,
+        by Theorem 2.7, $\ket{\psi}$ has Schmidt Decomposition
+        \begin{align}
+            \ket{\psi} &= \sum_i \lambda_i \ket{i_A} \ket{i_B}
+                = \sum_i \sqrt{v_i} \ketbra{v_i}{v_i}\\
+            %
+            \begin{split} &= \sqrt{\frac{3 + \sqrt5}{6}} \left( 
+                    \sqrt{\frac{2}{5 + \sqrt5}} \left[ \begin{matrix}
+                    \frac{-2}{1 - \sqrt5} \\ 1 \end{matrix} \right]
+                \right) \otimes \left(
+                    \sqrt{\frac{2}{5 + \sqrt5}} \left[ \begin{matrix}
+                    \frac{-2}{1 - \sqrt5} \\ 1 \end{matrix} \right]
+                \right)
+                \\ &+
+                \sqrt{\frac{3 - \sqrt5}{6}} \left(
+                    \sqrt{\frac{2}{5 - \sqrt5}} \left[ \begin{matrix}
+                    \frac{-2}{1 + \sqrt5} \\ 1 \end{matrix} \right]
+                \right) \otimes \left(
+                    \sqrt{\frac{2}{5 - \sqrt5}} \left[ \begin{matrix}
+                    \frac{-2}{1 + \sqrt5} \\ 1 \end{matrix} \right]
+                \right) \end{split} \\
+            %
+            &= \sqrt{\frac{3 + \sqrt5}{6}}\ \frac{2}{5 + \sqrt5}
+                \left[ \begin{matrix}
+                    \frac{4}{6 - 2 \sqrt5} \\[5pt] \frac{-2}{1 - \sqrt5} \\[5pt]
+                    \frac{-2}{1 - \sqrt5} \\[5pt] 1
+                \end{matrix} \right] +
+                \sqrt{\frac{3 - \sqrt5}{6}}\ \frac{2}{5 - \sqrt5}
+                \left[ \begin{matrix}
+                    \frac{4}{6 + 2 \sqrt5} \\[5pt] \frac{-2}{1 + \sqrt5} \\[5pt]
+                    \frac{-2}{1 + \sqrt5} \\[5pt] 1
+                \end{matrix} \right]
+                \label{eq:schmidt_dec_after_tensor_prod}
+        \end{align}
+        
+        In order to keep calculating, it is necessary to rewrite
+        $\sqrt{3 + \sqrt5}$ with the help of quadratic polynomials:
+        \begin{align}
+            \sqrt{3 + \sqrt5} &= \sqrt{\frac{1 + \sqrt5^2 + 2\sqrt5}{2}} \\
+            &= \sqrt{\frac{(1 + \sqrt5)^2}{2}} \\
+            &= \frac{1 + \sqrt5}{\sqrt2}
+        \end{align}
+        Similarly, $\sqrt{3 - \sqrt5} = \frac{1 - \sqrt5}{\sqrt2}$.
+        
+        Therefore, substituting in Equation \ref{eq:schmidt_dec_after_tensor_prod}:
+        \begin{align}
+            \ket{\psi} &= \frac{1 + \sqrt5}{\sqrt2 \sqrt6}\ \frac{2}{5 + \sqrt5}
+                \left[ \begin{matrix}
+                    \frac{4}{6 - 2 \sqrt5} \\[5pt] \frac{-2}{1 - \sqrt5} \\[5pt]
+                    \frac{-2}{1 - \sqrt5} \\[5pt] 1
+                \end{matrix} \right] +
+                \frac{1 - \sqrt5}{\sqrt2 \sqrt6}\ \frac{2}{5 - \sqrt5}
+                \left[ \begin{matrix}
+                    \frac{4}{6 + 2 \sqrt5} \\[5pt] \frac{-2}{1 + \sqrt5} \\[5pt]
+                    \frac{-2}{1 + \sqrt5} \\[5pt] 1
+                \end{matrix} \right] \\
+            %
+            &= \frac{1 + \sqrt5}{\sqrt3}\ \frac{1}{5 + \sqrt5}
+                \left[ \begin{matrix}
+                    \frac{2}{3 - \sqrt5} \\[5pt] \frac{-2}{1 - \sqrt5} \\[5pt]
+                    \frac{-2}{1 - \sqrt5} \\[5pt] 1
+                \end{matrix} \right] +
+                \frac{1 - \sqrt5}{\sqrt3}\ \frac{1}{5 - \sqrt5}
+                \left[ \begin{matrix}
+                    \frac{2}{3 + \sqrt5} \\[5pt] \frac{-2}{1 + \sqrt5} \\[5pt]
+                    \frac{-2}{1 + \sqrt5} \\[5pt] 1
+                \end{matrix} \right] \\
+            &= \left[ \begin{matrix}
+                \frac{2(1 + \sqrt5)}{\sqrt3(5 + \sqrt5)(3 - \sqrt5)} +
+                    \frac{2(1 - \sqrt5)}{\sqrt3(5 - \sqrt5)(3 + \sqrt5)} \\[5pt]
+                \frac{-2 (1 + \sqrt5)}{\sqrt3 (5 + \sqrt5)(1 - \sqrt5)} +
+                    \frac{-2 (1 - \sqrt5)}{\sqrt3 (5 - \sqrt5)(1 + \sqrt5)} \\[5pt]
+                \frac{-2 (1 + \sqrt5)}{\sqrt3 (5 + \sqrt5)(1 - \sqrt5)} +
+                    \frac{-2 (1 - \sqrt5)}{\sqrt3 (5 - \sqrt5)(1 + \sqrt5)} \\[5pt]
+                \frac{1 + \sqrt5}{\sqrt3 (5 + \sqrt5)} +
+                    \frac{1 - \sqrt5}{\sqrt3 (5 - \sqrt5)}
+                \end{matrix} \right]
+                = \left[ \begin{matrix}
+                \frac{2(1 + \sqrt5)}{\sqrt3(10 -2\sqrt5)} +
+                    \frac{2(1 - \sqrt5)}{\sqrt3(10 + 2\sqrt5)} \\[5pt]
+                \frac{-2 (1 + \sqrt5)}{\sqrt3 (-4 \sqrt5)} +
+                    \frac{-2 (1 - \sqrt5)}{\sqrt3 (4 \sqrt5)} \\[5pt]
+                \frac{-2 (1 + \sqrt5)}{\sqrt3 (-4 \sqrt5)} +
+                    \frac{-2 (1 - \sqrt5)}{\sqrt3 (4 \sqrt5)} \\[5pt]
+                \frac{1 + \sqrt5}{\sqrt3 (5 + \sqrt5)} +
+                    \frac{1 - \sqrt5}{\sqrt3 (5 - \sqrt5)}
+                \end{matrix} \right] \\
+            &= \left[ \begin{matrix}
+                \frac{(1 + \sqrt5)(5 + \sqrt5) + (1 - \sqrt5)(5 - \sqrt5)}
+                    {\sqrt3(5 + \sqrt5)(5 - \sqrt5)} \\[5pt]
+                \frac{1 + \sqrt5 -1 + \sqrt5}{2 \sqrt5 \sqrt3} \\[5pt]
+                \frac{1 + \sqrt5 -1 + \sqrt5}{2 \sqrt5 \sqrt3} \\[5pt]
+                \frac{(1 + \sqrt5)(5 - \sqrt5) + (1 - \sqrt5)(5 + \sqrt5)}{20\sqrt3}
+                \end{matrix} \right]
+                = \left[ \begin{matrix}
+                \frac{10 + 6\sqrt5 + 10 - 6\sqrt5}{20\sqrt3} \\[5pt]
+                \frac{2\sqrt5}{2\sqrt5\sqrt3} \\[5pt]
+                \frac{2\sqrt5}{2\sqrt5\sqrt3} \\[5pt]
+                \frac{4\sqrt5 -4\sqrt5}{20\sqrt3}
+                \end{matrix} \right]
+                = \left[ \begin{matrix}
+                \frac{1}{\sqrt3} \\[5pt] \frac{1}{\sqrt3} \\[5pt]
+                \frac{1}{\sqrt3} \\[5pt] 0
+                \end{matrix} \right] \\
+            &= \frac{\ket{00} + \ket{01} + \ket{10}}{\sqrt3}
+        \end{align}
+        as requested.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{Equations 2.208 and 2.209}
 \label{sec:nielsen-and-chuang-equations-2-208-209}
 When I firstly read these equations I thought there was a possibility that
@@ -128,7 +373,7 @@ This thought raised, most likely,
 because I was unaccustomed to Tensor Product Properties and
 the Reduced Density Operator.
 
-Using $ket{AR}$ as defined in Equation 2.207:
+Using $\ket{AR}$ as defined in Equation 2.207:
 \begin{align}
     \ketbra{AR}{AR} &= \left( \sum_i \sqrt{p_i} \ket{i^A}\ket{i^R} \right)
         \left( \sum_j \sqrt{p_j} \bra{j^A}\bra{j^R} \right) \\
