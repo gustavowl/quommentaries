@@ -121,6 +121,55 @@ Quod erat demonstrandum.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsubsection{Equations 2.208 and 2.209}
+\label{sec:nielsen-and-chuang-equations-2-208-209}
+When I firstly read these equations I thought there was a possibility that
+an extra explanation would be necessary.
+This thought raised, most likely,
+because I was unaccustomed to Tensor Product Properties and
+the Reduced Density Operator.
+
+Using $\ket{AR}$ as defined in Equation 2.207:
+\begin{align}
+    \ketbra{AR}{AR} &= \left( \sum_i \sqrt{p_i} \ket{i^A}\ket{i^R} \right)
+        \left( \sum_j \sqrt{p_j} \bra{j^A}\bra{j^R} \right) \\
+    &= \left( \sum_i \sqrt{p_i} \ket{i^A} \otimes \ket{i^R} \right)
+        \left( \sum_j \sqrt{p_j} \bra{j^A} \otimes \bra{j^R} \right) \\
+    &= \sum_{ij} \sqrt{p_i p_j} (\ \ket{i^A} \otimes \ket{i^R}\ )
+        (\ \bra{j^A} \otimes \bra{j^R}\ )
+\end{align}
+
+Then, by applying the properties as similarly defined in Equation 2.46:
+\begin{align}
+    \sum_{ij} \sqrt{p_i p_j} (\ \ket{i^A} \otimes \ket{i^R}\ )
+        (\ \bra{j^A} \otimes \bra{j^R}\ ) &=
+        \sum_{ij} \sqrt{p_i p_j} \ketbra{i^A}{j^A} \otimes \ketbra{i^R}{j^R}
+\end{align}
+
+Therefore, using the definition of the Reduced Density Operator (Equation 2.178):
+\begin{align}
+    tr_R(\ketbra{AR}{AR}) &= tr_R \left( \sum_{ij} \sqrt{p_i p_j}
+        \ketbra{i^A}{j^A} \otimes \ketbra{i^R}{j^R} \right) \\
+    &= \sum_{ij} \sqrt{p_i p_j} \ketbra{i^A}{j^A} tr(\ketbra{i^R}{j^R}) \\
+\end{align}
+
+Thus obtaining Equation 2.208.
+
+In order to obtain Equation 2.209 it is necessary to apply
+\hyperref[sec:nielsen-and-chuang-trace-of-ketbra-equals-braket]
+{$tr(\ketbra{\psi}{\varphi}) = \braket{\varphi}{\psi}$}.
+Also, recall that $\ket{i^R}$ are orthonormal states and that
+$\delta_{ij} = 1$ if $i = j$ and $\delta_{ij} = 0$ otherwise.
+Hence,
+\begin{align}
+    \sum_{ij} \sqrt{p_i p_j} \ketbra{i^A}{j^A} tr(\ketbra{i^R}{j^R}) &=
+        \sum_{ij} \sqrt{p_i p_j} \ketbra{i^A}{j^A} \braket{j^R}{i^R} \\
+    &= \sum_{ij} \sqrt{p_i p_j} \ketbra{i^A}{j^A} \delta_{ij}
+\end{align}
+
+as required.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Exercise 2.79}
 In order to solve this exercise, refer back to Theorem 2.7 and
 factor each state.
@@ -364,54 +413,44 @@ factor each state.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Exercise 2.80}
+\label{sec:nielsen-and-chuang-exercise-2-80}
 
-\subsubsection{Equations 2.208 and 2.209}
-\label{sec:nielsen-and-chuang-equations-2-208-209}
-When I firstly read these equations I thought there was a possibility that
-an extra explanation would be necessary.
-This thought raised, most likely,
-because I was unaccustomed to Tensor Product Properties and
-the Reduced Density Operator.
+If $\ket{\psi}$ and $\ket{\varphi}$ are pure states, then they can be written as
+$\ket{\psi} = \sum_i p_i \ket{i_A} \ket{i_B}$ where $p_i = 1$ for a specific $i$
+and $p_i = 0$ otherwise.
+Therefore, $\ket{\psi} = \ket{i_A} \ket{i_B}$,
+analogously $\ket{\varphi} = \ket{j_A} \ket{j_B}$
+where $\ket{i_A}$, $\ket{i_B}$, $\ket{j_A}$, $\ket{j_B}$ are unitary.
 
-Using $\ket{AR}$ as defined in Equation 2.207:
+Then, construct two unitary matrices $U$ and $V$ such that
+$\ket{i_A} = U \ket{j_A}$ and $\ket{i_B} = V \ket{j_B}$.
+Then, using Equation (2.46), $\ket{\psi}$ can be written as:
 \begin{align}
-    \ketbra{AR}{AR} &= \left( \sum_i \sqrt{p_i} \ket{i^A}\ket{i^R} \right)
-        \left( \sum_j \sqrt{p_j} \bra{j^A}\bra{j^R} \right) \\
-    &= \left( \sum_i \sqrt{p_i} \ket{i^A} \otimes \ket{i^R} \right)
-        \left( \sum_j \sqrt{p_j} \bra{j^A} \otimes \bra{j^R} \right) \\
-    &= \sum_{ij} \sqrt{p_i p_j} (\ \ket{i^A} \otimes \ket{i^R}\ )
-        (\ \bra{j^A} \otimes \bra{j^R}\ )
+    \ket{\psi} &= \ket{i_A} \ket{i_B} \\
+    &= \ket{i_A} \otimes \ket{i_B} \\
+    &= U \ket{j_A} \otimes V \ket{j_B} \\
+    &= (U \otimes V) \ket{j_A} \otimes \ket{j_B} \\ 
+    &= (U \otimes V) \ket{j_A} \ket{j_B} \\
+    &= (U \otimes V) \ket{\varphi}
 \end{align}
 
-Then, by applying the properties as similarly defined in Equation 2.46:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Exercise 2.81}
+It is possible to solve this exercise by following the same logic as Exercise 2.80
+(Section \ref{sec:nielsen-and-chuang-exercise-2-80}).
+Define an Unitary Operator $U_R \equiv \sum_i \ketbra{v_i}{w_i}$,
+where $\ket{v_i}$ are an orthonormal basis for $R_1$ and $\ket{w_i}$ for $R_2$.
+Therefore, $\ket{v_i} = U_R \ket{w_i}$.
+Then, by Equations (2.207) and (2.46):
+
 \begin{align}
-    \sum_{ij} \sqrt{p_i p_j} (\ \ket{i^A} \otimes \ket{i^R}\ )
-        (\ \bra{j^A} \otimes \bra{j^R}\ ) &=
-        \sum_{ij} \sqrt{p_i p_j} \ketbra{i^A}{j^A} \otimes \ketbra{i^R}{j^R}
+    \ket{AR_1} &= \sum_i \sqrt{p_i} \ket{i_A} \ket{v_i} \\
+    &= \sum_i \sqrt{p_i} \ket{i_A}\ U_R \ket{w_i} \\
+    &= \sum_i I \sqrt{p_i} \ket{i_A} \otimes U_R \ket{w_i} \\
+    &= (I \otimes U_R) \sum_i \sqrt{p_i} \ket{i_A} \otimes \ket{w_i} \\
+    &= (I \otimes U_R) \ket{AR_2}
 \end{align}
-
-Therefore, using the definition of the Reduced Density Operator (Equation 2.178):
-\begin{align}
-    tr_R(\ketbra{AR}{AR}) &= tr_R \left( \sum_{ij} \sqrt{p_i p_j}
-        \ketbra{i^A}{j^A} \otimes \ketbra{i^R}{j^R} \right) \\
-    &= \sum_{ij} \sqrt{p_i p_j} \ketbra{i^A}{j^A} tr(\ketbra{i^R}{j^R}) \\
-\end{align}
-
-Thus obtaining Equation 2.208.
-
-In order to obtain Equation 2.209 it is necessary to apply
-\hyperref[sec:nielsen-and-chuang-trace-of-ketbra-equals-braket]
-{$tr(\ketbra{\psi}{\varphi}) = \braket{\varphi}{\psi}$}.
-Also, recall that $\ket{i^R}$ are orthonormal states and that
-$\delta_{ij} = 1$ if $i = j$ and $\delta_{ij} = 0$ otherwise.
-Hence,
-\begin{align}
-    \sum_{ij} \sqrt{p_i p_j} \ketbra{i^A}{j^A} tr(\ketbra{i^R}{j^R}) &=
-        \sum_{ij} \sqrt{p_i p_j} \ketbra{i^A}{j^A} \braket{j^R}{i^R} \\
-    &= \sum_{ij} \sqrt{p_i p_j} \ketbra{i^A}{j^A} \delta_{ij}
-\end{align}
-
-as required.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Exercise 2.82}
