@@ -28,4 +28,224 @@ the distributive property:
 
 \subsubsection{Problem 2.2}
 
+\begin{enumerate}
+    \item Since $\ket{\psi}$ is pure, it follows from Theorem 2.7, that
+    $\ket{\psi} = \sum_i \lambda_i \ket{i_A} \ket{i_B}$.
+    In addition, $\rho^A = \sum_i \lambda_i^2 \ketbra{i_A}{i_A}$.
+    From the rank-nullity theorem, it is known that
+    $rank(A) + nullity(A) = dim(A)$ where $dim(A)$ is the dimension of the matrix $A$.
+    Also, $rank(A) = dim(Col(A))$ where $dim(Col(A))$ is the dimension of the columnspan of $A$.
+    Notwithstanding, $row(A) \cup kernel(A)$ spans $\mathbb{C}^n$, and is linearly independent.
+    Thus, forming a basis for $\mathbb{C}^n$.
+    
+\begin{comment}
+    Prove that $rank(\rho^A) = Sch(\rho^A) = n$ if $\lambda_i \neq 0\ \forall i$.
+    If that is the case, then $\rho^A \ket{x} = \vec{0}$ if and only if $\ket{x} = \vec{0}$.
+    Since $\ket{i_A}$ spans $\mathbb{C}^n$,
+    then any vector $\ket{x}$ can written as a linear combination of $\ket{i_A}$.
+    
+    \begin{align}
+        \left( \sum_i \lambda_i^2 \ketbra{i_A}{i_A} \right) \ket{x}
+        &= \left( \sum_i \lambda_i^2 \ketbra{i_A}{i_A} \right) \sum_j x_j \ket{j_A} \\
+        %
+        = \sum_{ij} \lambda_i^2 x_j \ket{i_A} \braket{i_A}{j_A}
+        &= \sum_j \lambda_j^2 x_j \ket{j_A}
+    \end{align}
+    
+    Since $\ket{j_A}$ is a orthonormal basis for $\mathbb{C}^n$,
+    and $\lambda_j^2 \neq 0\ \forall j$,
+    the only possible way to obtain $\vec{0}$ is $x_j = 0\ \forall j$.
+    The converse is trivial ($\rho^A \vec{0} = \vec{0}$).
+    
+    Yet, it is necessary to prove $rank(\rho^A) = Sch(\rho^A)$ when
+    $\exists k, \lambda_k = 0$.
+    This is similar to prove that $rank(\rho^A)$ diminishes by
+    the respective number of $\lambda_k$ that equals $0$.
+    Alternatively, $nullity(\rho^A)$ will increase by the same amount.
+\end{comment}
+
+    To prove that $rank(\rho^A) = Sch(\ket{\psi})$,
+    it is possible to use the rank-nullity theorem.
+    Henceforth, find $kernel(\rho^A)$,
+    that is, $\set{\ket{x} \in \mathbb{C}^n}$ such that $\rho^A \ket{x} = \vec{0}$.
+    Assume the possibility that $\exists k, \lambda_k = 0$.
+    Also, since $\ket{i_A}$ spans $\mathbb{C}^n$,
+    any vector $\ket{x}$ can written as a linear combination of $\ket{i_A}$.
+    Then,
+    
+    \begin{align}
+        &\left( \sum_i \lambda_i^2 \ketbra{i_A}{i_A} \right) \ket{x}
+        = \left( \sum_i \lambda_i^2 \ketbra{i_A}{i_A} \right) \sum_j x_j \ket{j_A}
+        = \sum_{ij} \lambda_i^2 x_j \ket{i_A} \braket{i_A}{j_A} \\
+        %
+        &= \sum_j \lambda_j^2 x_j \ket{j_A}
+        = \sum_{j \neq k} \lambda_j^2 x_j \ket{j_A} + \sum_k \lambda_k^2 x_k \ket{k_A}
+        = \sum_{j \neq k} \lambda_j^2 x_j \ket{j_A} + \sum_k 0 x_k \ket{k_A}
+    \end{align}
+    
+    Therefore, $kernel(\rho^A) = \ket{k_A}$ where $\forall k, \lambda_k = 0$.
+    As such, $Sch(\ket{\psi}) = n - dim(kernel(\rho^A)) = n - nullity(\rho^A)$.
+    Then, using the rank-nullity theorem conclude that $rank(\rho^A) = Sch(\ket{\psi})$.
+        
+    
+\begin{comment}
+    The rank equals the dimension of the rowspan ($Row(\rho^A)$) or columnspan ($Col(\rho^A)$).
+
+    Initially, suppose that $\lambda_i \neq 0\ \forall i$,
+    and $\ket{i_A} = \left[ \begin{matrix} i_0 \\ \vdots \\ i_n \end{matrix} \right]$.
+    Then, find the rowspan.
+    
+    \begin{align}
+        \rho^A = \sum_i \lambda_i^2 \ketbra{i_A}{i_A}
+        = \left[ \begin{matrix}
+            \sum_i \lambda_i^2 i_0 \bra{i_A} \\
+            \vdots \\
+            \sum_i \lambda_i^2 i_n \bra{i_A} \\
+        \end{matrix} \right]
+    \end{align}
+    
+    Therefore, the rowspan should be given by
+    $\set{\sum_i \lambda_i^2 i_0 \bra{i_A}, \ldots, \sum_i \lambda_i^2 i_n \bra{i_A}}$.
+    It is necessary to verify if the given set is linearly independent.
+    Attempting to prove by contradiction, assume that the set is linearly dependent,
+    and that $\forall i, \lambda_i \neq 0$.
+    Hence, the dimension of $Row(\rho^A) \leq n - 1$.
+    Thus, there exists at least one $j$, $\forall k\ t_k \in \mathbb{C}$, and
+    $\exists k$ such that $k \neq j$, and $t_k \neq 0$ that satisfy
+    
+    \begin{align}
+        \sum_{k = 0, k \neq j}^n t_k \left( \sum_i \lambda_i^2 i_k \bra{i_A} \right)
+            &= \sum_i \lambda_i^2 i_j \bra{i_A} \\
+        \sum_i \lambda_i^2 \bra{i_A} \left( \sum_{k = 0, k \neq j}^n t_k i_k \right)
+            &= \sum_i \lambda_i^2 i_j \bra{i_A}
+    \end{align}
+    
+    Therefore, $\forall i, \sum_{k = 0, k\neq j}^n t_k i_k = i_j$.
+    Note that $i_j$ and $i_k$ are the elements of $\ket{i_A}$, so
+    
+    \begin{align}
+        \forall i, \ket{i_A} = \left[ \begin{matrix}
+            i_0 \\ \vdots \\ i_{j-1} \\[5pt] \sum_{k = 0, k \neq j}^n t_k i_k \\[5pt]
+            i_{j+1} \\ \vdots \\ i_n
+        \end{matrix} \right]
+    \end{align}
+    
+    The set $\set{\ket{i_A}} \forall i$ spans $\mathbb{C}^n$ and
+    is the columnspace of matrix $\left[ \begin{matrix}
+        \ket{i_A} \cdots \ket{j_A} \cdots \ket{n_A}
+    \end{matrix} \right]$.
+    Note, however, that the matrix's $j^th$ is just a linear combination of
+    the other rows ($i_j \sum_{k = 0, k \neq j}^n t_k i_k$).
+    Thus, using row reduction,
+    
+    \begin{align}
+        \left[ \begin{matrix}
+            \ket{i_A} \cdots \ket{j_A} \cdots \ket{n_A}
+        \end{matrix} \right]
+        =
+        \left[ \begin{matrix}
+            i_0 & \cdots & j_0 & \cdots & n_0 \\
+            \vdots & \ddots & \vdots & \ddots & \vdots \\
+            0 & 0 & 0 & 0 & 0 \\
+            \vdots & \ddots & \vdots & \ddots & \vdots \\
+            i_n & \cdots & j_n & \cdots & n_n
+        \end{matrix} \right]
+    \end{align}
+    
+    This means that $nullity(matrix) = 1$.
+    Then, by the rank-nullity theorem, $rank(matrix) = n - 1$,
+    which contradicts the fact that the columnspace of
+    $\left[ \begin{matrix}
+            \ket{i_A} \cdots \ket{j_A} \cdots \ket{n_A}
+    \end{matrix} \right]$ spans $\mathbb{C}^n$.
+    Therefore, the assumption that the rowspan of $\rho^A$ is linearly dependent
+    for non-zero values of $\lambda_i$ must be false, and its rank equals $n$.
+    
+
+    In conclusion, if $\lambda_i \neq 0\ \forall i$, then $rank(\rho^A) = Sch(\rho^A)$.
+    Note that if $\exists i, lambda_i = 0$, then the $rank$ will be diminished by
+    one for each $\lambda_i = 0$.
+\end{comment}
+    
+    \dotfill
+
+    \item To prove that $j > Sch(\psi)$ note that if $j > 1$,
+    then it is possible to obtain an orthonormal basis for $\ket{\psi}$
+    such that $\ket{\psi}$ is equal to the tensor product of
+    exactly one element of each subsystem's basis
+    ($\ket{\psi} = \ket{a} \otimes \ket{b}$).
+    
+    To prove that $j = Sch(\psi)$, suppose that $\ket{\alpha_j}$ and $\ket{\beta_j}$
+    are linearly independent (thus forming a basis for a $\ket{\psi}$).
+    Then, obtain bases $\ket{a_i}$ and $\ket{b_i}$ through Gram-Schmidt.
+    Therefore, $Sch(\psi) = i = j$.
+    
+    In addition, no restriction is given regarding the number of $j$ elements.
+    Since they are not normalised, it is possible that
+    $\ket{\alpha_j}$ and $\ket{\beta_j}$ are not linearly independent.
+    Thus, by obtaining an orthonormal basis $\ket{a_i}$ and $\ket{b_i}$ from
+    $\ket{\alpha_j}$ and $\ket{\beta_j}$ via Gram-Schmidt, $j > i$.
+    Also proving that $j > Sch(\psi)$.
+    
+    \dotfill
+    
+    \item The solution when $\alpha = 0$ or $\beta = 0$ is trivial,
+    since $Sch(\psi) = max(Sch(\varphi), Sch(\gamma))$.
+    Henceforth, assume that $\alpha \neq 0$ and $\beta \neq 0$.
+    Also, assume that $\ket{\varphi} \neq \mu \ket{\gamma}$,
+    $\mu \in \mathbb{C}$.
+    
+    $\ket{\psi}$ is a pure state of $A$ and $B$,
+    and it is a linear combination of $\ket{\varphi}$ and $\ket{\gamma}$.
+    Also, note that $\ket{\psi}$, $\ket{\varphi}$, and $\ket{\gamma}$
+    must be written in the same orthonormal basis
+    $\ket{a_i}$ for subsystem $A$ and $\ket{b_i}$ analogously for $B$.
+    Therefore,
+    
+    \begin{align}
+        \ket{\psi} &= \ket{\psi} \\
+        \sum_i \lambda_i \ket{a_i} \ket{b_i} &= \alpha \ket{\varphi} + \beta \ket{\gamma} \\
+        \sum_i \lambda_i \ket{a_i} \ket{b_i} &=
+            \alpha \sum_i \varphi_i \ket{a_i} \ket{b_i} + \beta \sum_i \gamma_i \ket{a_i} \ket{b_i} \\
+    \end{align}
+    
+    Where $\varphi_i, \gamma_i \in \mathbb{C}$ respectively are the indexes of the linear combinations
+    of $\ket{\varphi}$ and $\ket{\gamma}$, according to the basis $\ket{a_i} \ket{b_i}$.
+    Then,
+    
+    \begin{align}
+        \sum_i \lambda_i \ket{a_i} \ket{b_i} &=
+            \sum_i (\alpha \varphi_i + \beta \gamma_i) \ket{a_i} \ket{b_i} \\
+        \lambda_i &= \alpha \varphi_i + \beta \gamma_i
+    \end{align}
+    
+    Using set theory, define $\Psi \equiv \set{i \mid \lambda_i \neq 0}$,
+    $\Phi \equiv \set{i \mid \varphi_i \neq 0}$, and
+    $\Gamma \equiv \set{i \mid \gamma_i \neq 0}$.
+    Note that it is possible that $\alpha \varphi_i + \beta \gamma_i = 0$,
+    thus, it is useful to define another set
+    $\Delta \equiv \set{i \mid \alpha \varphi_i + \beta \gamma_i = 0
+    \land \varphi_i \neq 0 \land \gamma_i \neq 0}$
+    (where $\land$ indicates logical conjunction).
+    Then, $Sch(\psi) = |\Psi|$, $Sch(\varphi) = |\Phi|$, and $Sch(\gamma) = |\Gamma|$.
+    Therefore,
+    
+    \begin{align}
+        \Psi &= (\Phi \cup \Gamma) - \Delta \\
+        |\Psi| &= |(\Phi \cup \Gamma)| - |\Delta|
+    \end{align}
+    
+    Note that whenever
+    $(\forall \varphi_i \neq 0, \alpha \varphi_i + \beta \gamma_i = 0) \lor
+    (\forall \gamma_i \neq 0, \alpha \varphi_i + \beta \gamma_i = 0)$,
+    then $max(|\Delta|) = min(|\Phi|, |\Gamma|)$,
+    where $\lor$ indicates logical disjunction.
+    Thus, $Sch(\psi) = |Sch(\varphi) - Sch(\gamma)|$.
+    Also, $min(|\Delta|) = 0$ whenever
+    $\forall \varphi_i \neq 0 \land \gamma_i \neq 0,\ \alpha \varphi_i + \beta \gamma_i \neq 0$.
+    Thus, $Sch(\psi) > |Sch(\varphi) - Sch(\gamma)|$.
+    Therefore, $Sch(\psi) \geq |Sch(\varphi) - Sch(\gamma)|$, as required.
+    
+\end{enumerate}
+
 \subsubsection{Problem 2.3}
