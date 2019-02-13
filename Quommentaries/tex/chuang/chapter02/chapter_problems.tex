@@ -14,7 +14,7 @@ Therefore, $\theta \vec{n} \vec{\sigma} =
 - \theta \left( \frac{I - \vec{v}\vec{\sigma}}{2} \right)$.
 Then, by applying the definition of function operators and
 the distributive property:
-
+%
 \begin{align}
     f(\theta \vec{n} \vec{\sigma}) &= f(\theta) \left(
         \frac{I + \vec{n}\vec{\sigma}}{2} \right) +
@@ -25,6 +25,8 @@ the distributive property:
     &= \frac{f(\theta) + f(-\theta)}{2}I +
         \frac{f(\theta) - f(-\theta)}{2}\vec{n}\vec{\sigma}
 \end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Problem 2.2}
 
@@ -37,32 +39,6 @@ the distributive property:
     Also, $rank(A) = dim(Col(A))$ where $dim(Col(A))$ is the dimension of the columnspan of $A$.
     Notwithstanding, $row(A) \cup kernel(A)$ spans $\mathbb{C}^n$, and is linearly independent.
     Thus, forming a basis for $\mathbb{C}^n$.
-    
-\begin{comment}
-    Prove that $rank(\rho^A) = Sch(\rho^A) = n$ if $\lambda_i \neq 0\ \forall i$.
-    If that is the case, then $\rho^A \ket{x} = \vec{0}$ if and only if $\ket{x} = \vec{0}$.
-    Since $\ket{i_A}$ spans $\mathbb{C}^n$,
-    then any vector $\ket{x}$ can written as a linear combination of $\ket{i_A}$.
-    
-    \begin{align}
-        \left( \sum_i \lambda_i^2 \ketbra{i_A}{i_A} \right) \ket{x}
-        &= \left( \sum_i \lambda_i^2 \ketbra{i_A}{i_A} \right) \sum_j x_j \ket{j_A} \\
-        %
-        = \sum_{ij} \lambda_i^2 x_j \ket{i_A} \braket{i_A}{j_A}
-        &= \sum_j \lambda_j^2 x_j \ket{j_A}
-    \end{align}
-    
-    Since $\ket{j_A}$ is a orthonormal basis for $\mathbb{C}^n$,
-    and $\lambda_j^2 \neq 0\ \forall j$,
-    the only possible way to obtain $\vec{0}$ is $x_j = 0\ \forall j$.
-    The converse is trivial ($\rho^A \vec{0} = \vec{0}$).
-    
-    Yet, it is necessary to prove $rank(\rho^A) = Sch(\rho^A)$ when
-    $\exists k, \lambda_k = 0$.
-    This is similar to prove that $rank(\rho^A)$ diminishes by
-    the respective number of $\lambda_k$ that equals $0$.
-    Alternatively, $nullity(\rho^A)$ will increase by the same amount.
-\end{comment}
 
     To prove that $rank(\rho^A) = Sch(\ket{\psi})$,
     it is possible to use the rank-nullity theorem.
@@ -72,7 +48,7 @@ the distributive property:
     Also, since $\ket{i_A}$ spans $\mathbb{C}^n$,
     any vector $\ket{x}$ can written as a linear combination of $\ket{i_A}$.
     Then,
-    
+    %
     \begin{align}
         &\left( \sum_i \lambda_i^2 \ketbra{i_A}{i_A} \right) \ket{x}
         = \left( \sum_i \lambda_i^2 \ketbra{i_A}{i_A} \right) \sum_j x_j \ket{j_A}
@@ -86,87 +62,7 @@ the distributive property:
     Therefore, $kernel(\rho^A) = \ket{k_A}$ where $\forall k, \lambda_k = 0$.
     As such, $Sch(\ket{\psi}) = n - dim(kernel(\rho^A)) = n - nullity(\rho^A)$.
     Then, using the rank-nullity theorem conclude that $rank(\rho^A) = Sch(\ket{\psi})$.
-        
-    
-\begin{comment}
-    The rank equals the dimension of the rowspan ($Row(\rho^A)$) or columnspan ($Col(\rho^A)$).
 
-    Initially, suppose that $\lambda_i \neq 0\ \forall i$,
-    and $\ket{i_A} = \left[ \begin{matrix} i_0 \\ \vdots \\ i_n \end{matrix} \right]$.
-    Then, find the rowspan.
-    
-    \begin{align}
-        \rho^A = \sum_i \lambda_i^2 \ketbra{i_A}{i_A}
-        = \left[ \begin{matrix}
-            \sum_i \lambda_i^2 i_0 \bra{i_A} \\
-            \vdots \\
-            \sum_i \lambda_i^2 i_n \bra{i_A} \\
-        \end{matrix} \right]
-    \end{align}
-    
-    Therefore, the rowspan should be given by
-    $\set{\sum_i \lambda_i^2 i_0 \bra{i_A}, \ldots, \sum_i \lambda_i^2 i_n \bra{i_A}}$.
-    It is necessary to verify if the given set is linearly independent.
-    Attempting to prove by contradiction, assume that the set is linearly dependent,
-    and that $\forall i, \lambda_i \neq 0$.
-    Hence, the dimension of $Row(\rho^A) \leq n - 1$.
-    Thus, there exists at least one $j$, $\forall k\ t_k \in \mathbb{C}$, and
-    $\exists k$ such that $k \neq j$, and $t_k \neq 0$ that satisfy
-    
-    \begin{align}
-        \sum_{k = 0, k \neq j}^n t_k \left( \sum_i \lambda_i^2 i_k \bra{i_A} \right)
-            &= \sum_i \lambda_i^2 i_j \bra{i_A} \\
-        \sum_i \lambda_i^2 \bra{i_A} \left( \sum_{k = 0, k \neq j}^n t_k i_k \right)
-            &= \sum_i \lambda_i^2 i_j \bra{i_A}
-    \end{align}
-    
-    Therefore, $\forall i, \sum_{k = 0, k\neq j}^n t_k i_k = i_j$.
-    Note that $i_j$ and $i_k$ are the elements of $\ket{i_A}$, so
-    
-    \begin{align}
-        \forall i, \ket{i_A} = \left[ \begin{matrix}
-            i_0 \\ \vdots \\ i_{j-1} \\[5pt] \sum_{k = 0, k \neq j}^n t_k i_k \\[5pt]
-            i_{j+1} \\ \vdots \\ i_n
-        \end{matrix} \right]
-    \end{align}
-    
-    The set $\set{\ket{i_A}} \forall i$ spans $\mathbb{C}^n$ and
-    is the columnspace of matrix $\left[ \begin{matrix}
-        \ket{i_A} \cdots \ket{j_A} \cdots \ket{n_A}
-    \end{matrix} \right]$.
-    Note, however, that the matrix's $j^th$ is just a linear combination of
-    the other rows ($i_j \sum_{k = 0, k \neq j}^n t_k i_k$).
-    Thus, using row reduction,
-    
-    \begin{align}
-        \left[ \begin{matrix}
-            \ket{i_A} \cdots \ket{j_A} \cdots \ket{n_A}
-        \end{matrix} \right]
-        =
-        \left[ \begin{matrix}
-            i_0 & \cdots & j_0 & \cdots & n_0 \\
-            \vdots & \ddots & \vdots & \ddots & \vdots \\
-            0 & 0 & 0 & 0 & 0 \\
-            \vdots & \ddots & \vdots & \ddots & \vdots \\
-            i_n & \cdots & j_n & \cdots & n_n
-        \end{matrix} \right]
-    \end{align}
-    
-    This means that $nullity(matrix) = 1$.
-    Then, by the rank-nullity theorem, $rank(matrix) = n - 1$,
-    which contradicts the fact that the columnspace of
-    $\left[ \begin{matrix}
-            \ket{i_A} \cdots \ket{j_A} \cdots \ket{n_A}
-    \end{matrix} \right]$ spans $\mathbb{C}^n$.
-    Therefore, the assumption that the rowspan of $\rho^A$ is linearly dependent
-    for non-zero values of $\lambda_i$ must be false, and its rank equals $n$.
-    
-
-    In conclusion, if $\lambda_i \neq 0\ \forall i$, then $rank(\rho^A) = Sch(\rho^A)$.
-    Note that if $\exists i, lambda_i = 0$, then the $rank$ will be diminished by
-    one for each $\lambda_i = 0$.
-\end{comment}
-    
     \dotfill
 
     \item To prove that $j > Sch(\psi)$ note that if $j > 1$,
@@ -201,7 +97,7 @@ the distributive property:
     must be written in the same orthonormal basis
     $\ket{a_i}$ for subsystem $A$ and $\ket{b_i}$ analogously for $B$.
     Therefore,
-    
+    %
     \begin{align}
         \ket{\psi} &= \ket{\psi} \\
         \sum_i \lambda_i \ket{a_i} \ket{b_i} &= \alpha \ket{\varphi} + \beta \ket{\gamma} \\
@@ -212,7 +108,7 @@ the distributive property:
     Where $\varphi_i, \gamma_i \in \mathbb{C}$ respectively are the indexes of the linear combinations
     of $\ket{\varphi}$ and $\ket{\gamma}$, according to the basis $\ket{a_i} \ket{b_i}$.
     Then,
-    
+    %
     \begin{align}
         \sum_i \lambda_i \ket{a_i} \ket{b_i} &=
             \sum_i (\alpha \varphi_i + \beta \gamma_i) \ket{a_i} \ket{b_i} \\
@@ -229,7 +125,7 @@ the distributive property:
     (where $\land$ indicates logical conjunction).
     Then, $Sch(\psi) = |\Psi|$, $Sch(\varphi) = |\Phi|$, and $Sch(\gamma) = |\Gamma|$.
     Therefore,
-    
+    %
     \begin{align}
         \Psi &= (\Phi \cup \Gamma) - \Delta \\
         |\Psi| &= |(\Phi \cup \Gamma)| - |\Delta|
@@ -248,4 +144,183 @@ the distributive property:
     
 \end{enumerate}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{Problem 2.3}
+
+$Q$, $R$, $S$, $T$ are unitary matrices.
+Referring back to
+\hyperref[sec:nielsen-and-chuang-equation-2-116]{Equation 2.116},
+%
+\begin{align}
+    Q = \left[ \begin{matrix}
+        q_3 & q_1 - q_2i \\
+        q_1 + q_2i & - q_3
+        \end{matrix} \right]
+\end{align}
+
+Note that $Q = Q^\dagger$ and that
+%
+\begin{align}
+    Q Q^\dagger &= \left[ \begin{matrix}
+        q_3 & q_1 - q_2i \\
+        q_1 + q_2i & - q_3
+        \end{matrix} \right]
+        %
+        \left[ \begin{matrix}
+        q_3 & q_1 - q_2i \\
+        q_1 + q_2i & - q_3
+        \end{matrix} \right] \\[5pt]
+    &= \left[ \begin{matrix}
+        q_1^2 + q_2^2 + q_3^2 & q_3(q_1 - q_2i) - q_3(q_1 - q_2i) \\
+        q_3(q_1 - q_2i) - q_3(q_1 - q_2i) & q_1^2 + q_2^2 + q_3^2
+        \end{matrix} \right]
+\end{align}
+
+Since $\vec{q} \in \mathbb{R}^3$ is a unit vector,
+$q_1^2 + q_2^2 + q_3^2 = 1$,
+%
+\begin{align}
+    Q Q^\dagger = I
+\end{align}
+
+Thus proving that $Q$ is an unitary matrix
+(and analogously for $R$, $S$, and $T$).
+
+Calculating $(Q \otimes S + R \otimes S + R \otimes T - Q \otimes T)^2$,
+and writing it as $M^2$
+%
+\begin{align}
+    M^2 =
+    &(Q \otimes S)(Q \otimes S) + (Q \otimes S)(R \otimes S) +
+    (Q \otimes S)(R \otimes T) - (Q \otimes S)(Q \otimes T) +
+    \nonumber \\
+    & (R \otimes S)(Q \otimes S) + (R \otimes S)(R \otimes S) +
+    (R \otimes S)(R \otimes T) - (R \otimes S)(Q \otimes T) +
+    \nonumber \\
+    &(R \otimes T)(Q \otimes S) + (R \otimes T)(R \otimes S) +
+    (R \otimes T)(R \otimes T) - (R \otimes T)(Q \otimes T) -
+    \nonumber \\
+    &(Q \otimes T)(Q \otimes S) - (Q \otimes T)(R \otimes S) -
+    (Q \otimes T)(R \otimes T) + (Q \otimes T)(Q \otimes T)
+\end{align}
+
+Using Equation 2.48,
+%
+\begin{align}
+    M^2 =
+    &QQ \otimes SS + QR \otimes SS + QR \otimes ST - QQ \otimes ST +
+    \nonumber \\
+    &RQ \otimes SS + RR \otimes SS + RR \otimes ST - RQ \otimes ST +
+    \nonumber \\
+    &RQ \otimes TS + RR \otimes TS + RR \otimes TT - RQ \otimes TT -
+    \nonumber \\
+    &QQ \otimes TS - QR \otimes TS - QR \otimes TT + QQ \otimes TT
+\end{align}
+
+Since $QQ^\dagger = I$ and $Q = Q^\dagger$, then $QQ = I$,
+analogously for $R, S, T$.
+%
+\begin{align}
+    M^2 = 
+    &I \otimes I + QR \otimes I + QR \otimes ST - I \otimes ST +
+    \nonumber \\
+    &RQ \otimes I + I \otimes I + I \otimes ST - RQ \otimes ST +
+    \nonumber \\
+    &RQ \otimes TS + I \otimes TS + I \otimes I - RQ \otimes I -
+    \nonumber \\
+    &I \otimes TS - QR \otimes TS - QR \otimes I + I \otimes I
+\end{align}
+
+Refactoring,
+%
+\begin{alignat}{2}
+    M^2 &= 
+    &&4I \otimes I + (QR + RQ - RQ - QR) \otimes I +
+    I \otimes (-ST + ST + TS - TS) +
+    \nonumber \\
+    & &&QR \otimes ST - RQ \otimes ST +
+    RQ \otimes TS - QR \otimes TS
+    \\
+    &= && 4I + QR \otimes ST - RQ \otimes ST + RQ \otimes TS - QR \otimes TS
+    \\
+    &= && 4I + QR \otimes (ST - TS) - RQ \otimes (ST - TS)
+    \\
+    &= && 4I + (QR - RQ) \otimes (ST - TS)
+\end{alignat}
+
+Therefore, by the definition of commutator (Equation 2.66),
+%
+\begin{align}
+    (Q \otimes S + R \otimes S + R \otimes T - Q \otimes T)^2 =
+    4I + [Q, R] \otimes [S, T]
+\end{align}
+
+Recall that $Var(x) = E(x^2) - E(x)^2$ 
+(as described in the book's Appendix 1).
+Also, since $Var(x) \geq 0$,
+\begin{align}
+    E(x^2) - E(x)^2 &\geq 0 \\
+    E(x)^2 &\leq E(x^2) \\
+    E(x) &\leq \sqrt{E(x^2)}
+\end{align}
+
+Then, calculate $E(x^2)$.
+Recall that $E(M) = \bra{\psi} M \ket{\psi} \equiv \mean{M}$
+(as described in Equations 2.110 to 2.115).
+Also, $E(M + N) = E(M) + E(N)$ and $E(MN) = E(M) E(N)$
+Thus, 
+\begin{align}
+    E(M^2) &= \mean{M^2} \\
+    &= \mean{4I + [Q, R] \otimes [S, T]} \\
+    &= \mean{4I} + \mean{[Q, R] \otimes [S, T]}
+\end{align}
+
+Calculate the mean for $[Q, R]$. The mean of $[S, T]$ is analagous.
+\begin{align}
+    \mean{[Q, R]} &= \mean{QR - RQ} \\
+    &= \mean{QR} - \mean{RQ} \\
+    &= \bra{\psi}QR\ket{\psi} - \bra{\psi}RQ\ket{\psi} \\
+    &= \bra{\psi}QR\ket{\psi} - \bra{\psi}R^\dagger Q^\dagger \ket{\psi} \\
+    &= \bra{\psi}QR\ket{\psi} - \bra{\psi}(QR)^\dagger \ket{\psi} \\
+    &= \bra{\psi}QR\ket{\psi} - (\bra{\psi} QR \ket{\psi})^\dagger
+\end{align}
+
+Since $\bra{\psi} QR \ket{\psi} \in \mathbb{C}$,
+write the resulting complex number as
+$\bra{\psi} QR \ket{\psi} = a + bi$,
+where $a, b \in \mathbb{R}$.
+Therefore,
+\begin{align}
+    \bra{\psi}QR\ket{\psi} - (\bra{\psi} QR \ket{\psi})^\dagger
+    &= a + bi - (a + bi)* \\
+    &= a + bi - (a - bi) \\
+    &= 2bi \in [-2i, 2i]
+\end{align}
+
+Note that $QR$ is unitary
+($(QR)^\dagger QR = R^\dagger Q^\dagger Q R = R^\dagger I R = I$).
+As a consequence, the inner product between vectors is preserved.
+Thus, from $\braket{\psi}{\psi}$,
+it is possible to conclude that
+$(a + bi)(a + bi)* = a^2 + b^2 = 1$.
+As such, $-1 \leq b \leq 1$.
+Back to the mean calculus,
+and considering $\mean{\bra{\psi} ST \Ket{\psi} = c + di}$,
+\begin{align}
+    \mean{4I} + \mean{[Q, R] \otimes [S, T]} &=
+        \bra{\psi} 4I \ket{\psi} + 2bi \cdot 2di \\
+	&= 4 \braket{\psi}{\psi} + 4 bd i^2 \\
+	&= 4 - 4 bd
+\end{align}
+
+Where $-1 \leq bd \leq 1$.
+Therefore, the maximum value of $E(x^2)$ is 8 (whenever $bd = -1$).
+Since $E(x) \leq \sqrt{E(x^2)}$,
+\begin{align}
+	\mean{Q \otimes S + R \otimes S + R \otimes T - Q \otimes T} &\leq
+		\sqrt{4 - 4bd} \\
+	&\leq 2 \sqrt2
+\end{align}
+
+As requested.

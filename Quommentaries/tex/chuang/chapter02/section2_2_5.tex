@@ -22,7 +22,7 @@ $v_1, v_2, v_3 \in \mathbb{R}$,
 it is possible to interpret $\vec{\sigma}$ as being a vector of
 matrices, i.e. $\vec{\sigma} \in (\mathbb{R}^{2 \times 2})^3$
 Therefore:
-
+%
 \begin{align}
     \vec{v} \vec{\sigma} &= v_1 \left[ \begin{matrix}
         0 & 1 \\ 1 & 0 \end{matrix}\right] +
@@ -50,7 +50,7 @@ basic Linear Algebra knowledge:
 $det(\vec{v} \vec{\sigma} - \lambda I) = 0$.
 Therefore, referring to Section \ref{sec:nielsen-and-chuang-equation-2-116},
 calculate
-
+%
 \begin{align}
     det(\vec{v} \vec{\sigma} - \lambda I) &= 0 \\
     \left| \begin{matrix}
@@ -71,7 +71,7 @@ $\vec{v} \cdot \vec{v} = v_1 \cdot v_1 +
 v_2 \cdot v_2 + v_3 \cdot v_3$.
 Therefore, $v_1^2 + v_2^2 + v_3^2 = 1$.
 Plugging this into the previous result to find the values of $\lambda$:
-
+%
 \begin{align}
     \lambda^2 &= 1 \\
     \lambda &= \pm 1
@@ -83,7 +83,7 @@ as requested.
 calculate the eigenspace of the eigenvector of $+1$.
 In order to find the eigenspace, basic Linear Algebra knowledge may be used.
 Hence, for $\lambda = +1$ and applying row reducing:
-
+%
 \begin{align}
     \left[ \begin{matrix}
         v_3 - \lambda & v_1 - v_2i \\ v_1 + v_2i & -v_3 - \lambda
@@ -100,7 +100,7 @@ Hence, for $\lambda = +1$ and applying row reducing:
 
 Note that $1 - v_3^2 = v_1^2 + v_2^2$,
 since $v_1^2 + v_2^2 + v_3^2 = 1$. Therefore,
-
+%
 \begin{align}
     \left[ \begin{matrix}
             (v_3 - 1)(v_1 + v_2i) & v_1^2 + v_2^2 \\
@@ -263,6 +263,7 @@ The probability can be calculated by using Equation (2.103):
 
 Then, using Equation (2.104) to obtain the state of the system
 after the measurement:
+%
 \begin{align}
     \ket{\psi} &= \frac{P_+ \ket{0}}{\sqrt{p(+1)}} \\
     &= \frac{1}{\sqrt{p(+1)}} \frac{1}{2} (I + \vec{v} + \vec{\sigma})
