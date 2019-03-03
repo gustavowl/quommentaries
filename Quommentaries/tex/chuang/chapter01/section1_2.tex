@@ -1,12 +1,88 @@
 \subsection{Section 1.2}
 \subsubsection{Qubit representation in a Bloch Sphere}
 
-The explanation to the following formula is not given by the book.
+The Bloch Sphere's equations explanation is not given by the book.
 
-\[
-\ket{\psi} = e^{i \gamma} \left(
-    cos \frac{\theta}{2}\ket{0} + e^{i \varphi} sin \frac{\theta}{2} \ket{1}
-\right)
-\]
+\begin{align}
+\ket{\psi} = 
+    cos \frac{\theta}{2}\ket{0} + e^{i \varphi} sin \frac{\theta}{2} \ket{1} .
+    \label{eq:nielsen-and-chuang-sec-1-2-bloch-sphere}
+\end{align}
 
-However, \href{https://github.com/victoragnez}{Agnez} came up with a simple explanation using spherical coordinates. Its details can be found at \todo{add link to Computer Society}
+However, \href{https://github.com/victoragnez}{Agnez} came up with a simple explanation using spherical coordinates.
+Its details can be found in
+\href{https://bits2qubits.blogspot.com/2018/09/representacao-de-qubits-na-esfera-de.html}{Bits2Qubits blog}
+(the post is in Portuguese).
+
+The details of this equation are not necessary until Chapter 4.
+At this point, however, it is sufficient for the reader to know that
+a Qubit can be represented as a point in a sphere.
+A detailed explanation of the Bloch Sphere equations can be found in Sections
+\hyperref[sec:noson-bloch-sphere-eq-5-80-to-5-88]{ \ref{sec:noson-bloch-sphere-eq-5-80-to-5-88}} and
+\hyperref[sec:noson-exercise-5-4-4]{\ref{sec:noson-exercise-5-4-4}}.
+However, it requires information that will be mentioned throughout
+\hyperref[sec:nielsen-and-chuang-chapter-2]{Nielsen and Chuang's book's Chapter 2}
+or in Noson's book's Chapters 4 and 5.
+
+After comprehending Sections
+\hyperref[sec:noson-bloch-sphere-eq-5-80-to-5-88]{ \ref{sec:noson-bloch-sphere-eq-5-80-to-5-88}} and
+\hyperref[sec:noson-exercise-5-4-4]{\ref{sec:noson-exercise-5-4-4}},
+the following Equation is obtained.
+\begin{align}
+    \ket\psi = cos\theta \ket0 + e^{i\phi} sin\theta \ket1,
+\end{align}
+where $\theta \in [0, \frac \pi 2]$, and $\phi \in [0, 2\pi)$.
+Nielsen and Chuang's book uses $\theta \in [0, \pi]$.
+Thus obtaining \hyperref[eq:nielsen-and-chuang-sec-1-2-bloch-sphere]{
+    Equation \ref{eq:nielsen-and-chuang-sec-1-2-bloch-sphere}
+}.
+
+The book's Equation (1.3) can be obtained by mutiplying \hyperref[eq:nielsen-and-chuang-sec-1-2-bloch-sphere]{
+    Equation \ref{eq:nielsen-and-chuang-sec-1-2-bloch-sphere}
+} by $e^{i\gamma}$.
+    \footnote{Actually, \hyperref[eq:nielsen-and-chuang-sec-1-2-bloch-sphere]{
+        Equation \ref{eq:nielsen-and-chuang-sec-1-2-bloch-sphere}
+        }
+    was originally obtained \emph{from} Equation (1.3) by multiplying it by $e^{-i\gamma}$.
+    }
+Since it does not change the state,
+as explained in \hyperref[sec:noson-equation-4-5]{Section \ref{sec:noson-equation-4-5}}.
+
+\begin{comment}
+    Note that any Qubit may be written as
+    \begin{align}
+        \ket{\psi} = \alpha \ket0 + \beta \ket1 ,
+    \end{align}
+    where $\alpha, \beta \in \mathbb{C}$.
+    Recall that any complex number can be written in the polar form.
+    That is, if $z \in \mathbb{C}$ ($z = a + bi$, where $a, b \in \mathbb{R}$),
+    then $z = r(cos\theta + i\ sin\theta$),
+    where $\theta \in [0, 2\pi)$,
+    and $r \in \mathbb{R}$ and it is the norm (length) of $z$
+    ($|z| = r = \sqrt{a^2 + b^2}$).
+    This representation is useful because it simplifies complex numbers multiplications and exponentiation.
+    Additionally, it gives a geometrical interpretation for complex numbers:
+    they can be represented as a point in a plane.
+    For instance, $z = 1 + i = \sqrt2 (cos \frac{\pi}{2} + i\ sin \frac{\pi}{2})$,
+    
+    Therefore, considering a Qubit ($\ket\psi = \alpha \ket0 + \beta \ket1$),
+    its complex values $\alpha$ and $\beta$ can be expressed in two different planes
+    (since they correspond to different vectors).
+    For instance, in \hyperref[fig:nielsen-and-chuang-sec-1-2-plane-intersec]{
+        Figure \ref{fig:nielsen-and-chuang-sec-1-2-plane-intersec}
+    },
+    
+    Note, however, that $|\alpha|^2 + |\beta|^2 = 1$.
+    Therefore, the possible values for $\alpha$ and $\beta$ form a
+    sphere with radius $1$ in the three-dimensional space (the \textbf{Bloch Sphere},
+    illustrated in \hyperref[fig:nielsen-and-chuang-sec-1-2-bloch-sphere]{
+        Figure \ref{fig:nielsen-and-chuang-sec-1-2-bloch-sphere}
+    }).
+    In addition, any point in a sphere can be written using spherical coordinates,
+    e.g. Earth's latitude and longitude.
+    
+    Until Chapter 4, it is sufficient for the reader to comprehend that
+    
+    describes that any Qubit has two degrees of freedom - $\theta$ and $\varphi$ 
+    (which may be interpreted as latitude and longitude).
+\end{comment}
