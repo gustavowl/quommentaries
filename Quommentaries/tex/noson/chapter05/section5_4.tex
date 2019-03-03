@@ -1,0 +1,88 @@
+\subsection{Section 5.4}
+\label{sec:noson-section-5-4}
+
+\subsubsection{Bloch Sphere - Equations (5.80) to (5.88)}
+\label{sec:noson-bloch-sphere-eq-5-80-to-5-88}
+Equations (5.80) to (5.88) explain how the Bloch Sphere representation of a Qubit is derived
+from the standard representation
+($\ket\psi = \alpha \ket0 + \beta \ket1$, where $\alpha$ and $\beta \in \mathbb{C}$,
+and $|\alpha|^2 + |\beta|^2 = 1$).
+Since the logical steps of the derivation are flawlessly explained,
+only complementary comments are necessary
+(which are easily deductible if a solid background was built to this point).
+
+\begin{itemize}
+    \item \emph{Equations (5.81) and (5.82)}:
+        Recall that any complex number can be written in the polar form.
+        That is, if $z \in \mathbb{C}$ ($z = a + bi$, where $a, b \in \mathbb{R}$),
+        then $z = r(cos\theta + i\ sin\theta$),
+        where $\theta \in [0, 2\pi)$,
+        and $r \in \mathbb{R}$ and it is the norm (length) of $z$
+        ($|z| = r = \sqrt{a^2 + b^2}$).
+        To obtain Equations (5.81) and (5.82), apply Euler's formula
+        ($e^{ix} = cos(x) + i\ sin(x)$).
+        The polar form is useful because it simplifies complex numbers multiplications and exponentiation.
+        Additionally, it gives a geometrical interpretation for complex numbers:
+        they can be represented as a point in a plane;
+        
+    \item \emph{Equation 5.84}:
+        Multiplying any state $\ket \psi$ by a scalar
+        $z \in \mathbb{C}, z \neq 0$ does not change the state $\ket \psi$.
+        For a detailed explanation, refer back to Section \ref{sec:noson-equation-4-5};
+        
+    \item \emph{Equations (5.86) and (5.87)}:
+        It is possible to rename the $r_0$ and $r_1$ due to the
+        Pythagorean trigonometric identity ($\sin^2\theta + cos^2\theta = 1$);
+    
+    \item \emph{Equations (5.87) and (5.88)}:
+        Substitute the values of Equation(5.87) in the
+        final result of Equation(5.84);
+        
+    \item \emph{Equation (5.88) - range of $\theta$ and $\phi$}:
+        The range for unique spherical coordinates is $0 \leq \theta \leq \pi$ for
+        the polar angle (elevation) and $0 \leq \phi < 2\pi$ for the azimuthal angle.
+        Noson states that the ranges are $0 \leq \theta < \frac \pi 2$ and $0 \leq \phi < 2\pi$.
+        In this case, however, there would exist an unrepresentable point in the Bloch Sphere
+        ($\theta = \frac \pi 2$).
+        Given the description of \hyperref[sec:noson-exercise-5-4-4]{Exercise 5.4.4},
+        it is possible to conclude that this was a typo.
+        Therefore, the correct range for the polar angle $\theta$ is $0 \leq \theta \leq \frac \pi 2$.
+        The proof that $\theta \in [0, \frac \pi 2]$ instead of $\theta \in [0, \pi]$ can be found in
+        \hyperref[sec:noson-exercise-5-4-4]{Exercise 5.4.4}.
+\end{itemize}
+
+\subsubsection{Exercise 5.4.4}
+\label{sec:noson-exercise-5-4-4}
+A Qubit is represented in the Bloch Sphere by the formula
+\begin{align}
+    \ket \psi = cos \theta \ket 0 + e^{i \phi} sin \theta \ket 1 .
+\end{align}
+In spherical coordinates, the polar angle $\theta \in [0, \pi]$.
+From trigonometry, it is known that
+$cos(\theta) = - cos(\theta + \pi) = - cos(\pi - \theta)$, and
+$sin(\theta) = sin(\pi - \theta)$.
+Substituting these identities in $\ket \psi$,
+\begin{align}
+    \ket \psi = -cos (\pi - \theta) \ket 0 + e^{i\phi} sin(\pi - \theta) .
+\end{align}
+
+From \hyperref[sec:noson-equation-4-5]{Equation (4.5)}, it is known that
+multiplying a Qubit $\ket \psi$ by $z \in \mathbb{C}$ does not change
+$\ket \psi$'s state.
+Therefore, using Euler's formula and multiplying $\ket \psi$ by $e^{i \pi}$,
+\begin{align}
+    \ket \psi &= e^{i \pi} (-cos (\pi - \theta) \ket 0 + e^{i\phi} sin(\pi - \theta)) \\
+        &= (cos (\pi) + i\ sin(\pi)) (-cos (\pi - \theta) \ket 0) +
+            e^{i (\phi + \pi)} sin(\pi - \theta) \\
+        &= (-1) -cos (\pi - \theta) \ket 0) +
+            e^{i (\phi + \pi)} sin(\pi - \theta) \\
+        &= cos (\pi - \theta) \ket 0) + e^{i (\phi + \pi)} sin(\pi - \theta) .
+\end{align}
+Hence, if $\theta > \pi / 2$, it is possible to rewrite it in terms of
+$\theta \in [0, \frac \pi 2]$ by simply adding $\pi$ degrees to the
+azimuthal angle $\phi$,
+and subtracting the polar angle $\theta$ from $\pi$.
+
+By a similar line of thought, it is possible to prove that even if the ranges were inverted
+($\theta \in [0, 2\pi)$, and $\phi \in [0, \pi]$),
+then they could be mapped back to the $\theta \in [0, \pi]$, and $\phi \in [0, 2\pi)$ ranges.
