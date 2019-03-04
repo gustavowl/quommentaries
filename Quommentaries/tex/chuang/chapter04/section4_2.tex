@@ -1,0 +1,33 @@
+\subsection{Section 4.2}
+\subsubsection{Bloch Vector}
+
+At this point, it is strongly recommended that the reader understands the contents of
+\hyperref[nielsen-and-chuang-qubit-representation-in-a-bloch-sphere]{
+    Section \ref{nielsen-and-chuang-qubit-representation-in-a-bloch-sphere}
+} and the sections mentioned therein.
+Also, in order to properly understand the Bloch Vector,
+refer back to Figure 1.3 in the book.
+
+The given vector can be easily understood by interpreting a Bloch Sphere
+as two unit circles with an overlapping axis.
+For instance, the first circle is determined by the $x$ and $y$ axes
+(the ``equatorial line circle''),
+while the second circle is determined by $z$ and any
+appropriate axis in the ``equatorial line''
+(this axis depends on the point's position).
+
+The $z$ position is the easiest one to understand.
+It is simply the projection of the point ($\ket \psi$) along the $z$ axis ($\braket z \psi$).
+Since it does not change depending on the azimuthal angle $\varphi$.
+
+The positions described by both $x$ and $y$ axes depend on the projection
+of the point $\ket \psi$ on the ``equatorial circle'' (name it $\ket{\psi_{xy}}$).
+Consider the $x$ axis, if $z = 0$, then the projection of $\ket{\psi_{xy}}$
+along $x$ would equal $cos(\varphi)$.
+Note that $x \neq cos(\varphi)$ otherwise.
+This happens because $\ket{\psi_{xy}}$ depends on $sin(\theta)$.
+Thus, $\braket x \psi = cos(\varphi) sin(\theta)$.
+Analogously, $\braket y \psi = sin(\varphi) sin(\theta)$.
+
+In conclusion, the Bloch Vector is described by
+$(x, y, z) = (cos\varphi sin\theta, sin\varphi sin\theta, cos\theta)$.

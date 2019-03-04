@@ -1,5 +1,6 @@
 \subsection{Section 1.2}
 \subsubsection{Qubit representation in a Bloch Sphere}
+\label{nielsen-and-chuang-qubit-representation-in-a-bloch-sphere}
 
 The Bloch Sphere's equations explanation is not given by the book.
 
@@ -47,42 +48,3 @@ The book's Equation (1.3) can be obtained by mutiplying \hyperref[eq:nielsen-and
     }
 Since it does not change the state,
 as explained in \hyperref[sec:noson-equation-4-5]{Section \ref{sec:noson-equation-4-5}}.
-
-\begin{comment}
-    Note that any Qubit may be written as
-    \begin{align}
-        \ket{\psi} = \alpha \ket0 + \beta \ket1 ,
-    \end{align}
-    where $\alpha, \beta \in \mathbb{C}$.
-    Recall that any complex number can be written in the polar form.
-    That is, if $z \in \mathbb{C}$ ($z = a + bi$, where $a, b \in \mathbb{R}$),
-    then $z = r(cos\theta + i\ sin\theta$),
-    where $\theta \in [0, 2\pi)$,
-    and $r \in \mathbb{R}$ and it is the norm (length) of $z$
-    ($|z| = r = \sqrt{a^2 + b^2}$).
-    This representation is useful because it simplifies complex numbers multiplications and exponentiation.
-    Additionally, it gives a geometrical interpretation for complex numbers:
-    they can be represented as a point in a plane.
-    For instance, $z = 1 + i = \sqrt2 (cos \frac{\pi}{2} + i\ sin \frac{\pi}{2})$,
-    
-    Therefore, considering a Qubit ($\ket\psi = \alpha \ket0 + \beta \ket1$),
-    its complex values $\alpha$ and $\beta$ can be expressed in two different planes
-    (since they correspond to different vectors).
-    For instance, in \hyperref[fig:nielsen-and-chuang-sec-1-2-plane-intersec]{
-        Figure \ref{fig:nielsen-and-chuang-sec-1-2-plane-intersec}
-    },
-    
-    Note, however, that $|\alpha|^2 + |\beta|^2 = 1$.
-    Therefore, the possible values for $\alpha$ and $\beta$ form a
-    sphere with radius $1$ in the three-dimensional space (the \textbf{Bloch Sphere},
-    illustrated in \hyperref[fig:nielsen-and-chuang-sec-1-2-bloch-sphere]{
-        Figure \ref{fig:nielsen-and-chuang-sec-1-2-bloch-sphere}
-    }).
-    In addition, any point in a sphere can be written using spherical coordinates,
-    e.g. Earth's latitude and longitude.
-    
-    Until Chapter 4, it is sufficient for the reader to comprehend that
-    
-    describes that any Qubit has two degrees of freedom - $\theta$ and $\varphi$ 
-    (which may be interpreted as latitude and longitude).
-\end{comment}
