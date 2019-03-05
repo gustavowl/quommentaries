@@ -34,12 +34,12 @@
 
 \usepackage{comment}
 
-\usepackage{tikz}
-\usetikzlibrary{arrows.meta}
-
 \usepackage{graphicx, caption}
 \usepackage{subcaption}
 \usepackage{float}
+
+\usepackage{array} %to center table content
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} %to center table content
 
 \renewcommand\labelitemii{\textasteriskcentered}
 

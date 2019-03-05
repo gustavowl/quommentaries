@@ -1,0 +1,111 @@
+\subsection{Section 2.1.5}
+\subsubsection{Exercise 2.11}
+The eigenvectors, eigenvalues and diagonal representations of $Y$ will be calculated.
+The process for $X$ and $Z$ is similar.
+All answers are summarised in the end of this section.
+
+Recall that
+\begin{align}
+    Y = \left[ \begin{matrix}
+            0 & -i \\
+            i & 0
+        \end{matrix} \right].
+\end{align}
+Therefore,
+\begin{align}
+    det(Y - \lambda I) &= \left| \begin{matrix}
+            - \lambda & -i \\
+            i & - \lambda
+        \end{matrix} \right| \\
+    &= (-\lambda)^2 - (- i^2) \\
+    &= \lambda^2 -1 = 0 .
+\end{align}
+Thus, $\lambda = \pm 1$.
+
+Calculate the corresponding eigenvectors, using row reduction.
+For $\lambda_0 = 1$,
+\begin{align}
+    \left[ \begin{matrix}
+        -1 & -i \\ i & -1
+    \end{matrix} \right]
+    \begin{matrix}
+        ~ \\
+        +i \cdot row_1
+    \end{matrix}
+    %
+    &\sim
+    \left[ \begin{matrix}
+        -1 & -i \\ 0 & 0
+    \end{matrix} \right].
+\end{align}
+Therefore, since $-1a -ib = 0$,
+the eigenvectors of $\lambda_0$ are the span of
+\begin{align}
+    \ket{\lambda_0} = \left\{ \left[ \begin{matrix} 1 \\ i \end{matrix} \right] \right\}.
+\end{align}
+That is, if $z \in \mathbb{C}$, then $-1 \cdot 1 \cdot z - i \cdot i \cdot z = 0$.
+Finally, normalise $\ket{\lambda_0}$.
+\begin{align}
+    \frac{\ket{\lambda_0}}{\sqrt{\braket{\lambda_0}{\lambda_0}}} &=
+    \frac{\ket{\lambda_0}}{\sqrt{1\cdot 1 + (-i) \cdot -i}} \\
+    &= \frac{1}{\sqrt2} \ket{\lambda_0}.
+\end{align}
+Henceforth, let $\ket{\lambda_0}$ denote the normalised eigenvector.
+
+Calculate the eigenvector span for $\lambda_1 = -1$.
+\begin{align}
+    \left[ \begin{matrix}
+        1 & -i \\ i & 1
+    \end{matrix} \right]
+    \begin{matrix}
+        ~ \\
+        -i \cdot row_1
+    \end{matrix}
+    %
+    &\sim
+    \left[ \begin{matrix}
+        1 & -i \\ 0 & 0
+    \end{matrix} \right].
+\end{align}
+Therefore, since $1a -ib = 0$,
+the eigenvectors of $\lambda_1$ are the span of
+\begin{align}
+    \ket{\lambda_1} = \left\{ \left[ \begin{matrix} 1 \\ -i \end{matrix} \right] \right\}.
+\end{align}
+That is, if $z \in \mathbb{C}$, then $1 \cdot 1 \cdot z - i \cdot (-i) \cdot z = 0$.
+Finally, normalise $\ket{\lambda_1}$.
+\begin{align}
+    \frac{\ket{\lambda_1}}{\sqrt{\braket{\lambda_1}{\lambda_1}}} &=
+    \frac{\ket{\lambda_1}}{\sqrt{1\cdot 1 + i \cdot (-i)}} \\
+    &= \frac{1}{\sqrt2} \ket{\lambda_1}.
+\end{align}
+Henceforth, let $\ket{\lambda_1}$ denote the normalised eigenvector.
+
+Thus, the diagonal representation is
+$Y = \sum_i \lambda_i \ketbra{\lambda_i}{\lambda_i} = 
+1 \ketbra{\lambda_0}{\lambda_0} - 1 \ketbra{\lambda_1}{\lambda_1}$.
+
+Repeat the procedure for the remaining Pauli matrices.
+\hyperref[tab:nielsen-and-chuang-answers-exercise-2-11]{
+    Table \ref{tab:nielsen-and-chuang-answers-exercise-2-11}}
+summarises the exercise answers.
+
+\begin{table}[htb]
+\def\arraystretch{2}%  1 is the default, change whatever you need
+\centering
+\begin{tabular}{|P{10em}|P{2em}|P{2em}|P{4em}|P{4em}|P{10em}|}
+\hline
+Pauli Matrix & $\lambda_0$ & $\lambda_1$  & $\ket{\lambda_0}$ & $\ket{\lambda_1}$ & Diagonal Representation
+\\ \hline
+$X$ & $1$ & $-1$ & $\ket+$ & $\ket-$ & $\ketbra++ - \ketbra--$
+\\ \hline
+$Y$ & $1$ & $-1$ & $\frac{1}{\sqrt2} \left[ \begin{matrix} 1 \\ i \end{matrix} \right]$ &
+    $\frac{1}{\sqrt2} \left[ \begin{matrix} 1 \\ -i \end{matrix} \right]$ &
+    $\ketbra{\lambda_0}{\lambda_0} - \ketbra{\lambda_1}{\lambda_1}$
+\\ \hline
+$Z$ & $1$ & $-1$ & $\ket0$ & $\ket1$ & $\ketbra00 - \ketbra11$
+\\ \hline
+\end{tabular}
+\caption{Answers of Exercise 2.11}
+\label{tab:nielsen-and-chuang-answers-exercise-2-11}
+\end{table}
