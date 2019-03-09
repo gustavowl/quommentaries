@@ -31,3 +31,97 @@ Analogously, $\braket y \psi = sin(\varphi) sin(\theta)$.
 
 In conclusion, the Bloch Vector is described by
 $(x, y, z) = (cos\varphi sin\theta, sin\varphi sin\theta, cos\theta)$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Exercise 4.1}
+It is recommended to answer \hyperref[sec:nielsen-and-chuang-exercise-2-11]{Exercise 2.11} beforehand.
+Additionally, the reader should attempt to understand the
+\hyperref[nielsen-and-chuang-qubit-representation-in-a-bloch-sphere]{Bloch Sphere Equation}.
+Throughout this exercise, the reader may constantly refer back to the Bloch Sphere Equation,
+\begin{align}
+    \ket \psi = \cos \frac \theta 2 \ket0 + e^{i \varphi} sin \frac \theta 2 \ket1 .
+\end{align}
+
+\begin{itemize}
+    \item The eigenvectors of $X$ are $\ket+$ and $\ket -$;
+    \begin{itemize}
+        \item $\ket +$;
+        \begin{itemize}
+            \item $\ket+ = \frac{\ket0 + \ket1}{\sqrt2}$. Hence,
+                $cos \frac \theta 2 \ket0 = \frac{1}{\sqrt2} \ket0$. Thus,
+                $\theta = \frac \pi 2$;
+            \item $\ket+ = \frac{\ket0 + \ket1}{\sqrt2}$. Since
+                $\theta = \frac \pi 2$,
+                $e^{i \varphi} sin \frac \pi 4 \ket1 = \frac{1}{\sqrt2} \ket1$. Thus,
+                $e^{i \varphi} = 1$, and $\varphi = 0$;
+            \item Substituting the values of $\theta$ and $\varphi$ in the Bloch Vector formula,
+                $\ket+ = (cos\varphi sin\theta, sin\varphi sin\theta, cos\theta) = (1, 0, 0)$;
+        \end{itemize}
+        
+        \item $\ket -$;
+        \begin{itemize}
+            \item $\ket- = \frac{\ket0 - \ket1}{\sqrt2}$. Hence,
+                $cos \frac \theta 2 \ket0 = \frac{1}{\sqrt2} \ket0$. Thus,
+                $\theta = \frac \pi 2$;
+            \item $\ket- = \frac{\ket0 - \ket1}{\sqrt2}$. Since
+                $\theta = \frac \pi 2$,
+                $e^{i \varphi} sin \frac \pi 4 \ket1 = - \frac{1}{\sqrt2} \ket1$. Thus,
+                $e^{i \varphi} = -1$, and $\varphi = \pi$;
+            \item Substituting the values of $\theta$ and $\varphi$ in the Bloch Vector formula,
+                $\ket- = (cos\varphi sin\theta, sin\varphi sin\theta, cos\theta) = (-1, 0, 0)$;
+        \end{itemize}
+    \end{itemize}
+    
+    \item The eigenvectors of $Y$ are $\frac{\ket0 + i \ket1}{\sqrt2}$ and $\frac{\ket0 - i \ket1}{\sqrt2}$;
+    \begin{itemize}
+        \item $\frac{\ket0 + i \ket1}{\sqrt2}$;
+        \begin{itemize}
+            \item $cos \frac \theta 2 \ket0 = \frac{1}{\sqrt2} \ket0$. Thus,
+                $\theta = \frac \pi 2$;
+            \item Since $\theta = \frac \pi 2$,
+                $e^{i \varphi} sin \frac \pi 4 \ket1 = \frac{i}{\sqrt2} \ket1$. Thus,
+                $e^{i \varphi} = i$, and $\varphi = \frac \pi 2$;
+            \item Substituting the values of $\theta$ and $\varphi$ in the Bloch Vector formula,
+                $\ket+ = (cos\varphi sin\theta, sin\varphi sin\theta, cos\theta) = (0, 1, 0)$;
+        \end{itemize}
+        
+        \item $\frac{\ket0 - i \ket1}{\sqrt2}$;
+        \begin{itemize}
+            \item $cos \frac \theta 2 \ket0 = \frac{1}{\sqrt2} \ket0$. Thus,
+                $\theta = \frac \pi 2$;
+            \item Since $\theta = \frac \pi 2$,
+                $e^{i \varphi} sin \frac \pi 4 \ket1 = - \frac{i}{\sqrt2} \ket1$. Thus,
+                $e^{i \varphi} = - i$, and $\varphi = \frac{3\pi}{2}$;
+            \item Substituting the values of $\theta$ and $\varphi$ in the Bloch Vector formula,
+                $\ket+ = (cos\varphi sin\theta, sin\varphi sin\theta, cos\theta) = (0, -1, 0)$;
+        \end{itemize}
+    \end{itemize}
+    
+    \item The eigenvectors of $Z$ are $\ket0$ and $\ket1$;
+    \begin{itemize}
+        \item $\ket0$;
+        \begin{itemize}
+            \item $cos \frac \theta 2 \ket0 = 1 \ket0$. Thus, $\theta = 0$;
+            \item Since $\theta = 0$, $sin(0) = 0$. And
+                $\varphi$ can assume any value in the $[0, 2\pi)$ range;
+            \item Substituting the values of $\theta$ and $\varphi$ in the Bloch Vector formula,
+                $\ket0 = (cos\varphi sin\theta, sin\varphi sin\theta, cos\theta) = (0, 0, 1)$
+        \end{itemize}
+        
+        \item $\ket1$;
+        \begin{itemize}
+            \item $cos \frac \theta 2 \ket0 = 0 \ket0$. Thus, $\theta = \pi$;
+            \item Thus, $\ket1 = e^{i \varphi} sin \frac \pi 2 \ket 1$.
+                It is known that \hyperref[sec:noson-equation-4-5]{
+                    multiplying a state by any complex number does not change it}.
+                Hence, $e^{i \varphi} sin \frac \pi 2 \ket1 =
+                    e^{-i \varphi} e^{i \varphi} sin \frac \pi 2 \ket1 =
+                    sin \frac \pi 2 \ket1$.
+                In conclusion, the value of $\varphi$ is negligible,
+                and can assume any value in the $[0, 2\pi)$ range;
+            \item Substituting the values of $\theta$ and $\varphi$ in the Bloch Vector formula,
+                $\ket1 = (cos\varphi sin\theta, sin\varphi sin\theta, cos\theta) = (0, 0, -1)$.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
