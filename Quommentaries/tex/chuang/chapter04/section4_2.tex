@@ -34,7 +34,7 @@ $(x, y, z) = (cos\varphi sin\theta, sin\varphi sin\theta, cos\theta)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Exercise 4.1}
+\subsubsection{Exercise 4.1}
 It is recommended to answer \hyperref[sec:nielsen-and-chuang-exercise-2-11]{Exercise 2.11} beforehand.
 Additionally, the reader should attempt to understand the
 \hyperref[nielsen-and-chuang-qubit-representation-in-a-bloch-sphere]{Bloch Sphere Equation}.
@@ -125,3 +125,75 @@ Throughout this exercise, the reader may constantly refer back to the Bloch Sphe
         \end{itemize}
     \end{itemize}
 \end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Exercise 4.2}
+In Nielsen and Chuang's Section 2.1.8, operator functions are discussed.
+Thus, $A$ has spectral decomposition, and
+\begin{align}
+    A^2 &= \sum_{ab} a \ketbra{a}{a} b \ketbra{b}{b} \\
+    &= \sum_{ab} ab \ket{a} \braket{a}{b} \bra{b} \\
+    &= \sum_{ab} ab \braket{a}{b} \ket{a} \bra{b}.
+\end{align}
+Since $\set{\ket a \mid \forall a}$ form an orthonormal basis defined by the eigenspace
+- and $\set{\ket b \mid \forall b}$ describes the same basis -
+$\braket{a}{b} = \delta_{ab}$
+\footnote{$\delta_{ij}$ is defined in the paragraph that follows
+    Nielsen and Chuang's Equation (2.16)
+},
+\begin{align}
+    A^2 &= \sum_{ab} ab \delta_{ab} \ket{a} \bra{b} \\
+    &= \sum_a a^2 \ketbra a a \\
+    &= I.
+\end{align}
+Due to the completeness relation $\sum_a \ketbra a a = I$,
+it is possible to conclude that $a = \pm 1$.
+
+Compute the value of $exp(iAx)$ using the definition of operator functions
+Nielsen and Chuang's Section 2.1.8, and Euler's Formula.
+\begin{align}
+    exp(iAx) &= \sum_a exp(iax) \ketbra a a \\
+    &= \sum_a cos(ax) \ketbra a a + i\ sin(ax) \ketbra a a.
+\end{align}
+Recall that $a = \pm 1$.
+From trigonometry, it is known $cos(x) = cos(-x)$.
+Also, $sin(-x) = - sin(x)$.
+Thus,
+\begin{align}
+    exp(iAx) &= \sum_a cos(x) \ketbra a a + i\ sin(x) a \ketbra a a \\
+    &= cos(x) I + i\ sin(x) A.
+\end{align}
+
+Using this to verify Equations (4.4) to (4.6) is straightforward,
+since $X^2 = Y^2 = Z^2 = I$.
+For $R_x(\theta)$,
+\begin{align}
+    e^{i \theta X / 2} &= cos( - \frac \theta 2) I + i\ sin( - \frac \theta 2) X \\
+    &= cos \frac \theta 2 I - i\ sin \frac \theta 2 X \\
+    &= \left[ \begin{matrix} cos \frac \theta 2 & 0 \\ 0 & cos \frac \theta 2 \end{matrix} \right] - i
+        \left[ \begin{matrix} 0 & sin \frac \theta 2 \\ sin \frac \theta 2 & 0 \end{matrix} \right] \\
+    &= \left[ \begin{matrix} cos \frac \theta 2 & - i\ sin \frac \theta 2 \\
+        - i\ sin \frac \theta 2 & cos \frac \theta 2 \end{matrix} \right].
+\end{align}
+For $R_y(\theta)$,
+\begin{align}
+    e^{i \theta Y / 2} &= cos( - \frac \theta 2) I + i\ sin( - \frac \theta 2) Y \\
+    &= cos \frac \theta 2 I - i\ sin \frac \theta 2 Y \\
+    &= \left[ \begin{matrix} cos \frac \theta 2 & 0 \\ 0 & cos \frac \theta 2 \end{matrix} \right] - i
+        \left[ \begin{matrix} 0 & -i\ sin \frac \theta 2 \\ i\ sin \frac \theta 2 & 0 \end{matrix} \right] \\
+    &= \left[ \begin{matrix} cos \frac \theta 2 & - sin \frac \theta 2 \\
+        sin \frac \theta 2 & cos \frac \theta 2 \end{matrix} \right].
+\end{align}
+For $R_z(\theta)$,
+\begin{align}
+    e^{i \theta Z / 2} &= cos( - \frac \theta 2) I + i\ sin( - \frac \theta 2) Z \\
+    &= cos \frac \theta 2 I - i\ sin \frac \theta 2 Z \\
+    &= \left[ \begin{matrix} cos \frac \theta 2 & 0 \\ 0 & cos \frac \theta 2 \end{matrix} \right] - i
+        \left[ \begin{matrix} sin \frac \theta 2 & 0 \\ 0 & - sin \frac \theta 2\end{matrix} \right] \\
+    &= \left[ \begin{matrix} cos \frac \theta 2 - i\ sin \frac \theta 2 & 0 \\
+        0 & cos \frac \theta 2 + i sin \frac \theta 2 \end{matrix} \right] \\
+    &= \left[ \begin{matrix} cos(- \frac \theta 2) + i\ sin(- \frac \theta 2) & 0 \\
+        0 & cos \frac \theta 2 + i sin \frac \theta 2 \end{matrix} \right] \\
+    &= \left[ \begin{matrix} e^{-i \theta/2} & 0 \\ 0 & e^{i \theta/2} \end{matrix} \right]
+\end{align}
