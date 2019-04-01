@@ -129,6 +129,7 @@ Throughout this exercise, the reader may constantly refer back to the Bloch Sphe
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Exercise 4.2}
+\label{nielsen-and-chuang-exercise-4-2}
 In Nielsen and Chuang's Section 2.1.8, operator functions are discussed.
 Thus, $A$ has spectral decomposition, and
 \begin{align}
@@ -206,8 +207,72 @@ Compute $\pi/4$,
     R_z(\pi/4) &= cos \frac{\pi}{8} I - sin \frac{\pi}{8} Z \\
     &= \left[ \begin{matrix} e^{-i \pi/8} & 0 \\ 0 & e^{i \pi/8} \end{matrix} \right].
 \end{align}
-Note that this practically matches $T$ - refer back to Equation (4.3).
+Note that this almost matches $T$ - refer back to Equation (4.3).
 Thus,
 \begin{align}
     T = e^{i \pi/8} R_z(\pi/4).
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Exercise 4.4}
+
+It is desired to write $H$ in terms of a product of $R_x$, $R_z$, and $e^{i\varphi}$.
+It may be tempting to assign in the range $[0, \pi]$,
+but the requested solution would not be obtained.
+
+First, find the corresponding rotation operator for $H$.
+This is possible since $H^2 = I$
+(refer back to \hyperref[nielsen-and-chuang-exercise-4-2]{Exercise 4.2}).
+Thus,
+\begin{align}
+    R_h(\theta) &= e^{-i \theta H / 2} \\
+    &= cos \frac\theta2 I - i\ sin \frac\theta2 H.
+\end{align}
+Note that
+\begin{align}
+    R_h(\pi) &= -i H.
+\end{align}
+And, multiplying both sides by $e^{i \frac \pi 2}$,
+\begin{align}
+    \label{eq:nielsen-and-chuang-exercise-4-4-e-rh}
+    e^{i \frac \pi 2} R_h(\pi) &= e^{i \frac \pi 2} \cdot (-i H) \\
+    &= i (-i H) \\
+    \label{eq:nielsen-and-chuang-exercise-4-4-h}
+    &= H.
+\end{align}
+
+Now, express $R_h$ in terms of $R_x$, $R_z$, and $e^{i\psi}$,
+according to the equation $R_h(\theta) = R_x(\theta) R_z(\theta) e^{i\psi}$.
+Recall that $H = \frac{X + Z}{\sqrt 2}$.
+Also, suppose $\psi = \theta \phi / 2$ for some $\phi$.
+Then,
+\begin{align}
+    R_h(\theta) &= R_x(\theta) R_z(\theta) e^{i\psi} \\
+    e^{-i \theta (\frac{X + Z}{\sqrt 2}) / 2} &=
+        e^{-i \theta X / 2}\ e^{-i \theta (X + Z) / 2}\ e^{i \theta \phi / 2} \\
+    &= e^{-i \theta (X + Z - \phi) / 2}.
+\end{align}
+Thus,
+\begin{align}
+    \frac{X + Z}{\sqrt 2} = X + Z - \phi \\
+    \phi = X + Z - \frac{X + Z}{\sqrt 2} \\
+    \phi = \frac{\sqrt2 - 1}{\sqrt 2} (X + Z).
+\end{align}
+
+Henceforth, $\psi = \theta \frac{\sqrt2 - 1}{\sqrt 2} (X + Z) / 2$, and
+\begin{align}
+    R_h(\theta) = R_x(\theta) R_z(\theta) e^{i \theta \frac{\sqrt2 - 1}{\sqrt 2} (X + Z) / 2}.
+\end{align}
+
+Merging this result with Equations
+\ref{eq:nielsen-and-chuang-exercise-4-4-e-rh} to \ref{eq:nielsen-and-chuang-exercise-4-4-h},
+\begin{align}
+    H &= R_h(\pi) e^{i \frac \pi 2} \\
+    &= R_x(\pi) R_z(\pi) e^{i \pi \frac{\sqrt2 - 1}{\sqrt 2} (X + Z) / 2} e^{i \frac \pi 2} \\
+    &= R_x(\pi) R_z(\pi) e^{i \pi \frac{\sqrt2 - 1}{\sqrt 2} (X + Z) / 2\ +\ i \frac \pi 2}.
+\end{align}
+Thus, the requested value for $\varphi$ in $e^{i \varphi}$ is
+\begin{align}
+    \varphi = \pi \frac{\sqrt2 - 1}{\sqrt 2} (X + Z) / 2\ +\ \frac \pi 2.
 \end{align}
