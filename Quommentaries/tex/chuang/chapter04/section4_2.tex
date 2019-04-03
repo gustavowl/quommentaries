@@ -129,7 +129,7 @@ Throughout this exercise, the reader may constantly refer back to the Bloch Sphe
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Exercise 4.2}
-\label{nielsen-and-chuang-exercise-4-2}
+\label{sec:nielsen-and-chuang-exercise-4-2}
 In Nielsen and Chuang's Section 2.1.8, operator functions are discussed.
 Thus, $A$ has spectral decomposition, and
 \begin{align}
@@ -223,7 +223,7 @@ but the requested solution would not be obtained.
 
 First, find the corresponding rotation operator for $H$.
 This is possible since $H^2 = I$
-(refer back to \hyperref[nielsen-and-chuang-exercise-4-2]{Exercise 4.2}).
+(refer back to \hyperref[sec:nielsen-and-chuang-exercise-4-2]{Exercise 4.2}).
 Thus,
 \begin{align}
     R_h(\theta) &= e^{-i \theta H / 2} \\
@@ -275,4 +275,24 @@ Merging this result with Equations
 Thus, the requested value for $\varphi$ in $e^{i \varphi}$ is
 \begin{align}
     \varphi = \pi \frac{\sqrt2 - 1}{\sqrt 2} (X + Z) / 2\ +\ \frac \pi 2.
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Exercise 4.5}
+A proof analogous to $(\hat{n} - \vec{\sigma})^2 = I$ can be found in the beginning of
+\hyperref[sec:nielsen-and-chuang-problem-2-3]{Problem 2.3's solution}
+(until
+\hyperref[eq:nielsen-and-chuang-problem-2-3-q-qdagger-equals-i]{
+    Equation \ref{eq:nielsen-and-chuang-problem-2-3-q-qdagger-equals-i}
+}).
+To prove $(\hat{n} - \vec{\sigma})^2 = I$, simply rename the variables.
+
+Notwithstanding, proving Equation 4.8 is also straightforward.
+Just substitute $(\hat{n} - \vec{\sigma})^2 = I$ for $A$ in Equation 4.7,
+which was proved in \hyperref[sec:nielsen-and-chuang-exercise-4-2]{Exercise 4.2}.
+Thus, using \hyperref[sec:nielsen-and-chuang-equation-2-116]{Equation 2.116},
+\begin{align}
+    R_{\hat{n}} &\equiv exp(-i \theta \hat{n} \cdot \vec{\sigma}/2) \\
+    &= cos \frac \theta 2 I - i\ sin \frac \theta 2 (\hat{n} \cdot \vec{\sigma}) \\
+    &= cos \frac \theta 2 I - i\ sin \frac \theta 2 (n_x X + n_y Y + n_z Z).
 \end{align}
