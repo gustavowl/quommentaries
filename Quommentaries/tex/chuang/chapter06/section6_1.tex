@@ -1,0 +1,104 @@
+\subsection{Section 6.1}
+
+\subsubsection{Exercise 6.1}
+This Exercise refers to Equation (6.5),
+not to Equation (6.3), which describes the oracle's action.
+Recall that the $\delta_{ij}$ notation means
+\begin{align}
+    \delta_{ij} = \begin{cases}
+        1 & \text{if\ } i = j \\
+        0 & \text{if\ } i \neq j
+    \end{cases}.
+\end{align}
+Thus, Equation (6.5) essentially means that if
+$x = 0$, then $\ket0 \rightarrow \ket0$, else,
+$x \neq 0$ and $\ket x \rightarrow - \ket x$.
+This is exactly the behaviour of $2 \ketbra{0}{0} - I$,
+which is described in the following paragraphs.
+
+First, the operator is easily verifiable to be unitary,
+\begin{align}
+    (2 \ketbra{0}{0} - I)^\dagger (2 \ketbra{0}{0} - I) &=
+        (2 \ketbra{0}{0} - I)^2 \\
+    &= 4 \ket0 \braket{0}{0} \bra0 - 2 \cdot 2 I \ketbra{0}{0} + I^2 \\
+    &= 4 \ketbra00 - 4 \ketbra00 + I \\
+    &= I.
+\end{align}
+
+Show that $(2 \ketbra00 - I) \ket0 = \ket0$,
+\begin{align}
+    (2 \ketbra{0}{0} - I) \ket0 &= 2 \ket{0} \braket{0}{0} - I \ket{0} \\
+    &= 2 \ket0 - \ket0 \\
+    &= \ket 0.
+\end{align}
+For any other state
+    \footnote{Recall that Grover's Algorithm operates on the database's indices,
+    and that they form an orthonormal basis, i.e. $\braket{i}{j} = \delta_{ij}$.}
+$\ket x$, the phase is shifted,
+\begin{align}
+    (2 \ketbra{0}{0} - I) \ket x &= 2 \ket{0} \braket{0}{x} - I \ket{x} \\
+    &= 0 \ket0 - \ket{x} \\
+    &= - \ket{x}.
+\end{align}
+
+These actions can be easily inferred by analysing $(2 \ketbra{0}{0} - I)$'s matricial form,
+\begin{align}
+    \left[ \begin{matrix}
+        2 & 0 & 0 & \cdots & 0 \\
+        0 & 0 & 0 & \cdots & 0 \\
+        0 & 0 & 0 & \cdots & 0 \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & 0 & \cdots & 0
+    \end{matrix} \right]
+    -
+    \left[ \begin{matrix}
+        1 & 0 & 0 & \cdots & 0 \\
+        0 & 1 & 0 & \cdots & 0 \\
+        0 & 0 & 1 & \cdots & 0 \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & 0 & \cdots & 1
+    \end{matrix} \right]
+    =
+    \left[ \begin{matrix}
+        1 & 0 & 0 & \cdots & 0 \\
+        0 & -1 & 0 & \cdots & 0 \\
+        0 & 0 & -1 & \cdots & 0 \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & 0 & \cdots & -1
+    \end{matrix} \right].
+\end{align}
+
+\subsubsection{Exercise 6.2}
+\todo{From draft to \LaTeX}
+
+\subsubsection{Notes on Grover's Algorithm}
+\label{sec:nielsen-and-chuang-notes-on-grovers-algorithm}
+\todo{Notes on finding $\ket0$ index}
+\begin{comment}
+If the searched item is \emph{not} in the database,
+then applying the Grover Iteration should have no effects.
+In fact, the conditional shift is partially responsible for this behaviour.
+For instance,this is exactly what happens and exactly what is described by
+$2 \ketbra{0}{0} - I$, applying it to $\ket 0$,
+
+The first step of Grover's Algorithm is to apply
+$H^{\otimes n}$ to the initial state $\ket0^{\otimes n}$.
+Thus, the oracle will compute all the possible results due to Quantum Superposition
+(Quantum Parallelism).
+Suppose that the action of the oracle is none.
+That is, the searched value is \emph{not} in the database.
+Then, $O H^{\otimes n} \ket0^{\otimes n} = H^{\otimes n} \ket0^{\otimes n}$.
+Since the first action after the oracle is to apply $H^{\otimes n}$ again,
+$H^{\otimes n} H^{\otimes n} \ket0^{\otimes n} = \ket0^{\otimes n}$.
+
+On the other hand, if the oracle changes the $H^{\otimes n} \ket0^{\otimes n}$ state,
+then the searched item is in the database.
+
+refer back to matricial form of conditional phase shift? to when
+$(2 \ketbra{0}{0})\ket0$ and $(2 \ketbra{0}{0})(- \ket0)$?
+
+Note that the conditional phase shift does not flip $- \ket 0$:
+$(2 \ketbra00 - I)(- \ket0) 0 -2 \ket0 + \ket0 = - \ket0$.
+
+step-by-step example?
+\end{comment}
