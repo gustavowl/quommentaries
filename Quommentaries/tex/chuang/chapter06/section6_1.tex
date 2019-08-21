@@ -69,7 +69,32 @@ These actions can be easily inferred by analysing $(2 \ketbra{0}{0} - I)$'s matr
 \end{align}
 
 \subsubsection{Exercise 6.2}
-\todo{From draft to \LaTeX}
+Applying the operation to the general state,
+\begin{align}
+    (2 \ketbra{\psi}{\psi} - I) \sum_k \alpha_k \ket{k} = 
+    \sum_k 2 \alpha_k \ket{\psi} \braket{\psi}{k} - \alpha_k \ket{k}.
+\end{align}
+Using Equation (6.4), and the definition of $\delta_{ij}$,
+\begin{align}
+    \sum_k 2 \alpha_k \ket{\psi} \braket{\psi}{k} - \alpha_k \ket{k} &=
+    \sum_k 2 \alpha_k \frac{1}{N} \sum_{ij} \ket{i} \braket{j}{k} - \alpha_k \ket{k} \\
+    & = \sum_k 2 \frac{\alpha_k}{N} \sum_{ij} \ket{i} \delta_{jk} - \alpha_k \ket{k} \\
+    & = \sum_k 2 \frac{\alpha_k}{N} \sum_i \ket{i} - \alpha_k \ket{k}.
+\end{align}
+Note that $\sum_k \alpha_k/N$ is a constant
+(written as $\langle\alpha\rangle$). Thus,
+\begin{align}
+    \sum_k 2 \frac{\alpha_k}{N} \sum_i \ket{i} - \alpha_k \ket{k} =
+    2 \langle\alpha\rangle \sum_i \ket{i} - \sum_k \alpha_k \ket{k}.
+\end{align}
+Since $\ket{k}$ and $\ket{i}$ correspond to the same orthonormal basis,
+it is possible to rename and rearrange
+\begin{align}
+    2 \langle\alpha\rangle \sum_i \ket{i} - \sum_k \alpha_k \ket{k} &=
+    \sum_k 2 \langle\alpha\rangle \ket{k} - \sum_k \alpha_k \ket{k} \\
+    &= \sum_k \left[ 2 \langle\alpha\rangle - \alpha_k \right] \ket{k}.
+\end{align}
+Thus obtaining the desired answer.
 
 \subsubsection{Notes on Grover's Algorithm}
 \label{sec:nielsen-and-chuang-notes-on-grovers-algorithm}
