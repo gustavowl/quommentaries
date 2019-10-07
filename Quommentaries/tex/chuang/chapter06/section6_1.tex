@@ -69,12 +69,13 @@ These actions can be easily inferred by analysing $(2 \ketbra{0}{0} - I)$'s matr
 \end{align}
 
 \subsubsection{Equation 6.6}
+\label{sec:nielsen-and-chuang-equation-6-6}
 In case it is not clear how this Equation was obtained,
 the step by step solution is as follows,
 \begin{align}
     H^{\otimes n} (2 \ketbra{0}{0} - I) H^{\otimes n} &=
         H^{\otimes n} (2 \ketbra{0}{0} H^{\otimes n} - H^{\otimes n}) \\
-    &= 2 H^{\otimes n} \ketbra{0}{0} H^{\otimes n} - H^{\otimes n}) H^{\otimes n} \\
+    &= 2 H^{\otimes n} \ketbra{0}{0} H^{\otimes n} - H^{\otimes n} H^{\otimes n} \\
     &= 2 \ket{+}^{\otimes n} \bra{+}^{\otimes n} - I.
 \end{align}
 Then, using $\ket\psi$ as defined in Equation 6.4,
@@ -111,34 +112,86 @@ it is possible to rename and rearrange
 \end{align}
 Thus obtaining the desired answer.
 
-\subsubsection{Notes on Grover's Algorithm}
+\subsubsection{Notes About Grover's Algorithm}
 \label{sec:nielsen-and-chuang-notes-on-grovers-algorithm}
-\todo{Notes on finding $\ket0$ index}
-\begin{comment}
-If the searched item is \emph{not} in the database,
-then applying the Grover Iteration should have no effects.
-In fact, the conditional shift is partially responsible for this behaviour.
-For instance,this is exactly what happens and exactly what is described by
-$2 \ketbra{0}{0} - I$, applying it to $\ket 0$,
+At a first glance,
+it may appear that Grover's Algorithm cannot find a value if its index is 0.
+This erroneous thought may come to one's mind due to the phase shift step;
+when $\ket0$ is left unchanged.
+To show that Grover's Algorithm works perfectly,
+two scenarios will be considered:
+the searched value is \emph{not} in the ``database'';
+the searched value has index 0 in the ``database''.
+It can be seen that, for both scenarios, the obtained result is different.
 
-The first step of Grover's Algorithm is to apply
-$H^{\otimes n}$ to the initial state $\ket0^{\otimes n}$.
-Thus, the oracle will compute all the possible results due to Quantum Superposition
-(Quantum Parallelism).
-Suppose that the action of the oracle is none.
-That is, the searched value is \emph{not} in the database.
-Then, $O H^{\otimes n} \ket0^{\otimes n} = H^{\otimes n} \ket0^{\otimes n}$.
-Since the first action after the oracle is to apply $H^{\otimes n}$ again,
-$H^{\otimes n} H^{\otimes n} \ket0^{\otimes n} = \ket0^{\otimes n}$.
+\paragraph{Value not found.}
+To leave $\ket0$ unchanged is important in case
+the searched value is not in the ``database''.
+To illustrate this scenario, let the Grover iteration be denoted by
+\begin{align}
+    H^{\otimes n} P_h H^{\otimes n} O \ket\varphi,
+\end{align}
+where $P_h$ is the phase shift, $O$ is the oracle.
+Let $\ket\varphi = \ket\psi$, the state described in Equation 6.4 --
+immediately before the first Grover Iteration.
+Thus,
+\begin{align}
+    H^{\otimes n} P_h H^{\otimes n} O \ket\psi &=
+        H^{\otimes n} P_h H^{\otimes n} \ket\psi \\
+    &= H^{\otimes n} P_h \ket{0}^{\otimes n} \\
+    &= H^{\otimes n} \ket{0}^{\otimes n} \\
+    &= \ket\psi.
+\end{align}
+Therefore, it is clear that after $\sqrt{n}$ Grover iterations,
+the initial state $\ket\psi$ will remain unchanged if
+the desired value is not in the ``database''.
 
-On the other hand, if the oracle changes the $H^{\otimes n} \ket0^{\otimes n}$ state,
-then the searched item is in the database.
+Nevertheless, note that the obtained result is the same if
+the Grover iteration was denoted with the aid of
+\hyperref[sec:nielsen-and-chuang-equation-6-6]{Equation 6.6},
+\begin{align}
+    (2 \ketbra{\psi}{\psi} - I) O \ket\psi &= (2 \ketbra{\psi}{\psi} - I) \ket\psi \\
+    &= 2 \ket\psi \braket{\psi}{\psi} - \ket\psi \\
+    &= \ket\psi
+\end{align}
 
-refer back to matricial form of conditional phase shift? to when
-$(2 \ketbra{0}{0})\ket0$ and $(2 \ketbra{0}{0})(- \ket0)$?
+\paragraph{Value in index 0.}
+If the desired value is in the ``database'', and in the first index, i.e. 0,
+the Algorithm will also work perfectly.
+In this scenario, the first Grover iteration will perform the following action,
+\begin{align}
+    H^{\otimes n} P_h H^{\otimes n} O \ket\psi &=
+        H^{\otimes n} P_h H^{\otimes n} \left(- \frac{2\ket{0}^{\otimes n}}{\sqrt{2}^n} + \ket\psi \right) \\
+    &= H^{\otimes n} P_h \left(- \frac{2\ket\psi}{\sqrt{2}^n} + \ket{0}^{\otimes n} \right) \\
+    &= H^{\otimes n} \left(\frac{2}{\sqrt{2}^n} \left(\ket\psi -
+        \frac{2}{\sqrt{2}^n} \ket{0}^{\otimes n} \right) + \ket{0}^{\otimes n} \right) \\
+    &= H^{\otimes n} \left( \frac{2}{\sqrt{2}^n}\ket\psi -\frac{4}{2^n}\ket{0}^{\otimes n} +
+        \ket{0}^{\otimes n} \right) \\
+    &= H^{\otimes n} \left( \frac{1}{\sqrt{2}^{n-2}}\ket\psi +
+        \frac{2^{n-2} - 1}{2^{n-2}}\ket{0}^{\otimes n} \right) \\
+    &= \frac{1}{\sqrt{2}^{n-2}}\ket{0}^{\otimes n} + \frac{2^{n-2} - 1}{2^{n-2}}\ket\psi.
+\end{align}
 
-Note that the conditional phase shift does not flip $- \ket 0$:
-$(2 \ketbra00 - I)(- \ket0) 0 -2 \ket0 + \ket0 = - \ket0$.
+The same result would be obtained if \hyperref[sec:nielsen-and-chuang-equation-6-6]{Equation 6.6}
+was used to denote part of the Grover iteration,
+\begin{align}
+    (2\ketbra{\psi}{\psi} - I)O \ket\psi &=
+        (2\ketbra{\psi}{\psi} - I) \left(- \frac{2\ket{0}^{\otimes n}}{\sqrt{2}^n} + \ket\psi \right) \\
+    &= - \frac{4 \ket\psi \braket{\psi}{0}^{\otimes n}}{\sqrt{2}^n} + 2 \ket\psi +
+        \frac{2 \ket{0}^{\otimes n}}{\sqrt{2}^n} - \ket\psi \\
+    &= - \frac{4}{2^n}\ket\psi + \ket\psi + \frac{2 \ket{0}^{\otimes n}}{\sqrt{2}^n} \\
+    &= - \frac{1}{2^{n - 2}}\ket\psi + \ket\psi + \frac{1}{\sqrt{2}^{n - 2}} \ket{0}^{\otimes n} \\
+    &= \frac{2^{n - 2} - 1}{2^{n - 2}}\ket\psi + \frac{1}{\sqrt{2}^{n - 2}} \ket{0}^{\otimes n}.
+\end{align}
 
-step-by-step example?
-\end{comment}
+\paragraph{Conclusion.}
+Note that the obtained result for both scenarios is different.
+In the first, the original state is left unchanged.
+In the second, the original state is changed;
+though the obtained result may seem odd.
+In order to properly comprehend the result in the latter scenario,
+it may be useful to understand the geometric interpretation of
+the Grover iteration.
+
+
+\todo{notes about the geometric interpretation}
