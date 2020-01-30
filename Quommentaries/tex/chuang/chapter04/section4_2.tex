@@ -170,7 +170,7 @@ Using this to verify Equations (4.4) to (4.6) is straightforward,
 since $X^2 = Y^2 = Z^2 = I$.
 For $R_x(\theta)$,
 \begin{align}
-    e^{i \theta X / 2} &= cos( - \frac \theta 2) I + i\ sin( - \frac \theta 2) X \\
+    e^{-i \theta X / 2} &= cos( - \frac \theta 2) I + i\ sin( - \frac \theta 2) X \\
     &= cos \frac \theta 2 I - i\ sin \frac \theta 2 X \\
     &= \left[ \begin{matrix} cos \frac \theta 2 & 0 \\ 0 & cos \frac \theta 2 \end{matrix} \right] - i
         \left[ \begin{matrix} 0 & sin \frac \theta 2 \\ sin \frac \theta 2 & 0 \end{matrix} \right] \\
@@ -179,7 +179,7 @@ For $R_x(\theta)$,
 \end{align}
 For $R_y(\theta)$,
 \begin{align}
-    e^{i \theta Y / 2} &= cos( - \frac \theta 2) I + i\ sin( - \frac \theta 2) Y \\
+    e^{-i \theta Y / 2} &= cos( - \frac \theta 2) I + i\ sin( - \frac \theta 2) Y \\
     &= cos \frac \theta 2 I - i\ sin \frac \theta 2 Y \\
     &= \left[ \begin{matrix} cos \frac \theta 2 & 0 \\ 0 & cos \frac \theta 2 \end{matrix} \right] - i
         \left[ \begin{matrix} 0 & -i\ sin \frac \theta 2 \\ i\ sin \frac \theta 2 & 0 \end{matrix} \right] \\
@@ -188,7 +188,7 @@ For $R_y(\theta)$,
 \end{align}
 For $R_z(\theta)$,
 \begin{align}
-    e^{i \theta Z / 2} &= cos( - \frac \theta 2) I + i\ sin( - \frac \theta 2) Z \\
+    e^{-i \theta Z / 2} &= cos( - \frac \theta 2) I + i\ sin( - \frac \theta 2) Z \\
     &= cos \frac \theta 2 I - i\ sin \frac \theta 2 Z \\
     &= \left[ \begin{matrix} cos \frac \theta 2 & 0 \\ 0 & cos \frac \theta 2 \end{matrix} \right] - i
         \left[ \begin{matrix} sin \frac \theta 2 & 0 \\ 0 & - sin \frac \theta 2\end{matrix} \right] \\
@@ -296,3 +296,503 @@ Thus, using \hyperref[sec:nielsen-and-chuang-equation-2-116]{Equation 2.116},
     &= cos \frac \theta 2 I - i\ sin \frac \theta 2 (\hat{n} \cdot \vec{\sigma}) \\
     &= cos \frac \theta 2 I - i\ sin \frac \theta 2 (n_x X + n_y Y + n_z Z).
 \end{align}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Exercise 4.6}
+The original idea was to use $R_x(\theta)$, $R_y(\theta)$ and $R_z(\theta)$
+to construct a basis to represent $R_{\hat n}(\theta)$.
+Similar to how $\set{x, y, z}$ is a basis for $\R^3$.
+However, I was neither able to handle the Math;
+nor to come up with a formal proof which would satisfy me.
+\emph{\textbf{If the reader manages to solve it this way, please contact me!}}
+The solution hereby detailed is based on the idea proposed by
+\href{https://scholar.google.com.br/citations?user=AzhOiFAAAAAJ&hl}
+{Jalil Moqadam}. Thus, I thank him.
+
+The idea is to rotate a state $\ket\psi$ --
+with corresponding Bloch Vector $\vec{r} = [r_1, r_2, r_3]^\dagger$ --
+by $\alpha$ degrees about the $\hat n$ vector --
+$n = [n_1, n_2, n_3]^\dagger$.
+Thus obtaining another stade $\ket \varphi$ with corresponding
+Bloch Vector $\vec{r'} = [r_1', r_2', r_3']^\dagger$.
+\href{https://www.youtube.com/watch?v=DtL_giO-EB8#t=4m3.5s}{In other words},
+\begin{align}
+    R_{\hat n}(\alpha) \ket \psi = \ket \varphi .
+\end{align}
+However, the information of the Bloch Vectors is implicit in a state.
+On the other hand, if density operator notation is used,
+the information about the Bloch Vector is explicitly stated
+(refer to \todo{Exercise 2.72}),
+\begin{align}
+    \ketbra{\psi}{\psi} = \rho = \frac{I + \vec{r} \cdot \vec{\sigma}}{2}.
+\end{align}
+Thus, applying the rotation,
+\begin{align}
+    R_{\hat n}(\alpha) \rho R_{\hat n}(\alpha)^\dagger =
+    R_{\hat n}(\alpha) \ketbra{\psi}{\psi} R_{\hat n}(\alpha)^\dagger =
+    \ketbra{\varphi}{\varphi}  =
+    \rho' =
+    \frac{I + \vec{r'}\cdot\vec{\sigma}}{2} .
+\end{align}
+Hence, it is possible to compare the obtained $\vec{r'}$ with
+the result of
+\begin{align}
+    R \vec r = \vec{r'},
+    \label{eq:nielsen-and-chuang-exercise-4-6-assert}
+\end{align}
+where $R$ is the
+\href{https://en.wikipedia.org/wiki/Rotation_matrix#Rotation_matrix_from_axis_and_angle}
+{rotation matrix from axis and angle}.
+
+By computing $R_{\hat n}(\alpha) \rho R_{\hat n}(\alpha)^\dagger$,
+\begin{align}
+    R_{\hat n}(\alpha) \rho R_{\hat n}(\alpha)^\dagger &= 
+        \exp(-i \alpha \hat{n}\cdot\vec\sigma)
+        \frac{I + \vec r \cdot \vec{\sigma}}{2}
+        \exp(-i \alpha \hat{n}\cdot\vec\sigma)^\dagger \\
+    &= \exp(-i \alpha \hat{n}\cdot\vec\sigma)
+        \frac{I + \vec r \cdot \vec{\sigma}}{2}
+        \exp(i \alpha \hat{n}\cdot\vec\sigma) \\
+    &= \frac{1}{2} \left(
+        e^{-i \alpha \hat{n}\cdot\vec\sigma}I
+        e^{i \alpha \hat{n}\cdot\vec\sigma}
+        +
+        e^{-i \alpha \hat{n}\cdot\vec\sigma}
+        \vec{r} \cdot \vec{\sigma}
+        e^{i \alpha \hat{n}\cdot\vec\sigma}
+    \right) \\
+    &= \frac{1}{2} \left(
+        \ I + \left(
+            \cos \left( \frac{\alpha}{2} \right) I -
+            i \sin \left( \frac{\alpha}{2}\right)
+            \hat{n} \cdot \vec{\sigma}
+        \right)
+        \vec{r}\cdot\vec{\sigma}
+        \left(
+            \cos \left( \frac{\alpha}{2} \right) I +
+            i \sin \left( \frac{\alpha}{2} \right)
+            \hat{n} \cdot \vec{\sigma}
+        \right)
+    \ \right) \\
+    &= \frac{1}{2} (\ 
+        I + \cos^2 \frac{\alpha}{2} I \vec{r}\cdot\vec{\sigma}I +
+        i \cos\frac{\alpha}{2}\sin\frac{\alpha}{2} I \vec{r} \cdot\vec{\sigma}
+            \ \hat{n}\cdot\vec{\sigma} -
+        i \sin\frac{\alpha}{2}\cos\frac{\alpha}{2} \hat{n}\cdot\vec{\sigma}
+            \ \vec{r}\cdot\vec{\sigma} I -  \nonumber \\
+        &\quad i^2 \sin^2\frac{\alpha}{2} \hat{n}\cdot\vec{\sigma}\ 
+            \vec{r}\cdot\vec{\sigma}\ \hat{n}\cdot\vec{\sigma}
+    \ )
+    \\
+    &= \frac{1}{2} (\ 
+        I + \cos^2 \frac{\alpha}{2} \vec{r}\cdot\vec{\sigma} +
+        i \cos\frac{\alpha}{2}\sin\frac{\alpha}{2} \vec{r} \cdot\vec{\sigma}
+            \ \hat{n}\cdot\vec{\sigma} -
+        i \sin\frac{\alpha}{2}\cos\frac{\alpha}{2} \hat{n}\cdot\vec{\sigma}
+            \ \vec{r}\cdot\vec{\sigma} +  \nonumber \\
+        &\quad \sin^2\frac{\alpha}{2} \hat{n}\cdot\vec{\sigma}\ 
+            \vec{r}\cdot\vec{\sigma}\ \hat{n}\cdot\vec{\sigma}
+    \ )
+    \label{eq:nielsen-and-chuang-exercise-4-6-split}
+\end{align}
+is obtained.
+
+It is desirable to isolate the common $\sigma_i$ factor,
+i.e. to rewrite the previous equation such that
+\begin{align}
+    R_{\hat n}(\alpha) \rho R_{\hat n}(\alpha)^\dagger =
+    \frac{I + \vec{r}\cdot\vec{\sigma}}{2} =
+    \frac{I + \sum_{i = 1}^3 r_i \sigma_i}{2}.
+\end{align}
+Thus, for the sake of clarity, Equation \ref{eq:nielsen-and-chuang-exercise-4-6-split}
+will be computed separately for each part as follows
+\begin{align}
+    R_{\hat n}(\alpha) \rho R_{\hat n}(\alpha)^\dagger = 
+    \frac{I + a + b + c}{2}.
+\end{align}
+Where
+\begin{align}
+    a = \cos^2 \frac{\alpha}{2} \vec{r}\cdot\vec{\sigma},
+    \label{eq:nielsen-and-chuang-exercise-4-6-a}
+\end{align}
+\begin{align}
+    b = i \cos\frac{\alpha}{2}\sin\frac{\alpha}{2} \vec{r} \cdot\vec{\sigma}
+        \ \hat{n}\cdot\vec{\sigma} -
+        i \sin\frac{\alpha}{2}\cos\frac{\alpha}{2} \hat{n}\cdot\vec{\sigma}
+        \ \vec{r}\cdot\vec{\sigma},
+    \label{eq:nielsen-and-chuang-exercise-4-6-b}
+\end{align}
+and
+\begin{align}
+    c = \sin^2\frac{\alpha}{2} \hat{n}\cdot\vec{\sigma}\
+        \vec{r}\cdot\vec{\sigma}\ \hat{n}\cdot\vec{\sigma} .
+    \label{eq:nielsen-and-chuang-exercise-4-6-c}
+\end{align}
+
+\begin{enumerate}[label=\alph*)]
+    \item Equation \ref{eq:nielsen-and-chuang-exercise-4-6-a} is already
+    in the desired format, since
+    \begin{align}
+        a = \cos^2 \left(\frac{\alpha}{2}\right) \vec{r}\cdot\vec{\sigma} =
+        \cos^2 \left(\frac{\alpha}{2}\right) \sum_{i = 1}^3 r_i \sigma_i .
+    \end{align}
+    \item Equation \ref{eq:nielsen-and-chuang-exercise-4-6-b} can be
+    rewritten as follows
+    \begin{align}
+        b &= i \cos\frac{\alpha}{2}\sin\frac{\alpha}{2} \vec{r} \cdot\vec{\sigma}
+            \ \hat{n}\cdot\vec{\sigma} -
+            i \sin\frac{\alpha}{2}\cos\frac{\alpha}{2} \hat{n}\cdot\vec{\sigma}
+            \ \vec{r}\cdot\vec{\sigma} \\
+        &= i \cos\frac{\alpha}{2}\sin\frac{\alpha}{2}
+            \sum_{i = 1}^3 \sum_{j = 1}^3 r_i \sigma_i\ n_j \sigma_j
+            -
+            i \sin\frac{\alpha}{2}\cos\frac{\alpha}{2}
+            \sum_{j = 1}^3\sum_{i = 1}^3 n_j \sigma_j\ r_i \sigma_i \\
+        &= i \cos\frac{\alpha}{2}\sin\frac{\alpha}{2}
+            \sum_{i = 1}^3 \sum_{j = 1}^3 r_i n_j\ \sigma_i \sigma_j
+            -
+            i \sin\frac{\alpha}{2}\cos\frac{\alpha}{2}
+            \sum_{j = 1}^3\sum_{i = 1}^3 n_j r_i\ \sigma_j \sigma_i.
+    \end{align}
+    Whenever $j = i$,
+    \begin{align}
+        i \cos\frac{\alpha}{2}\sin\frac{\alpha}{2}
+        \sum_{i = 1}^3 r_i n_i\ \sigma_i \sigma_i
+        -
+        i \sin\frac{\alpha}{2}\cos\frac{\alpha}{2}
+        \sum_{j = 1}^3 n_i r_i\ \sigma_i \sigma_i
+        = 0.
+    \end{align}
+    Hence,
+    \begin{align}
+        b = i \cos\frac{\alpha}{2}\sin\frac{\alpha}{2}
+            \sum_{i = 1}^3 \sum_{j \neq i} r_i n_j\ \sigma_i \sigma_j
+            -
+            i \sin\frac{\alpha}{2}\cos\frac{\alpha}{2}
+            \sum_{j = 1}^3\sum_{j \neq i} n_j r_i\ \sigma_j \sigma_i .
+    \end{align}
+    Since $\sigma_j\sigma_i = - \sigma_i \sigma_j$ if $i \neq j$ -- i.e.,
+    $YX = -XY$, $ZX = -XZ$, and
+    $Z\href{https://www.youtube.com/watch?v=LdpMpfp-J_I}{Y = -YZ}$ --,
+    \begin{align}
+        b &= i \cos\frac{\alpha}{2}\sin\frac{\alpha}{2}
+            \sum_{i = 1}^3 \sum_{j \neq i} r_i n_j\ \sigma_i \sigma_j
+            +
+            i \sin\frac{\alpha}{2}\cos\frac{\alpha}{2}
+            \sum_{j = 1}^3\sum_{j \neq i} n_j r_i\ \sigma_i \sigma_j \\
+        &= 2 i \cos\frac{\alpha}{2}\sin\frac{\alpha}{2}
+            \sum_{i = 1}^3 \sum_{j \neq i} r_i n_j\ \sigma_i \sigma_j \\
+        &= 2 i \cos\frac{\alpha}{2}\sin\frac{\alpha}{2}
+            \sum_{i = 1}^3 \sum_{j > i} (r_i n_j - r_j n_i) \sigma_i \sigma_j .
+    \end{align}
+    Nevertheless, it is possible to write the product of two distinct
+    Pauli Matrices in terms of another Pauli Matrix. Namely,
+    \begin{itemize}
+        \item $\sigma_1 \sigma_2 = i \sigma_3$ and
+            $\sigma_2 \sigma_1 = -i \sigma_3$;
+        \item $\sigma_1 \sigma_3 = -i \sigma_2$ and
+            $\sigma_3 \sigma_1 = i \sigma_2$;
+        \item $\sigma_2 \sigma_3 = i \sigma_1$ and
+            $\sigma_3 \sigma_2 = -i \sigma_1$.    
+    \end{itemize}
+    Thus, it is possible to rewrite $b$ with the aid of the function
+    \begin{align}
+        f(x) = (x \mod 3) + 1
+    \end{align}
+    as follows
+    \begin{align}
+        b = - 2 \cos \frac{\alpha}{2} \sin \frac{\alpha}{2}
+            \sum_{i = 1}^3 (r_{f(i)}n_{f(i + 1)} - r_{f(i+1)}n_{f(i)}) \sigma_i ,
+    \end{align}
+    which is in the desired format.
+    
+    \item Equation \ref{eq:nielsen-and-chuang-exercise-4-6-c} can be rewritten
+    as follows
+    \begin{align}
+        c &= \sin^2\frac{\alpha}{2} \hat{n}\cdot\vec{\sigma}\
+            \vec{r}\cdot\vec{\sigma}\ \hat{n}\cdot\vec{\sigma} \\
+        &= \sin^2\frac{\alpha}{2} \left(
+            \sum_{i = 1}^3\sum_{j = 1}^3\sum_{k = 1}^3
+            n_i r_j n_k\ \sigma_j \sigma_k \sigma_k
+        \right) \\
+        &= \sin^2\frac{\alpha}{2} \left( \sum_{i = 1}^3 n_i \sigma_i \left(
+            \sum_{j = 1}^3\sum_{k=1}^3 r_j n_k\ \sigma_j \sigma_k
+        \right)\right) \\
+        &= \sin^2\frac{\alpha}{2} \left( \sum_{i = 1}^3 n_i \sigma_i \left(
+            \sum_{j = 1}^3 r_j n_j I + \sum_{j = 1}^3\sum_{k\neq j} r_j n_k\ \sigma_j \sigma_k
+        \right)\right) \\
+        &= \sin^2 \frac{\alpha}{2} \left(
+            \sum_{i = 1}^3\sum_{j = 1}^3 n_i r_j n_j \sigma_i +
+            \sum_{i=1}^3\sum_{j=1}^3\sum_{k \neq j}
+                n_i r_j n_k \sigma_i \sigma_j \sigma_k
+        \right) \\
+        &= \sin^2 \frac{\alpha}{2} \left(
+            \sum_{i = 1}^3 \left( n_i^2 r_i \sigma_i +
+            \sum_{j \neq i} n_i r_j n_j \sigma_i +
+            \sum_{k \neq i} n_i r_i n_k\ I\sigma_k +
+            \sum_{j \neq i}\sum_{k \neq j} n_i r_j n_k\ \sigma_i \sigma_j \sigma_k
+        \right) \right) \\
+        &= \sin^2 \frac{\alpha}{2} \left(
+            \sum_{i = 1}^3 \left( n_i^2 r_i \sigma_i +
+            \sum_{j \neq i} n_i r_j n_j \sigma_i +
+            \sum_{j \neq i} n_i r_i n_j\ \sigma_j +
+            \sum_{j \neq i}\sum_{k \neq j} n_i r_j n_k\ \sigma_i \sigma_j \sigma_k
+        \right) \right) \\
+        &= \sin^2 \frac{\alpha}{2} \left(
+            \sum_{i = 1}^3 \left( n_i^2 r_i \sigma_i +
+            \sum_{j \neq i} \left(
+            n_i n_j (r_j \sigma_i + r_i \sigma_j) +
+            \sum_{k \neq j} n_i r_j n_k\ \sigma_i \sigma_j \sigma_k
+        \right) \right) \right) \\
+        &= \sin^2 \frac{\alpha}{2} \left(
+            \sum_{i = 1}^3 \left( n_i^2 r_i \sigma_i +
+            \sum_{j \neq i} \left(
+            n_i n_j (r_j \sigma_i + r_i \sigma_j) -
+            n_i^2 r_j \sigma_j +
+            \sum_{k \neq j, k \neq i} n_i r_j n_k\ \sigma_i \sigma_j \sigma_k
+        \right) \right) \right) .
+    \end{align}
+    The last summation equals 0.
+    To see this, note that,
+    \begin{align}
+        \sum_{i = 1}^3 \sum_{j \neq i} \sum_{k \neq i, k \neq j}
+        n_i r_j n_k\ \sigma_i \sigma_j \sigma_k
+        &= \sum_{j = 1}^3 \sum_{i \neq j} \sum_{k \neq i, k \neq j}
+        n_i r_j n_k\ \sigma_i \sigma_j \sigma_k \\
+        &= - \sum_{j = 1}^3 \sum_{i \neq j} \sum_{k \neq i, k \neq j}
+        n_i r_j n_k\ \sigma_i \sigma_k \sigma_j \\
+        &= \sum_{j = 1}^3 \sum_{i \neq j} \sum_{k \neq i, k \neq j}
+        n_i r_j n_k\ \sigma_k \sigma_i \sigma_j \\
+        &= - \sum_{j = 1}^3 \sum_{i \neq j} \sum_{k \neq i, k \neq j}
+        n_i r_j n_k\ \sigma_k \sigma_j \sigma_i .
+    \end{align}
+    Since for a fixed value of $j$
+    there are only two possible permutations,
+    \begin{align}
+        \sum_{j = 1}^3 \sum_{i \neq j} \sum_{k \neq i, k \neq j}
+            n_i r_j n_k\ \sigma_i \sigma_j \sigma_k
+            &= \sum_{j = 1}^3 \left( n_i r_j n_k\ \sigma_i \sigma_j \sigma_k +
+            n_k r_j n_i\ \sigma_k \sigma_j \sigma_i \right) \\
+        &= \sum_{j = 1}^3 \left( n_i r_j n_k\ \sigma_i \sigma_j \sigma_k -
+            n_k r_j n_i\ \sigma_i \sigma_j \sigma_k \right) \\
+        &= \sum_{j = 1}^3 0 \\
+        &= 0.
+    \end{align}
+    Hence,
+    \begin{align}
+        c &= \sin^2 \frac{\alpha}{2} \left(
+            \sum_{i = 1}^3 \left( n_i^2 r_i \sigma_i +
+            \sum_{j \neq i} \left(
+            n_i n_j (r_j \sigma_i + r_i \sigma_j) -
+            n_i^2 r_j \sigma_j
+        \right) \right) \right) \\
+        &= \sin^2 \frac{\alpha}{2} \left(
+            \sum_{i = 1}^3 \left(
+                n_i^2 r_i \sigma_i + \sum_{j \neq i} n_i n_j r_j \sigma_i
+            \right) +
+            \sum_{i = 1}^3 \sum_{j \neq i} \left(
+                n_i n_j r_i \sigma_j - n_i^2 r_j \sigma_j
+            \right)
+        \right) .
+    \end{align}
+    Since addition and multiplication are commutative,
+    the previous equation can be rearranged as follows
+    (basically, what is being done here is similar to rewriting the set
+    of tuples $\set{(1,2), (1,3), (2,1), (2,3), (3,1), (3,2)}$ as
+    $\set{(2,1), (3,1), (1, 2), (3, 2), (1,3), (2,3)}$, which is the same set),
+    \begin{align}
+        c &= \sin^2 \frac{\alpha}{2} \left(
+            \sum_{i = 1}^3 \left(
+                n_i^2 r_i \sigma_i + \sum_{j \neq i} n_i n_j r_j \sigma_i
+            \right) +
+            \sum_{i = 1}^3 \sum_{j \neq i} \left(
+                n_j n_i r_j \sigma_i - n_j^2 r_i \sigma_i
+            \right)
+        \right) \\
+        &= \sin^2 \frac{\alpha}{2} \left(
+            \sum_{i=1}^3 \left( n_i^2 r_i + \sum_{j \neq i} \left(
+                n_i n_j r_j + n_j n_i r_j - n_j^2 r_i
+            \right) \right) \sigma_i
+        \right) \\
+        &= \sin^2 \frac{\alpha}{2} \left(
+            \sum_{i=1}^3 \left( n_i^2 r_i + \sum_{j \neq i} \left(
+                2 n_j n_i r_j - n_j^2 r_i
+            \right) \right) \sigma_i
+        \right),
+    \end{align}
+    which is in the desired format.
+    
+\end{enumerate}
+
+Concatenating these results,
+Equation \ref{eq:nielsen-and-chuang-exercise-4-6-split} can be rewritten as follows,
+\begin{align}
+    R_{\hat n}(\alpha) \rho R_{\hat n}(\alpha)^\dagger &= \frac{1}{2} \Bigg(
+        \ I + \sum_{i = 1}^3 \bigg( \Big( r_i \cos^2\frac{\alpha}{2}
+        - 2 \cos \frac{\alpha}{2} \sin \frac{\alpha}{2}
+        (r_{f(i)}n_{f(i + 1)} - r_{f(i+1)}n_{f(i)})\ +
+        \nonumber \\
+        &\quad  \sin^2\frac{\alpha}{2} \big(
+            n_i^2r_i + \sum_{j \neq i} (2 r_j n_i n_j - r_i n_j^2)
+        \big)
+    \Big)\ \sigma_i \bigg) \Bigg) .
+\end{align}
+Using the trigonometric identities
+\begin{itemize}
+    \item $\cos^2 \frac{\alpha}{2} = \frac{1}{2} (1 + \cos\alpha)$;
+    \item $\sin^2 \frac{\alpha}{2} = \frac{1}{2} (1 - \cos\alpha)$;
+    \item $\cos\frac{\alpha}{2} \sin\frac{\alpha}{2} = \frac{\sin\alpha}{2}$;
+\end{itemize}
+\begin{align}
+    R_{\hat n}(\alpha) \rho R_{\hat n}(\alpha)^\dagger &= \frac{1}{2} \Bigg(
+        \ I + \sum_{i = 1}^3 \bigg( \Big( \frac{r_i}{2} (1 + \cos\alpha)
+        - \sin\alpha (r_{f(i)}n_{f(i + 1)} - r_{f(i+1)}n_{f(i)})\ +
+        \nonumber \\
+        &\quad \frac{1}{2} (1 - \cos\alpha) \big(
+            n_i^2r_i + \sum_{j \neq i} (2 r_j n_i n_j - r_i n_j^2)
+        \big)
+    \Big)\ \sigma_i \bigg) \Bigg) .
+\end{align}
+Let
+\begin{align}
+    d = \sin\alpha (r_{f(i)}n_{f(i + 1)} - r_{f(i+1)}n_{f(i)});
+\end{align}
+Then,
+\begin{align}
+    R_{\hat n}(\alpha) \rho R_{\hat n}(\alpha)^\dagger &= \frac{1}{2} \Bigg(
+        \ I + \sum_{i = 1}^3 \bigg( \Big( \frac{r_i}{2} (1 + \cos\alpha) +
+        \frac{1}{2} (1 - \cos\alpha) \big(
+            n_i^2r_i + \sum_{j \neq i} (2 r_j n_i n_j - r_i n_j^2)
+        \big) - d
+    \Big)\ \sigma_i \bigg) \Bigg) \\
+    &= \frac{1}{2} \Bigg(
+        \ I + \sum_{i = 1}^3 \bigg( \frac{1}{2} \Big( r_i (1 + \cos\alpha) +
+        (1 - \cos\alpha) \big(
+            n_i^2r_i + \sum_{j \neq i} (2 r_j n_i n_j - r_i n_j^2)
+        \big)
+    \Big)\ \sigma_i -d \sigma_i \bigg) \Bigg) .
+\end{align}
+Let
+\begin{align}
+    \hat d = \frac{1}{2} \Big( r_i (1 + \cos\alpha) +
+        (1 - \cos\alpha) \big(
+            n_i^2r_i + \sum_{j \neq i} (2 r_j n_i n_j - r_i n_j^2)
+        \big)
+    \Big) .
+\end{align}
+Then,
+\begin{align}
+    R_{\hat n}(\alpha) \rho R_{\hat n}(\alpha)^\dagger =
+        \frac{1}{2} \left(I + \sum_{i=1}^3 (\hat{d}\sigma_i - d\sigma_i) \right).
+\end{align}
+Computing $\hat d$,
+\begin{align}
+    \hat{d} &= \frac{1}{2} \Big( r_i (1 + \cos\alpha) +
+        (1 - \cos\alpha) \big(
+            n_i^2r_i + \sum_{j \neq i} (2 r_j n_i n_j - r_i n_j^2)
+        \big) \Big) \\
+    &= \frac{1}{2} \Big(
+        n_i^2r_i(1 - \cos\alpha) +
+        r_i + r_i\cos\alpha +
+        \sum_{j \neq i} (2 r_j n_i n_j - r_i n_j^2 -
+            2 \cos(\alpha) r_j n_i n_j + \cos(\alpha) r_i n_j^2
+        ) \Big) \\
+    &= \frac{1}{2} \Big(
+        n_i^2r_i(1 - \cos\alpha) +
+        r_i \left(1 - \sum_{j \neq i} n_j^2\right) +
+        r_i \cos\alpha \left(1 + \sum_{j \neq i} n_j^2 \right) +
+        \sum_{j \neq i} (
+            2 r_j n_i n_j - 2 \cos(\alpha) r_j n_i n_j
+        ) \Big) .
+\end{align}
+Since $\hat n$ is a real unit vector,
+$1 - n_i^2 = \sum_{j \neq i} n_j^2$.
+Hence,
+\begin{align}
+    \hat{d} &= \frac{1}{2} \Big(
+        n_i^2r_i(1 - \cos\alpha) +
+        r_i n_i^2 +
+        r_i \cos\alpha \left(2 - n_i^2 \right) +
+        \sum_{j \neq i} r_j n_i n_j ( 2  - 2 \cos\alpha ) \Big) \\
+    &= \frac{1}{2} \Big(
+        n_i^2r_i(2 - \cos\alpha) +
+        2 r_i \cos\alpha - r_i n_i^2 \cos\alpha +
+        \sum_{j \neq i} r_j n_i n_j ( 2  - 2 \cos\alpha ) \Big) \\
+    &= \frac{1}{2} \Big(
+        n_i^2r_i(2 - 2 \cos\alpha) +
+        2 r_i \cos\alpha +
+        \sum_{j \neq i} r_j n_i n_j ( 2  - 2 \cos\alpha ) \Big) \\
+    &= n_i^2r_i(1 - \cos\alpha) +
+        r_i \cos\alpha +
+        \sum_{j \neq i} r_j n_i n_j ( 1  - \cos\alpha ) .
+\end{align}
+In summary,
+\begin{align}
+    R_{\hat n}(\alpha) \rho R_{\hat n}(\alpha)^\dagger &= \frac{1}{2} \Bigg(
+        I + \sum_{i = 1}^3 \bigg( \Big(
+            n_i^2r_i(1 - \cos\alpha) +
+            r_i \cos\alpha +
+            \sum_{j \neq i} r_j n_i n_j \big(
+                 1 - \cos(\alpha)
+            \big)\ - \nonumber \\
+            &\quad
+            \sin\alpha (r_{f(i)}n_{f(i + 1)} - r_{f(i+1)}n_{f(i)})
+        \Big) \sigma_i \bigg)
+    \Bigg)
+    \\
+    &= \frac{1}{2} \Bigg(
+        I + \sum_{i = 1}^3 \bigg( \Big(
+            n_i^2r_i(1 - \cos\alpha) +
+            r_i \cos\alpha +
+            \sum_{j \neq i} r_j n_i n_j \big(
+                 1 - \cos(\alpha)
+            \big)\ - \nonumber \\
+            &\quad
+            \sin\alpha (r_{f(i+1)}n_{f(i)} - r_{f(i)}n_{f(i + 1)})
+        \Big) \sigma_i \bigg)
+    \Bigg).
+\end{align}
+In conclusion,
+the obtained Bloch Vector $r' = (r'_1, r'_2, r'_2)^\dagger$ is described --
+for each $r'_i$, $1 \leq i \leq 3$ -- as follows,
+\begin{align}
+    r_i' = n_i^2r_i(1 - \cos\alpha) +
+            r_i \cos\alpha +
+            \sum_{j \neq i} r_j n_i n_j \big(
+                1 - \cos\alpha
+            \big) +
+            \sin\alpha (r_{f(i+1)}n_{f(i)} - r_{f(i)}n_{f(i + 1)}) .
+    \label{eq:nielsen-and-chuang-exercise-4-6-final-result}
+\end{align}
+
+To assert this result, compute Equation \ref{eq:nielsen-and-chuang-exercise-4-6-assert}
+and verify that the results match.
+That is, verify that each $r_i'$ computed using
+Equation \ref{eq:nielsen-and-chuang-exercise-4-6-final-result} matches
+the values $r_1'$, $r_2'$ and $r_3'$ obtained through
+\begin{align}
+    \left[ \begin{matrix}
+        r_1' \\ r_2' \\ r_3'
+    \end{matrix} \right] =
+    \left[ \begin{matrix}
+        n_1^2 (1 - \cos\alpha) + \cos\alpha &
+        n_1 n_2 (1 - \cos\alpha) - n_3 \sin\alpha &
+        n_1 n_3 (1 - \cos\alpha) + n_2 \sin\alpha
+        \\
+        n_1 n_2 (1 - \cos\alpha) + n_3 \sin\alpha &
+        n_2^2 (1 - \cos\alpha) + \cos\alpha &
+        n_2 n_3 (1 - \cos\alpha) - n_1 \sin\alpha
+        \\
+        n_1 n_3 (1 - \cos\alpha) - n_2 \sin\alpha &
+        n_2 n_3 (1 - \cos\alpha) + n_1 \sin\alpha &
+        n_3^2 (1 - \cos\alpha) + \cos\alpha
+    \end{matrix} \right]
+    \left[ \begin{matrix}
+        r_1 \\ r_2 \\ r_3
+    \end{matrix} \right].
+\end{align}
+
+As the book states,
+the ``mysterious factor 2'' appears because of the
+representation of a state in the Bloch Sphere
+(refer to Section
+\ref{nielsen-and-chuang-qubit-representation-in-a-bloch-sphere}).
