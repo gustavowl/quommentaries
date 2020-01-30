@@ -30,19 +30,21 @@
     \pagestyle{fancy}
     %\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
     \renewcommand{\sectionmark}[1]{\markright{\arabic{section}.\ #1}}
-    \rhead[\nouppercase{\rightmark}]{\href{mailto:gustavowl@lcc.ufrn.br}{gustavowl@lcc.ufrn.br}}
+    \rhead[\nouppercase{\rightmark}]{\href{mailto:gbezerra@lncc.br}{gbezerra@lncc.br}}
 
 \usepackage{comment}
 
 \usepackage{graphicx, caption}
 \usepackage{subcaption}
 \usepackage{float}
+\usepackage{enumitem}
 
 \usepackage{array} %to center table content
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} %to center table content
 
 \renewcommand\labelitemii{$\circ$}
 \renewcommand\labelitemiii{\textasteriskcentered}
+\renewcommand{\mod}{\text{\ mod\ }}
 
 \newcommand{\todo}[1]{ %adds flashy todo text
     { \color{red} \MakeUppercase{\textbf{TODO: #1}} }
@@ -51,13 +53,16 @@
 \newcommand{\mean}[1]{\mathop{\mathinner{
     \langle {#1} \rangle}}}
 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
 \allowdisplaybreaks %allows page break inside begin{align} block
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Quommentaries}
 \author{
     Gustavo Bezerra (Koruja)\\
-    \href{mailto:gustavowl@lcc.ufrn.br}{gustavowl@lcc.ufrn.br}
+    \href{mailto:gbezerra@lncc.br}{gbezerra@lncc.br}
 }
 %\date{}
 
