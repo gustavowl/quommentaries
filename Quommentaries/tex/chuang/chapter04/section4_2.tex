@@ -288,7 +288,7 @@ A proof analogous to $(\hat{n} - \vec{\sigma})^2 = I$ can be found in the beginn
 To prove $(\hat{n} - \vec{\sigma})^2 = I$, simply rename the variables.
 
 Notwithstanding, proving Equation 4.8 is also straightforward.
-Just substitute $(\hat{n} - \vec{\sigma})^2 = I$ for $A$ in Equation 4.7,
+Just substitute $(\hat{n} \cdot \vec{\sigma})^2 = I$ for $A$ in Equation 4.7,
 which was proved in \hyperref[sec:nielsen-and-chuang-exercise-4-2]{Exercise 4.2}.
 Thus, using \hyperref[sec:nielsen-and-chuang-equation-2-116]{Equation 2.116},
 \begin{align}
@@ -796,3 +796,25 @@ the ``mysterious factor 2'' appears because of the
 representation of a state in the Bloch Sphere
 (refer to Section
 \ref{nielsen-and-chuang-qubit-representation-in-a-bloch-sphere}).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Exercise 4.7}
+It is fairly simple to show that $XYX = -Y$.
+\begin{align}
+    XYX &= \matrx{0 & 1 \\ 1 & 0} \matrx{0 & -i \\ i & 0} \matrx{0 & 1 \\ 1 & 0} \\
+    &= \matrx{i & 0 \\ 0 & -i} \matrx{0 & 1 \\ 1 & 0} \\
+    &= \matrx{0 & i \\ -i & 0} \\
+    &= -Y .
+\end{align}
+
+Hence, computing $X R_y(\theta) X$ and
+using the results of Exercise 2.35 (Section \ref{sec:nielsen-and-chuang-exercise-2-35})
+and the definition of $R_y(\theta)$,
+\begin{align}
+    X R_y(\theta) X &= X \left( \cos\frac{\theta}{2} I - i \sin\frac{\theta}{2} Y \right) X \\
+    &= \cos\frac{\theta}{2} X I X - i \sin\frac{\theta}{2} X Y X \\
+    &= \cos\frac{\theta}{2} I + i \sin\frac{\theta}{2} Y \\
+    &= e^{i \theta Y / 2} \\
+    &= R_y(-\theta) .
+\end{align}
+as requested.
